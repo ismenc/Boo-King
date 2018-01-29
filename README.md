@@ -19,19 +19,38 @@ Nuestra aplicación Java muestra un menú con las opciones que se ofrecen al usu
 [9] Salir
 ```
 Una vez elegida cualquiera de las opciones, el programa Java se encarga de solicitar los datos necesarios o realizar las operaciones correspondientes. En secciones siguientes explicamos cómo Java interacciona con la base de datos.
+La clase principal se encuentra en [./src/com/booking/ejecutable/Main.java]
 
 ### Servidor MySQL
 
-El servidor MySQL será responsable de almacenar todos los datos de nuestra aplicación. Para ello utilizaremos 4 tablas:
-* Arrendador - *Datos de la persona que realizará préstmos de libros*
-* Libro - *Datos de un libro*
-* Préstamo - *Préstamo realizado por un arrendador*
-* Stack - *Tabla intermedia préstamo-libro que almacena la cantidad para cada libro en un préstamo*
+El servidor MySQL será responsable de almacenar todos los datos de nuestra aplicación. Para ello utilizaremos estas 4 tablas.
+Nombre | Descripción
+------------ | ------------ 
+Arrendador | *Datos de la persona que realizará préstmos de libros*
+Libro | *Datos de un libro*
+Préstamo | *Préstamo realizado por un arrendador*
+Stack | *Tabla intermedia préstamo-libro que almacena la cantidad para cada libro en un préstamo*
 
 Las relaciones son:
-* Arrendador-Préstamo: 1-N
-* Préstamo-Libro: N-M
+Tablas | Relación
+------------ | ------------ 
+Arrendador-Préstamo | 1-N
+Préstamo-Stack | 1-N
+Stack-Libro | N-1
+(Préstamo-Libro) | N-M
+
 
 ### Hibernate
 
-Para conectar nuestro programa Java con MySQL hacemos uso de la librería Hibernate, que nos permitirá abstraernos de SQL y trabajar con objetos de forma que el proyecto se agiliza mucho más.
+Para conectar nuestro programa Java con MySQL hacemos uso de la librería Hibernate, que nos permitirá abstraernos de SQL y trabajar con objetos de forma que el proyecto se agiliza mucho más. 
+
+## Estructura del proyecto
+
+Hemos organizado el proyecto en paquetes de forma que su estructura queda definida así:
+Paquete | Descripción
+------------ | ------------ 
+[./src/com/booking/ejecutable/] | Paquete con los archivos que serán ejecutados
+[./src/com/booking/persistencia/] | Clases que definen los objetos que manipularemos
+[./src/com/booking/modelo/] | Clases con utilidades recurridas
+[./src/com/booking/dao/] | Clases que definen la interacción con la BD
+
