@@ -23,7 +23,8 @@ La clase principal se encuentra en [./src/com/booking/ejecutable/Main.java]
 
 ### Servidor MySQL
 
-El servidor MySQL será responsable de almacenar todos los datos de nuestra aplicación. Para ello utilizaremos estas 4 tablas.
+El servidor MySQL será responsable de **almacenar** los datos de nuestra aplicación. Para ello utilizaremos estas 4 tablas.
+
 Nombre | Descripción
 ------------ | ------------ 
 Arrendador | *Datos de la persona que realizará préstmos de libros*
@@ -32,6 +33,7 @@ Préstamo | *Préstamo realizado por un arrendador*
 Stack | *Tabla intermedia préstamo-libro que almacena la cantidad para cada libro en un préstamo*
 
 Las relaciones son:
+
 Tablas | Relación
 ------------ | ------------ 
 Arrendador-Préstamo | 1-N
@@ -42,11 +44,12 @@ Stack-Libro | N-1
 
 ### Hibernate
 
-Para conectar nuestro programa Java con MySQL hacemos uso de la librería Hibernate, que nos permitirá abstraernos de SQL y trabajar con objetos de forma que el proyecto se agiliza mucho más. 
+Para conectar nuestro programa Java con MySQL hacemos uso de la librería **Hibernate**, que nos permitirá abstraernos de SQL y trabajar con objetos de forma que el proyecto se agiliza mucho más. 
 
 ## Estructura del proyecto
 
 Hemos organizado el proyecto en paquetes de forma que su estructura queda definida así:
+
 Paquete | Descripción
 ------------ | ------------ 
 [./src/com/booking/ejecutable/] | Paquete con los archivos que serán ejecutados
