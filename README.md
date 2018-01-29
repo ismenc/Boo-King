@@ -19,7 +19,7 @@ Nuestra aplicación Java muestra un menú con las opciones que se ofrecen al usu
 [9] Salir
 ```
 Una vez elegida cualquiera de las opciones, el programa Java se encarga de solicitar los datos necesarios o realizar las operaciones correspondientes. En secciones siguientes explicamos cómo Java interacciona con la base de datos.
-La clase principal se encuentra en [./src/com/booking/ejecutable/Main.java]
+La clase principal (ejecutable) es [Main.java](src/com/booking/ejecutable/Main.java).
 
 ### Servidor MySQL
 
@@ -52,8 +52,8 @@ Hemos organizado el proyecto en paquetes de forma que su estructura queda defini
 
 Paquete | Descripción
 ------------ | ------------ 
-[./src/com/booking/ejecutable/] | Paquete con los archivos que serán ejecutados
-[./src/com/booking/persistencia/] | Clases que definen los objetos que manipularemos
-[./src/com/booking/modelo/] | Clases con utilidades recurridas
-[./src/com/booking/dao/] | Clases que definen la interacción con la BD
+[ejecutable](./src/com/booking/ejecutable/) | Paquete con los archivos que serán ejecutados
+[persistencia](./src/com/booking/persistencia/) | Clases que definen los objetos que manipularemos
+[modelo](./src/com/booking/modelo/) | Clases con utilidades recurridas
+[dao](./src/com/booking/dao/) | Clases que definen la interacción con la BD
 
