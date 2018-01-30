@@ -17,7 +17,7 @@ import javax.validation.constraints.Size;
 import com.booking.modelo.Categoria;
 
 /**
- * Define los libros que seran prestados
+ * Define los libros que serán prestados.
  * @author Ismael Núñez
  *
  */
@@ -43,6 +43,7 @@ public class Libro implements Serializable {
 	@Size(min = 3, max = 50)
 	private String autor;
 	
+	@NotNull
 	@Enumerated(EnumType.ORDINAL)
 	private Categoria categoria;
 	
@@ -52,6 +53,7 @@ public class Libro implements Serializable {
 	private String editorial;
 	
 	@Column
+	@NotNull
 	@Max(2018)
 	private String anoPublicacion;
 

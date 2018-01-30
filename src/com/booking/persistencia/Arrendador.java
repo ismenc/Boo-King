@@ -20,7 +20,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 /**
- * Representa la persona o entidad que hara prestamos.
+ * Representa la persona o entidad que hará préstamos.
  * @author Ismael Núñez
  *
  */
@@ -51,10 +51,12 @@ public class Arrendador implements Serializable {
 	private String direccion;
 	
 	@Column
+	@NotNull
 	@Digits(integer=5, fraction = 0)
 	private String codigoPostal;
 	
 	@Column
+	@NotNull
 	@Min(99999999)
 	private String telefono;
 	

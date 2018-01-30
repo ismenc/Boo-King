@@ -14,7 +14,7 @@ import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 
 /**
- * Define la relacion prestamo-libro N-M. Es una pila de una cantidad de un libro.
+ * Define la relacion préstamo-libro N-M. Es una pila de una cantidad de un libro.
  * Alguien puede prestar varias pilas en un prestamo.
  * @author Ismael Núñez
  *
@@ -33,7 +33,7 @@ public class Stack implements Serializable {
 	
 	@Column
 	@Min(1)
-	@Max(99)
+	@Max(255)
 	private int cantidad;
 	
 	@ManyToOne
