@@ -16,6 +16,11 @@ import com.booking.persistencia.Libro;
 import com.booking.persistencia.Prestamo;
 import com.booking.persistencia.Stack;
 
+/**
+ * Métodos para mostrar por pantalla y solicitar datos
+ * @author usuario
+ *
+ */
 public class Utilidades {
 	
 	private static final int TOTAL_OPCIONES = 9;
@@ -26,6 +31,8 @@ public class Utilidades {
 	private static LibroDAO libroDao = new LibroDAO();
 	private static PrestamoDAO prestamoDao = new PrestamoDAO();
 	private static ArrendadorDAO arrendadorDao = new ArrendadorDAO();
+	
+	/* ========================= Métodos ========================= */
 	
 	public static void cerrarSesion() {
 		HibernateUtil.closeSessionFactory();

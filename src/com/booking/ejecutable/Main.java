@@ -12,7 +12,7 @@ import com.booking.persistencia.*;
 
 /**
  * Clase principal de la aplicación Boo-King.
- * @author Ismael Nunez
+ * @author Ismael Núñez
  *
  */
 public class Main {
