@@ -1,14 +1,7 @@
 package com.booking.ejecutable;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.Iterator;
-import java.util.List;
-
-import com.booking.dao.*;
 import com.booking.modelo.BookingException;
 import com.booking.modelo.Utilidades;
-import com.booking.persistencia.*;
 
 
 /**
@@ -19,10 +12,6 @@ import com.booking.persistencia.*;
 public class Main {
 	
 	private static final int TOTAL_OPCIONES = 9;
-	
-	private static LibroDAO libroDao = new LibroDAO();
-	private static PrestamoDAO prestamoDao = new PrestamoDAO();
-	private static ArrendadorDAO arrendadorDao = new ArrendadorDAO();
 	
 	/* ========================= Principal ========================= */
 	
@@ -47,30 +36,28 @@ public class Main {
 		try {
 			switch (decision) {
 				case 1:
-					nuevoArrendador();
+					Utilidades.nuevoArrendador();
 				break;
 				case 2:
-					nuevoLibro();
+					Utilidades.nuevoLibro();
 				break;
 				case 3:
-					nuevoPrestamo();
+					Utilidades.nuevoPrestamo();
 				break;
 				case 4:
-					// TODO: Modificar un libro
-					//modificarAlgo();
+					Utilidades.modificarLibro();
 				break;
 				case 5: 
-					// TODO: Probar que funciona
-					borrarArrendador();
+					Utilidades.borrarArrendador();
 				break;
 				case 6:
-					consultarArrendador();
+					Utilidades.consultarArrendador();
 				break;
 				case 7: 
-					consultarLibro();
+					Utilidades.consultarLibro();
 				break;
 				case 8:
-					consultarPrestamo();
+					Utilidades.consultarPrestamo();
 				break;
 				case TOTAL_OPCIONES:
 					System.out.println("¡Hasta la vista!");
@@ -85,121 +72,6 @@ public class Main {
 		}
 	}
 	
-	/* ------------------------ Tratamiento Inserción ------------------------ */
 	
-	/**
-	 * Solicita datos del arrendador y lo guarda en la BD
-	 */
-	private static void nuevoArrendador() {
-		System.out.println("Los campos con * son obligatorios:");
-		
-		Arrendador arrendador = new Arrendador(
-				Utilidades.solicitarCadena("Nombre* : "),
-				Utilidades.solicitarCadena("Entidad: "),
-				Utilidades.solicitarCadena("Dirección* : "),
-				Utilidades.solicitarCadena("Código postal* : "),
-				Utilidades.solicitarCadena("Teléfono*: "));
-		arrendadorDao.guardar(arrendador);
-		
-		System.out.println("Se ha creado el nuevo arrendador con ID: "+ arrendador.getId() +".");
-	}
-	
-	/**
-	 * Solicita datos del libro y lo guarda en la BD
-	 */
-	private static void nuevoLibro() {
-		System.out.println("Los campos con * son obligatorios:");
-		
-		Libro libro = new Libro(
-				Utilidades.solicitarCadena("Título* : "),
-				Utilidades.solicitarCadena("Autor* : "),
-				Utilidades.solicitarCadena("Editorial* : "),
-				Utilidades.solicitarCategoria("Introduce una categoría* : "),
-				Utilidades.solicitarCadena("Año de publicación*: "));
-		libroDao.guardar(libro);
-		
-		System.out.println("Se ha creado el nuevo arrendador con ID: "+ libro.getId() +".");
-	}
-	
-	/**
-	 * Solicita datos y da de alta un nuevo préstamo
-	 */
-	private static void nuevoPrestamo() throws BookingException {
-		Prestamo prestamo = new Prestamo(
-				new Date(),
-				Utilidades.solicitarEntero("Duración en días: "),
-				Utilidades.solicitarArrendador("Introduce la ID del arrendador: "));
-		
-		ArrayList<Stack> stacks = Utilidades.nuevaListaStacks();
-		prestamo.setListaStacks(stacks);
-		
-		@SuppressWarnings("rawtypes")
-		Iterator iterator;
-		for (iterator = stacks.iterator(); iterator.hasNext();) {
-			Stack stack = (Stack) iterator.next();
-			stack.setPrestamo(prestamo);
-		}
-		
-		prestamoDao.guardar(prestamo);
-	}
-	
-	/* ------------------------ Tratamiento de otros ------------------------ */
-	
-	/**
-	 * Permite borrar un arrendador
-	 * @throws BookingException
-	 */
-	private static void borrarArrendador() throws BookingException {
-		List<Arrendador> arrendadores = Utilidades.obtenerArrendadores();
-		Utilidades.mostrarListaBreve(arrendadores);
-		
-		Arrendador arrendador = Utilidades.solicitarArrendador("Introduzca la ID del arrendador: ");
-		arrendadorDao.borrar(arrendador);
-		System.out.println("Se ha borrado el con id " + arrendador.getId());
-	}
-	
-	/* ------------------------ Tratamiento de consultas ------------------------ */
-	
-	/**
-	 * Muestra los detalles del arrendador solicitado
-	 * @throws BookingException
-	 */
-	private static void consultarArrendador() throws BookingException {
-		List<Arrendador> arrendadores = Utilidades.obtenerArrendadores();
-		Utilidades.mostrarListaBreve(arrendadores);
-		
-		int id = Utilidades.solicitarEntero("Introduce la ID del arrendador: ");
-		Arrendador arrendador = arrendadorDao.obtener(id);
-		
-		System.out.println("\n" + arrendador.informacionDetalle());
-	}
-	
-	/**
-	 * Muestra los detalles del libro solicitado
-	 * @throws BookingException
-	 */
-	private static void consultarLibro() throws BookingException {
-		List<Libro> libros = Utilidades.obtenerLibros();
-		Utilidades.mostrarListaBreve(libros);
-		
-		int id = Utilidades.solicitarEntero("Introduce la ID del libro: ");
-		Libro libro = libroDao.obtener(id);
-		
-		System.out.println("\n" + libro.informacionDetalle());
-	}
-	
-	/**
-	 * Muestra los detalles del prestamo solicitado
-	 * @throws BookingException
-	 */
-	private static void consultarPrestamo() throws BookingException {
-		List<Prestamo> prestamos = Utilidades.obtenerPrestamos();
-		Utilidades.mostrarListaBreve(prestamos);
-		
-		int id = Utilidades.solicitarEntero("Introduce la ID del préstamo: ");
-		Prestamo prestamo = prestamoDao.obtener(id);
-		
-		System.out.println("\n" + prestamo.informacionDetalle());
-	}
 
 }

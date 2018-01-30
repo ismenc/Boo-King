@@ -2,7 +2,6 @@ package com.booking.persistencia;
 
 import java.io.Serializable;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -33,7 +32,7 @@ public class Stack implements Serializable {
 	@Column
 	private int cantidad;
 	
-	@ManyToOne(cascade=CascadeType.REFRESH)
+	@ManyToOne
 	@JoinColumn(name="idPrestamo")
 	private Prestamo prestamo;
 	

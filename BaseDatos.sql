@@ -11,26 +11,26 @@ create table libro(id int AUTO_INCREMENT primary key not null, titulo varchar(50
 	
 BEGIN;
 
-create table prestamo(id int AUTO_INCREMENT primary key not null, fecha date not null, duracionDias int not null, idArrendador int not null,
+create table prestamo(id int AUTO_INCREMENT primary key not null, fecha date not null, duracionDias int not null, idArrendador int,
                      FOREIGN KEY(idArrendador) REFERENCES arrendador(id));
-create table stack(id int AUTO_INCREMENT primary key not null, idPrestamo int not null, idLibro int not null, cantidad int not null,
+create table stack(id int AUTO_INCREMENT primary key not null, idPrestamo int, idLibro int not null, cantidad int not null,
                   FOREIGN KEY(idPrestamo) REFERENCES prestamo(id),
                    FOREIGN KEY(idLibro) REFERENCES libro(id));
 COMMIT
 */
 
-
-
 -- phpMyAdmin SQL Dump
--- version 4.5.4.1deb2ubuntu2
--- http://www.phpmyadmin.net
+-- version 4.7.4
+-- https://www.phpmyadmin.net/
 --
--- Servidor: localhost
--- Tiempo de generación: 30-01-2018 a las 12:48:01
--- Versión del servidor: 5.7.21-0ubuntu0.16.04.1
--- Versión de PHP: 7.0.22-0ubuntu0.16.04.1
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 30-01-2018 a las 18:04:19
+-- Versión del servidor: 10.1.29-MariaDB
+-- Versión de PHP: 7.2.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -99,7 +99,7 @@ CREATE TABLE `prestamo` (
   `id` int(11) NOT NULL,
   `fecha` date NOT NULL,
   `duracionDias` int(11) NOT NULL,
-  `idArrendador` int(11) NOT NULL
+  `idArrendador` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -118,9 +118,9 @@ INSERT INTO `prestamo` (`id`, `fecha`, `duracionDias`, `idArrendador`) VALUES
 
 CREATE TABLE `stack` (
   `id` int(11) NOT NULL,
-  `idLibro` int(11) NOT NULL,
+  `idLibro` int(11) DEFAULT NULL,
   `cantidad` int(11) NOT NULL,
-  `idPrestamo` int(11) NOT NULL
+  `idPrestamo` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -171,21 +171,25 @@ ALTER TABLE `stack`
 --
 ALTER TABLE `arrendador`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
 --
 -- AUTO_INCREMENT de la tabla `libro`
 --
 ALTER TABLE `libro`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
 --
 -- AUTO_INCREMENT de la tabla `prestamo`
 --
 ALTER TABLE `prestamo`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
 --
 -- AUTO_INCREMENT de la tabla `stack`
 --
 ALTER TABLE `stack`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
 --
 -- Restricciones para tablas volcadas
 --
@@ -202,6 +206,7 @@ ALTER TABLE `prestamo`
 ALTER TABLE `stack`
   ADD CONSTRAINT `stack_ibfk_1` FOREIGN KEY (`idPrestamo`) REFERENCES `prestamo` (`id`),
   ADD CONSTRAINT `stack_ibfk_2` FOREIGN KEY (`idLibro`) REFERENCES `libro` (`id`);
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

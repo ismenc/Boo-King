@@ -47,7 +47,7 @@ public class Arrendador implements Serializable {
 	@Column
 	private String telefono;
 	
-	@OneToMany(cascade=CascadeType.ALL)
+	@OneToMany(cascade=CascadeType.ALL, orphanRemoval = true)
 	@JoinColumn(name="idArrendador")
 	//@IndexColumn(name="")
 	private List<Prestamo> listaPrestamos;
@@ -158,7 +158,8 @@ public class Arrendador implements Serializable {
 			}
 			cadena.setLength(cadena.length()-2);
 			cadena.append(".\n");
-		}
+		}else
+			cadena.append("No ha realizado ningún préstamo.");
 		
 		return cadena.toString();
 	}

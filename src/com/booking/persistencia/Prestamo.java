@@ -46,7 +46,7 @@ public class Prestamo implements Serializable {
 	@JoinColumn(name="idArrendador")
 	private Arrendador arrendador;
 	
-	@OneToMany(cascade=CascadeType.ALL)
+	@OneToMany(cascade=CascadeType.ALL, orphanRemoval = true)
 	@JoinColumn(name="idPrestamo")
 	//@IndexColumn(name="")
 	private List<Stack> listaStacks;

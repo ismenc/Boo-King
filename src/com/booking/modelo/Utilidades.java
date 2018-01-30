@@ -1,6 +1,7 @@
 package com.booking.modelo;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
@@ -32,7 +33,7 @@ public class Utilidades {
 	private static PrestamoDAO prestamoDao = new PrestamoDAO();
 	private static ArrendadorDAO arrendadorDao = new ArrendadorDAO();
 	
-	/* ========================= Métodos ========================= */
+	/* ========================= Métodos Básicos ========================= */
 	
 	public static void cerrarSesion() {
 		HibernateUtil.closeSessionFactory();
@@ -128,13 +129,17 @@ public class Utilidades {
 		return stacks;
 	}
 	
-	/* ------------------------ Métodos de Pantalleo ------------------------ */
+	/* ========================= Métodos para mostrar ========================= */
 	
 	/**
 	 * Método genérico para mostrar en pantalla la lista de un objeto mediante toString.
 	 * @param lista
+	 * @throws BookingException 
 	 */
-	public static <T> void mostrarListaBreve(List<T> lista) {
+	public static <T> void mostrarListaBreve(List<T> lista) throws BookingException {
+		if(lista.isEmpty())
+			throw new BookingException("Error. No hay datos que mostrar.");
+		
 		System.out.println("---------------------- Lista ----------------------");
 		
 		@SuppressWarnings("rawtypes")
@@ -187,5 +192,132 @@ public class Utilidades {
 		} while (opcion < 1 || opcion > TOTAL_OPCIONES);
 
 		return opcion;
+	}
+	
+	/* ========================= Gestión de opciones ========================= */
+	
+	/**
+	 * Solicita datos del arrendador y lo guarda en la BD
+	 */
+	public static void nuevoArrendador() {
+		System.out.println("Los campos con * son obligatorios:");
+		
+		Arrendador arrendador = new Arrendador(
+				solicitarCadena("Nombre* : "),
+				solicitarCadena("Entidad: "),
+				solicitarCadena("Dirección* : "),
+				solicitarCadena("Código postal* : "),
+				solicitarCadena("Teléfono*: "));
+
+		arrendadorDao.guardar(arrendador);
+		System.out.println("Se ha creado el nuevo arrendador con ID: "+ arrendador.getId() +".");
+	}
+	
+	/**
+	 * Solicita datos del libro y lo guarda en la BD
+	 */
+	public static void nuevoLibro() {
+		System.out.println("Los campos con * son obligatorios:");
+		
+		Libro libro = new Libro(
+				solicitarCadena("Título* : "),
+				solicitarCadena("Autor* : "),
+				solicitarCadena("Editorial* : "),
+				solicitarCategoria("Introduce una categoría* : "),
+				solicitarCadena("Año de publicación*: "));
+
+		libroDao.guardar(libro);
+		System.out.println("Se ha creado el nuevo arrendador con ID: "+ libro.getId() +".");
+	}
+	
+	/**
+	 * Solicita datos y da de alta un nuevo préstamo
+	 */
+	public static void nuevoPrestamo() throws BookingException {
+		Prestamo prestamo = new Prestamo(
+				new Date(),
+				solicitarEntero("Duración en días: "),
+				solicitarArrendador("Introduce la ID del arrendador: "));
+		
+		ArrayList<Stack> stacks = nuevaListaStacks();
+		prestamo.setListaStacks(stacks);
+		@SuppressWarnings("rawtypes")
+		Iterator iterator;
+		for (iterator = stacks.iterator(); iterator.hasNext();) {
+			Stack stack = (Stack) iterator.next();
+			stack.setPrestamo(prestamo);
+		}
+		
+		prestamoDao.guardar(prestamo);
+	}
+		
+	/**
+	 * Permite borrar un arrendador
+	 * @throws BookingException
+	 */
+	public static void borrarArrendador() throws BookingException {
+		Arrendador arrendador = solicitarArrendador("Introduzca la ID del arrendador: ");
+		arrendadorDao.borrar(arrendador);
+		System.out.println("Se ha borrado el arrendador con id " + arrendador.getId() + " y sus préstamos asociados.");
+	}
+	
+	/**
+	 * Actualiza los datos de un libro ya existente.
+	 * @throws BookingException
+	 */
+	public static void modificarLibro() throws BookingException {
+		Libro libro = solicitarLibro("Introduzca la ID del libro: ");
+		System.out.println(libro.informacionDetalle());
+		
+		libro = new Libro(
+				solicitarCadena("Título* : "),
+				solicitarCadena("Autor* : "),
+				solicitarCadena("Editorial* : "),
+				solicitarCategoria("Introduce una categoría* : "),
+				solicitarCadena("Año de publicación*: "));
+		
+		libroDao.actualizar(libro);
+	}
+		
+	/**
+	 * Muestra los detalles del arrendador solicitado
+	 * @throws BookingException
+	 */
+	public static void consultarArrendador() throws BookingException {
+		List<Arrendador> arrendadores = obtenerArrendadores();
+		mostrarListaBreve(arrendadores);
+		
+		int id = solicitarEntero("Introduce la ID del arrendador: ");
+		Arrendador arrendador = arrendadorDao.obtener(id);
+		
+		System.out.println("\n" + arrendador.informacionDetalle());
+	}
+	
+	/**
+	 * Muestra los detalles del libro solicitado
+	 * @throws BookingException
+	 */
+	public static void consultarLibro() throws BookingException {
+		List<Libro> libros = obtenerLibros();
+		mostrarListaBreve(libros);
+		
+		int id = solicitarEntero("Introduce la ID del libro: ");
+		Libro libro = libroDao.obtener(id);
+		
+		System.out.println("\n" + libro.informacionDetalle());
+	}
+	
+	/**
+	 * Muestra los detalles del prestamo solicitado
+	 * @throws BookingException
+	 */
+	public static void consultarPrestamo() throws BookingException {
+		List<Prestamo> prestamos = obtenerPrestamos();
+		mostrarListaBreve(prestamos);
+		
+		int id = solicitarEntero("Introduce la ID del préstamo: ");
+		Prestamo prestamo = prestamoDao.obtener(id);
+		
+		System.out.println("\n" + prestamo.informacionDetalle());
 	}
 }

@@ -1,12 +1,10 @@
 # Boo-King
 
-Boo-King es una aplicación de préstamo de libros que permite almacenar datos de libros, arrendadores y préstamos en una base de datos MySQL.
+Boo-King es una aplicación de préstamo de libros entre PERSONAS, NO BIBLIOTECAS que permite almacenar datos de libros, arrendadores y préstamos en una base de datos MySQL. Los arrendatarios se han obviado para simplificar un poco el proyecto.
 
 ## Funcionamiento
 
-### Aplicación Java
-
-Nuestra aplicación Java muestra un menú con las opciones que se ofrecen al usuario. El menú ofrece las siguientes opciones:
+Nuestra aplicación ofrece al usuario un menú con las siguientes opciones:
 ```
 [1] Añadir arrendador
 [2] Añadir libro
@@ -18,12 +16,17 @@ Nuestra aplicación Java muestra un menú con las opciones que se ofrecen al usu
 [8] Consultar préstamo
 [9] Salir
 ```
-Una vez elegida cualquiera de las opciones, el programa Java se encarga de solicitar los datos necesarios o realizar las operaciones correspondientes. En secciones siguientes explicamos cómo Java interacciona con la base de datos.
-La clase principal (ejecutable) es [Main.java](src/com/booking/ejecutable/Main.java).
+
+Tras elegir una opción, el programa preguntará al usuario por los datos necesarios para operar.
+
+### Aplicación Java
+
+Java es el encargado de realizar las operaciones correspondientes según la opción de menú elegida. La clase principal (ejecutable) es [Main.java](src/com/booking/ejecutable/Main.java).
+En secciones siguientes explicamos cómo Java interacciona con la base de datos.
 
 ### Servidor MySQL
 
-El servidor MySQL será responsable de **almacenar** los datos de nuestra aplicación. Para ello utilizaremos estas 4 tablas.
+El servidor MySQL será responsable de **almacenar** los datos de nuestra aplicación. Para ello utilizaremos estas 4 tablas:
 
 Nombre | Descripción
 ------------ | ------------ 
@@ -44,7 +47,7 @@ Stack-Libro | N-1
 
 ### Hibernate
 
-Para conectar nuestro programa Java con MySQL hacemos uso de la librería **Hibernate**, que nos permitirá abstraernos de SQL y trabajar con objetos de forma que el proyecto se agiliza mucho más. 
+Para conectar nuestro programa Java con MySQL hacemos uso de la librería **Hibernate**, que nos permitirá abstraernos de SQL y trabajar con objetos de forma que el proyecto se agiliza mucho más. También nos ayudará a validar los datos de entrada ahorrandonos el trabajo de programarlo en Java.
 
 ## Estructura del proyecto
 
