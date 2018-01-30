@@ -226,6 +226,7 @@ public class Main {
 					nuevoPrestamo();
 				break;
 				case 4:
+					// TODO: Modificar un libro
 					//modificarAlgo();
 				break;
 				case 5: 

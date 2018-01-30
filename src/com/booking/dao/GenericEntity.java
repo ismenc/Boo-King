@@ -26,6 +26,11 @@ public class GenericEntity<T> {
 		session.getTransaction().commit();
 	}
 	
-	
+	public void actualizar(T entidad) {
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		session.beginTransaction();
+		session.update(entidad);
+		session.getTransaction().commit();
+	}
 
 }

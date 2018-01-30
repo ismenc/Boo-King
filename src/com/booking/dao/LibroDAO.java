@@ -34,4 +34,5 @@ public class LibroDAO extends GenericEntity<Libro> {
 		
 		return criterio.list();
 	}
+	
 }
