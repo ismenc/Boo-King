@@ -164,6 +164,7 @@ public class Main {
 		int id = Utilidades.solicitarEntero("Introduce la ID del arrendador: ");
 		Arrendador arrendador = arrendadorDao.obtener(id);
 		
+		// FIXME: No muestra los préstamos asociados
 		System.out.println("\n" + arrendador);
 	}
 	
