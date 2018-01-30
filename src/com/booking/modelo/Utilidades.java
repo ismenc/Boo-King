@@ -24,7 +24,7 @@ import com.booking.persistencia.Stack;
  */
 public class Utilidades {
 	
-	private static final int TOTAL_OPCIONES = 9;
+	public static final int TOTAL_OPCIONES = 11;
 
 	@SuppressWarnings("unused")
 	private static Session session;
@@ -186,7 +186,9 @@ public class Utilidades {
 			System.out.println("| [6] Consultar arrendador\t|");
 			System.out.println("| [7] Consultar libro\t\t|");
 			System.out.println("| [8] Consultar préstamo\t|");
-			System.out.println("| [9] Salir\t\t\t|");
+			System.out.println("| [9] Buscar arrendadores nombre|");
+			System.out.println("| [10] Buscar prestamos nombre  |");
+			System.out.println("| [11] Salir\t\t\t|");
 			System.out.println("+-------------------------------+");
 			opcion = Integer.parseInt(teclado.nextLine());
 		} while (opcion < 1 || opcion > TOTAL_OPCIONES);
@@ -319,5 +321,44 @@ public class Utilidades {
 		Prestamo prestamo = prestamoDao.obtener(id);
 		
 		System.out.println("\n" + prestamo.informacionDetalle());
+	}
+
+	/**
+	 * Consulta los arrendadores por nombre. Puede resultar en varios
+	 * @throws BookingException 
+	 */
+	public static void consultarArrendadoresPorNombre() throws BookingException {
+		String nombre = solicitarCadena("Introduce el nombre: ");
+		List<Arrendador> resultado = arrendadorDao.obtenerPorNombre(nombre);
+		
+		if(resultado.isEmpty())
+			throw new BookingException("No se ha encontrado ningún arrendador con ese nombre.");
+		
+		@SuppressWarnings("rawtypes")
+		Iterator iterator;
+		for (iterator = resultado.iterator(); iterator.hasNext();) {
+			Arrendador arrendador = (Arrendador) iterator.next();
+			System.out.println(arrendador.informacionDetalle());
+		}
+	}
+	
+	/**
+	 * Consulta los préstamos de una persona por nombre.
+	 * @throws BookingException 
+	 */
+	public static void consultarPrestamosPorNombre() throws BookingException {
+		String nombre = solicitarCadena("Introduce el nombre: ");
+		List<Prestamo> resultado = prestamoDao.obtenerPorNombre(nombre);
+		
+		if(resultado.isEmpty())
+			throw new BookingException("No se ha encontrado ningún arrendador con ese nombre.");
+			
+		System.out.println("==============> Préstamos de "+ nombre+ " <==============");
+		@SuppressWarnings("rawtypes")
+		Iterator iterator;
+		for (iterator = resultado.iterator(); iterator.hasNext();) {
+			Prestamo prestamo = (Prestamo) iterator.next();
+			System.out.println(prestamo.informacionDetalle());
+		}
 	}
 }

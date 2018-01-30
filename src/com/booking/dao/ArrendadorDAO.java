@@ -3,6 +3,7 @@ package com.booking.dao;
 import java.util.List;
 
 import org.hibernate.Criteria;
+import org.hibernate.Query;
 import org.hibernate.Session;
 
 import com.booking.modelo.BookingException;
@@ -25,7 +26,7 @@ public class ArrendadorDAO extends GenericEntity<Arrendador> {
 		
 		return arrendador;
 	}
-	
+
 	@SuppressWarnings("unchecked")
 	public List<Arrendador> obtenerLista()  {
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
@@ -33,4 +34,13 @@ public class ArrendadorDAO extends GenericEntity<Arrendador> {
 		
 		return criterio.list();
 	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Arrendador> obtenerPorNombre(String nombre) throws BookingException {
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		Query query = session.createQuery("FROM Arrendador WHERE nombre LIKE '%" + nombre+"%'");
+		
+		return query.list();
+	}
+	
 }

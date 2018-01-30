@@ -3,6 +3,7 @@ package com.booking.dao;
 import java.util.List;
 
 import org.hibernate.Criteria;
+import org.hibernate.Query;
 import org.hibernate.Session;
 
 import com.booking.modelo.BookingException;
@@ -32,6 +33,14 @@ public class PrestamoDAO extends GenericEntity<Prestamo> {
 			throw new BookingException("Error. El préstamo "+ id + " no existe.");
 		
 		return prestamo;
+	}
+
+	@SuppressWarnings("unchecked")
+	public List<Prestamo> obtenerPorNombre(String nombre) {
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		Query query = session.createQuery("SELECT p FROM Prestamo p, Arrendador a WHERE a.nombre='" + nombre+"' AND p.arrendador=a");
+		
+		return query.list();
 	}
 
 

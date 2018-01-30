@@ -10,9 +10,7 @@ import com.booking.modelo.Utilidades;
  *
  */
 public class Main {
-	
-	private static final int TOTAL_OPCIONES = 9;
-	
+		
 	/* ========================= Principal ========================= */
 	
 	public static void main(String[] args) throws BookingException {
@@ -24,7 +22,7 @@ public class Main {
 		do {
 			opcion = Utilidades.mostrarMenu();
 			tratarMenu(opcion);
-		} while (opcion != TOTAL_OPCIONES);
+		} while (opcion != Utilidades.TOTAL_OPCIONES);
 
 		Utilidades.cerrarSesion();
 
@@ -59,7 +57,14 @@ public class Main {
 				case 8:
 					Utilidades.consultarPrestamo();
 				break;
-				case TOTAL_OPCIONES:
+				case 9:
+					Utilidades.consultarArrendadoresPorNombre();
+				break;
+				case 10:
+					// FIXME: Aunque no haya arrendadores muestra nombre
+					Utilidades.consultarPrestamosPorNombre();
+				break;
+				case Utilidades.TOTAL_OPCIONES:
 					System.out.println("¡Hasta la vista!");
 				break;
 				default:
