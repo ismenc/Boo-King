@@ -11,7 +11,7 @@ import com.booking.persistencia.HibernateUtil;
 
 /**
  * Define las operaciones sobre arrendador en la base de datos.
- * @author Ismael Nunez
+ * @author Ismael Núñez
  *
  */
 public class ArrendadorDAO extends GenericEntity<Arrendador> {

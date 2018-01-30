@@ -3,6 +3,7 @@ package com.booking.ejecutable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
+import java.util.List;
 
 import com.booking.dao.*;
 import com.booking.modelo.BookingException;
@@ -24,7 +25,7 @@ public class Main {
 	private static ArrendadorDAO arrendadorDao = new ArrendadorDAO();
 	
 	/* ========================= Principal ========================= */
-
+	
 	public static void main(String[] args) throws BookingException {
 		
 		int opcion;
@@ -59,6 +60,7 @@ public class Main {
 					//modificarAlgo();
 				break;
 				case 5: 
+					// TODO: Probar que funciona
 					borrarArrendador();
 				break;
 				case 6:
@@ -83,7 +85,7 @@ public class Main {
 		}
 	}
 	
-	/* ------------------------ Tratamiento de opciones ------------------------ */
+	/* ------------------------ Tratamiento Inserción ------------------------ */
 	
 	/**
 	 * Solicita datos del arrendador y lo guarda en la BD
@@ -128,7 +130,6 @@ public class Main {
 				Utilidades.solicitarEntero("Duración en días: "),
 				Utilidades.solicitarArrendador("Introduce la ID del arrendador: "));
 		
-		// XXX: Problemas al insertar la lista en cascada
 		ArrayList<Stack> stacks = Utilidades.nuevaListaStacks();
 		prestamo.setListaStacks(stacks);
 		
@@ -142,30 +143,35 @@ public class Main {
 		prestamoDao.guardar(prestamo);
 	}
 	
+	/* ------------------------ Tratamiento de otros ------------------------ */
+	
 	/**
 	 * Permite borrar un arrendador
 	 * @throws BookingException
 	 */
 	private static void borrarArrendador() throws BookingException {
-		Utilidades.mostrarArrendadores();
+		List<Arrendador> arrendadores = Utilidades.obtenerArrendadores();
+		Utilidades.mostrarListaBreve(arrendadores);
 		
 		Arrendador arrendador = Utilidades.solicitarArrendador("Introduzca la ID del arrendador: ");
 		arrendadorDao.borrar(arrendador);
 		System.out.println("Se ha borrado el con id " + arrendador.getId());
 	}
 	
+	/* ------------------------ Tratamiento de consultas ------------------------ */
+	
 	/**
 	 * Muestra los detalles del arrendador solicitado
 	 * @throws BookingException
 	 */
 	private static void consultarArrendador() throws BookingException {
-		Utilidades.mostrarArrendadores();
+		List<Arrendador> arrendadores = Utilidades.obtenerArrendadores();
+		Utilidades.mostrarListaBreve(arrendadores);
 		
 		int id = Utilidades.solicitarEntero("Introduce la ID del arrendador: ");
 		Arrendador arrendador = arrendadorDao.obtener(id);
 		
-		// FIXME: No muestra los préstamos asociados
-		System.out.println("\n" + arrendador);
+		System.out.println("\n" + arrendador.informacionDetalle());
 	}
 	
 	/**
@@ -173,12 +179,13 @@ public class Main {
 	 * @throws BookingException
 	 */
 	private static void consultarLibro() throws BookingException {
-		Utilidades.mostrarLibros();
+		List<Libro> libros = Utilidades.obtenerLibros();
+		Utilidades.mostrarListaBreve(libros);
 		
 		int id = Utilidades.solicitarEntero("Introduce la ID del libro: ");
 		Libro libro = libroDao.obtener(id);
 		
-		System.out.println("\n" + libro);
+		System.out.println("\n" + libro.informacionDetalle());
 	}
 	
 	/**
@@ -186,12 +193,13 @@ public class Main {
 	 * @throws BookingException
 	 */
 	private static void consultarPrestamo() throws BookingException {
-		Utilidades.mostrarPrestamos();
+		List<Prestamo> prestamos = Utilidades.obtenerPrestamos();
+		Utilidades.mostrarListaBreve(prestamos);
 		
 		int id = Utilidades.solicitarEntero("Introduce la ID del préstamo: ");
 		Prestamo prestamo = prestamoDao.obtener(id);
 		
-		System.out.println("\n" + prestamo);
+		System.out.println("\n" + prestamo.informacionDetalle());
 	}
 
 }

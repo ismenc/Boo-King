@@ -11,7 +11,7 @@ import com.booking.persistencia.Prestamo;
 
 /**
  * Define las operaciones sobre prestamos en la base de datos.
- * @author Ismael Nunez
+ * @author Ismael Núñez
  *
  */
 public class PrestamoDAO extends GenericEntity<Prestamo> {

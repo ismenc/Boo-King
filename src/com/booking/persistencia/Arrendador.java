@@ -17,7 +17,7 @@ import javax.persistence.Table;
 
 /**
  * Representa la persona o entidad que hara prestamos.
- * @author Ismael Nunez
+ * @author Ismael Núñez
  *
  */
 @Entity
@@ -48,7 +48,7 @@ public class Arrendador implements Serializable {
 	private String telefono;
 	
 	@OneToMany(cascade=CascadeType.ALL)
-	@JoinColumn(name="id")
+	@JoinColumn(name="idArrendador")
 	//@IndexColumn(name="")
 	private List<Prestamo> listaPrestamos;
 	
@@ -134,8 +134,11 @@ public class Arrendador implements Serializable {
 	
 	/* -------------------- Métodos -------------------- */
 
-	@Override
-	public String toString() {
+	/**
+	 * Muestra información detallada del arrendador
+	 * @return
+	 */
+	public String informacionDetalle() {
 		StringBuilder cadena = new StringBuilder(150);
 		
 		cadena.append("------> " + nombre + " <------\n");
@@ -145,9 +148,8 @@ public class Arrendador implements Serializable {
 		cadena.append("Código postal: " + codigoPostal + "\n");
 		cadena.append("Teléfono: " + telefono + "\n");
 		
-		// FIXME: Siempre está empty
 		if(!listaPrestamos.isEmpty()) {
-			cadena.append("Préstamos: \n");
+			cadena.append("Préstamos: ");
 			@SuppressWarnings("rawtypes")
 			Iterator iterator;
 			for (iterator = listaPrestamos.iterator(); iterator.hasNext();) {
@@ -161,5 +163,9 @@ public class Arrendador implements Serializable {
 		return cadena.toString();
 	}
 	
+	@Override
+	public String toString() {
+		return idArrendador + " - " + nombre;
+	}
 	
 }

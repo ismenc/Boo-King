@@ -1,8 +1,8 @@
 package com.booking.modelo;
 
 /**
- * Excepcion del programa Boo-King
- * @author Ismael Nunez
+ * Excepción del programa Boo-King
+ * @author Ismael Núñez
  *
  */
 public class BookingException extends Exception {

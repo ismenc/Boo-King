@@ -10,7 +10,7 @@ import com.booking.persistencia.Stack;
 
 /**
  * Define las operaciones sobre stacks en la base de datos
- * @author Ismael Nunez
+ * @author Ismael Núñez
  *
  */
 public class StackDAO extends GenericEntity<Stack> {

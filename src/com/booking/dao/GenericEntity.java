@@ -6,7 +6,7 @@ import com.booking.persistencia.HibernateUtil;
 
 /**
  * Clase Abstracta que contiene operaciones básicas con la BD.
- * @author usuario
+ * @author Ismael Núñez
  *
  * @param <T>
  */

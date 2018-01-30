@@ -15,7 +15,7 @@ import javax.persistence.Table;
 /**
  * Define la relacion prestamo-libro N-M. Es una pila de una cantidad de un libro.
  * Alguien puede prestar varias pilas en un prestamo.
- * @author Ismael Nunez
+ * @author Ismael Núñez
  *
  */
 @Entity
@@ -87,6 +87,14 @@ public class Stack implements Serializable {
 	
 	/* -------------------- Métodos -------------------- */
 
+	/**
+	 * Muestra información en detalle del Stack
+	 * @return
+	 */
+	public String informaciónDetalle() {
+		return idStack + " - " + cantidad+ "x" + libro.getTitulo();
+	}
+	
 	@Override
 	public String toString() {
 		return idStack + " - " + cantidad+ "x" + libro.getTitulo();

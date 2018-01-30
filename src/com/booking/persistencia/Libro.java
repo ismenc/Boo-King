@@ -15,7 +15,7 @@ import com.booking.modelo.Categoria;
 
 /**
  * Define los libros que seran prestados
- * @author Ismael Nunez
+ * @author Ismael Núñez
  *
  */
 @Entity
@@ -109,8 +109,11 @@ public class Libro implements Serializable {
 	
 	/* -------------------- Métodos -------------------- */
 
-	@Override
-	public String toString() {
+	/**
+	 * Muestra información en detalle del Libro
+	 * @return
+	 */
+	public String informacionDetalle() {
 		StringBuilder cadena = new StringBuilder(150);
 		
 		cadena.append("------> " + titulo + " <------\n");
@@ -120,5 +123,10 @@ public class Libro implements Serializable {
 		cadena.append("Año de publicación: " + anoPublicacion + "\n");
 		
 		return cadena.toString();
+	}
+	
+	@Override
+	public String toString() {
+		return idLibro + " - " + titulo;
 	}
 }

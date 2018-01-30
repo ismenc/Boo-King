@@ -21,7 +21,7 @@ import javax.persistence.TemporalType;
 
 /**
  * Define la estructura de los prestamos.
- * @author Ismael Nunez
+ * @author Ismael Núñez
  *
  */
 @Entity
@@ -47,7 +47,7 @@ public class Prestamo implements Serializable {
 	private Arrendador arrendador;
 	
 	@OneToMany(cascade=CascadeType.ALL)
-	@JoinColumn(name="id")
+	@JoinColumn(name="idPrestamo")
 	//@IndexColumn(name="")
 	private List<Stack> listaStacks;
 	
@@ -106,8 +106,11 @@ public class Prestamo implements Serializable {
 
 	/* -------------------- Métodos -------------------- */
 
-	@Override
-	public String toString() {
+	/**
+	 * Muestra información en detalle del préstamo
+	 * @return
+	 */
+	public String informacionDetalle() {
 		StringBuilder cadena = new StringBuilder(150);
 		
 		cadena.append("------> Préstamo " + idPrestamo + " <------\n");
@@ -119,9 +122,14 @@ public class Prestamo implements Serializable {
 		Iterator iterator;
 		for (iterator = listaStacks.iterator(); iterator.hasNext();) {
 			Stack stack = (Stack) iterator.next();
-			 cadena.append(stack.getCantidad() + "x " + stack.getLibro().getTitulo() + "\n");
+			cadena.append(stack.getCantidad() + "x " + stack.getLibro().getTitulo() + "\n");
 		}
 		
 		return cadena.toString();
+	}
+	
+	@Override
+	public String toString() {
+		return idPrestamo + " - " + arrendador.getNombre();
 	}
 }

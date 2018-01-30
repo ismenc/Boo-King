@@ -7,6 +7,11 @@ import org.hibernate.context.internal.ThreadLocalSessionContext;
 import org.hibernate.service.ServiceRegistry;
 import org.hibernate.service.ServiceRegistryBuilder;
 
+/**
+ * Métodos de conexión de Hibernate.
+ * @author Ismael Núñez
+ *
+ */
 public class HibernateUtil {
 
     private static SessionFactory sessionFactory;

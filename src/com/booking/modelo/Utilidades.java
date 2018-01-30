@@ -18,7 +18,7 @@ import com.booking.persistencia.Stack;
 
 /**
  * Métodos para mostrar por pantalla y solicitar datos
- * @author usuario
+ * @author Ismael Núñez
  *
  */
 public class Utilidades {
@@ -84,7 +84,7 @@ public class Utilidades {
 	 * @throws BookingException
 	 */
 	public static Arrendador solicitarArrendador(String msg) throws BookingException{
-		mostrarArrendadores();
+		mostrarListaBreve(obtenerArrendadores());
 		
 		int idArrendador = solicitarEntero(msg);
 		
@@ -98,7 +98,7 @@ public class Utilidades {
 	 * @throws BookingException
 	 */
 	public static Libro solicitarLibro(String msg) throws BookingException{
-		mostrarLibros();
+		mostrarListaBreve(obtenerLibros());
 		
 		int idLibro = solicitarEntero(msg);
 		
@@ -113,7 +113,7 @@ public class Utilidades {
 	public static ArrayList<Stack> nuevaListaStacks() throws BookingException{
 		String respuesta;
 		ArrayList<Stack> stacks = new ArrayList<Stack>();
-		// FIXME: Guarda 1 sólo stack del prestamo
+
 		Stack stack;
 		
 		do {
@@ -122,7 +122,6 @@ public class Utilidades {
 					solicitarEntero("Introduce la cantidad: "),
 					null /* Aquí va id prestamo */);
 			stacks.add(stack);
-			System.out.println(stack);
 			respuesta = solicitarCadena("¿Desea seguir introduciendo datos? (Si/No)");
 		}while(respuesta.equalsIgnoreCase("si") || respuesta.equalsIgnoreCase("sí"));
 		
@@ -132,51 +131,42 @@ public class Utilidades {
 	/* ------------------------ Métodos de Pantalleo ------------------------ */
 	
 	/**
-	 * Muestra informacion breve de todos los arrendadores
+	 * Método genérico para mostrar en pantalla la lista de un objeto mediante toString.
+	 * @param lista
 	 */
-	public static void mostrarArrendadores() {
-		List<Arrendador> arrendadores = arrendadorDao.obtenerLista();
+	public static <T> void mostrarListaBreve(List<T> lista) {
+		System.out.println("---------------------- Lista ----------------------");
 		
-		System.out.println("-------------- Lista de Arrendadores --------------");
 		@SuppressWarnings("rawtypes")
 		Iterator iterator;
-		for (iterator = arrendadores.iterator(); iterator.hasNext();) {
-			Arrendador arrendador = (Arrendador) iterator.next();
-			System.out.println(arrendador.getId() + " - " + arrendador.getNombre());
+		for (iterator = lista.iterator(); iterator.hasNext();) {
+			@SuppressWarnings("unchecked")
+			T entidad = (T) iterator.next();
+			System.out.println(entidad.toString());
 		}
+		
 		System.out.println("---------------------------------------------------");
 	}
 	
 	/**
-	 * Muestra informacion breve de todos los libros
+	 * Devuelve una lista con todos los arrendadores.
 	 */
-	public static void mostrarLibros() {
-		List<Libro> libros = libroDao.obtenerLista();
-		
-		System.out.println("-------------- Lista de Libros --------------");
-		@SuppressWarnings("rawtypes")
-		Iterator iterator;
-		for (iterator = libros.iterator(); iterator.hasNext();) {
-			Libro libro = (Libro) iterator.next();
-			System.out.println(libro.getId() + " - " + libro.getTitulo());
-		}
-		System.out.println("---------------------------------------------");
+	public static List<Arrendador> obtenerArrendadores() {
+		return arrendadorDao.obtenerLista();
 	}
 	
 	/**
-	 * Muestra informacion breve de todos los prestamos
+	 * Devuelve una lista con todos los libros.
 	 */
-	public static void mostrarPrestamos() {
-		List<Prestamo> prestamos = prestamoDao.obtenerLista();
-		
-		System.out.println("------------- Lista de préstamos -------------");
-		@SuppressWarnings("rawtypes")
-		Iterator iterator;
-		for (iterator = prestamos.iterator(); iterator.hasNext();) {
-			Prestamo prestamo = (Prestamo) iterator.next();
-			System.out.println(prestamo.getIdPrestamo() + " - " + prestamo.getArrendador().getNombre());
-		}
-		System.out.println("---------------------------------------------");
+	public static List<Libro> obtenerLibros() {
+		return libroDao.obtenerLista();
+	}
+	
+	/**
+	 * Devuelve una lista con todos los préstamos.
+	 */
+	public static List<Prestamo> obtenerPrestamos() {
+		return prestamoDao.obtenerLista();
 	}
 	
 	public static int mostrarMenu() {
