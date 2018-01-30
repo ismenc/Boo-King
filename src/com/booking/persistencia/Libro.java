@@ -10,6 +10,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import com.booking.modelo.Categoria;
 
@@ -31,18 +34,25 @@ public class Libro implements Serializable {
 	private int idLibro;
 	
 	@Column
+	@NotNull
+	@Size(min = 3, max = 50)
 	private String titulo;
 	
 	@Column
+	@NotNull
+	@Size(min = 3, max = 50)
 	private String autor;
 	
 	@Enumerated(EnumType.ORDINAL)
 	private Categoria categoria;
 	
 	@Column
+	@NotNull
+	@Size(min = 3, max = 50)
 	private String editorial;
 	
 	@Column
+	@Max(2018)
 	private String anoPublicacion;
 
 	/* ------------------- Constructor ------------------- */

@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 
 /**
  * Define la relacion prestamo-libro N-M. Es una pila de una cantidad de un libro.
@@ -30,6 +32,8 @@ public class Stack implements Serializable {
 	private int idStack;
 	
 	@Column
+	@Min(1)
+	@Max(99)
 	private int cantidad;
 	
 	@ManyToOne
