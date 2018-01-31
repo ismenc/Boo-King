@@ -49,20 +49,25 @@ public class Main {
 					Utilidades.borrarArrendador();
 				break;
 				case 6:
-					Utilidades.consultarArrendador();
+					Utilidades.consultarDetallesArrendador();
 				break;
 				case 7: 
-					Utilidades.consultarLibro();
+					Utilidades.consultarDetallesLibro();
 				break;
 				case 8:
-					Utilidades.consultarPrestamo();
+					Utilidades.consultarDetallesPrestamo();
 				break;
 				case 9:
 					Utilidades.consultarArrendadoresPorNombre();
 				break;
 				case 10:
-					// FIXME: Aunque no haya arrendadores muestra nombre
 					Utilidades.consultarPrestamosPorNombre();
+				break;
+				case 11:
+					Utilidades.prestamosPorAno();
+				break;
+				case 12:
+					Utilidades.estadisticasPrestamo();
 				break;
 				case Utilidades.TOTAL_OPCIONES:
 					System.out.println("¡Hasta la vista!");

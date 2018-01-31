@@ -1,5 +1,6 @@
 package com.booking.modelo;
 
+import java.time.Year;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
@@ -24,7 +25,8 @@ import com.booking.persistencia.Stack;
  */
 public class Utilidades {
 	
-	public static final int TOTAL_OPCIONES = 11;
+	public static final int TOTAL_OPCIONES = 13;
+	public static final int CURRENT_YEAR = Year.now().getValue();
 
 	@SuppressWarnings("unused")
 	private static Session session;
@@ -46,11 +48,15 @@ public class Utilidades {
 
 	}
 	
-	public static int solicitarEntero(String msg) {
-		int id;
+	public static int solicitarEntero(String msg) throws BookingException {
+		int entero;
 		System.out.print(msg);
-		id = Integer.parseInt(teclado.nextLine());
-		return id;
+		entero = Integer.parseInt(teclado.nextLine());
+		
+		if(entero < 1)
+			throw new BookingException("El número introducido debe ser mayor que 0.");
+		
+		return entero;
 	}
 	
 	public static String solicitarCadena(String msg) {
@@ -64,8 +70,9 @@ public class Utilidades {
 	 * Muestra las categorías y solicita una con mensaje personalizado
 	 * @param msg
 	 * @return Un objeto categoría
+	 * @throws BookingException 
 	 */
-	public static Categoria solicitarCategoria(String msg) {
+	public static Categoria solicitarCategoria(String msg) throws BookingException {
 		int i = 1, opcion;
 		
 		System.out.print("CATEGORÍAS:");
@@ -74,6 +81,9 @@ public class Utilidades {
 			i++;
 		}while(i <= Categoria.values().length);
 		opcion = solicitarEntero("\n" + msg);
+		
+		if(opcion > Categoria.values().length)
+			throw new BookingException("Debe elegir una categoría de la lista.");
 		
 		return Categoria.values()[opcion-1];
 	}
@@ -188,7 +198,9 @@ public class Utilidades {
 			System.out.println("| [8] Consultar préstamo\t|");
 			System.out.println("| [9] Buscar arrendadores nombre|");
 			System.out.println("| [10] Buscar prestamos nombre  |");
-			System.out.println("| [11] Salir\t\t\t|");
+			System.out.println("| [11] Préstamos por año\t|");
+			System.out.println("| [12] Estadísticas globales    |");
+			System.out.println("| [13] Salir\t\t\t|");
 			System.out.println("+-------------------------------+");
 			opcion = Integer.parseInt(teclado.nextLine());
 		} while (opcion < 1 || opcion > TOTAL_OPCIONES);
@@ -217,8 +229,9 @@ public class Utilidades {
 	
 	/**
 	 * Solicita datos del libro y lo guarda en la BD
+	 * @throws BookingException 
 	 */
-	public static void nuevoLibro() {
+	public static void nuevoLibro() throws BookingException {
 		System.out.println("Los campos con * son obligatorios:");
 		
 		Libro libro = new Libro(
@@ -285,7 +298,7 @@ public class Utilidades {
 	 * Muestra los detalles del arrendador solicitado
 	 * @throws BookingException
 	 */
-	public static void consultarArrendador() throws BookingException {
+	public static void consultarDetallesArrendador() throws BookingException {
 		List<Arrendador> arrendadores = obtenerArrendadores();
 		mostrarListaBreve(arrendadores);
 		
@@ -299,7 +312,7 @@ public class Utilidades {
 	 * Muestra los detalles del libro solicitado
 	 * @throws BookingException
 	 */
-	public static void consultarLibro() throws BookingException {
+	public static void consultarDetallesLibro() throws BookingException {
 		List<Libro> libros = obtenerLibros();
 		mostrarListaBreve(libros);
 		
@@ -313,7 +326,7 @@ public class Utilidades {
 	 * Muestra los detalles del prestamo solicitado
 	 * @throws BookingException
 	 */
-	public static void consultarPrestamo() throws BookingException {
+	public static void consultarDetallesPrestamo() throws BookingException {
 		List<Prestamo> prestamos = obtenerPrestamos();
 		mostrarListaBreve(prestamos);
 		
@@ -322,6 +335,8 @@ public class Utilidades {
 		
 		System.out.println("\n" + prestamo.informacionDetalle());
 	}
+	
+	/* ========================= Gestión de opciones avanzadas ========================= */
 
 	/**
 	 * Consulta los arrendadores por nombre. Puede resultar en varios
@@ -360,5 +375,29 @@ public class Utilidades {
 			Prestamo prestamo = (Prestamo) iterator.next();
 			System.out.println(prestamo.informacionDetalle());
 		}
+	}
+
+	/**
+	 * @throws BookingException 
+	 * 
+	 */
+	public static void prestamosPorAno() throws BookingException {
+		int ano = solicitarEntero("Introduce el año: ");
+		
+		if(ano > CURRENT_YEAR)
+			throw new BookingException("Debe introducir un año válido ("+CURRENT_YEAR+" máx).");
+		
+		int prestamos = prestamoDao.prestamosEnUnAno(ano);
+		int totalLibros = prestamoDao.librosPrestadosEnUnAno(ano);
+		
+		System.out.println("En el año "+ano+" hubo "+ prestamos + " préstamos y un total de "+ totalLibros + " libros prestados.");
+	}
+
+	/**
+	 * Estadísticas de nuestra base de datos
+	 */
+	public static void estadisticasPrestamo() {
+		// TODO Total préstamos, total libros prestados, total arrendadores, medias de prestamos por persona
+		
 	}
 }

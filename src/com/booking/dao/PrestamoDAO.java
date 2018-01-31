@@ -44,5 +44,18 @@ public class PrestamoDAO extends GenericEntity<Prestamo> {
 	}
 
 
+	public int prestamosEnUnAno(int ano) {
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		Query query = session.createQuery("SELECT COUNT(p) FROM Prestamo p WHERE p.fecha LIKE '"+ ano +"%'");
+		
+		return ((Number) query.uniqueResult()).intValue();
+	}
+	
+	public int librosPrestadosEnUnAno(int ano) {
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		Query query = session.createQuery("SELECT SUM(s.cantidad) FROM Prestamo p, Stack s WHERE p.fecha LIKE '"+ ano +"%' AND p=s.prestamo");
+		
+		return ((Number) query.uniqueResult()).intValue();
+	}
 	
 }
