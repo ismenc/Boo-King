@@ -12,6 +12,7 @@ import org.hibernate.Session;
 import com.booking.dao.ArrendadorDAO;
 import com.booking.dao.LibroDAO;
 import com.booking.dao.PrestamoDAO;
+import com.booking.dao.StackDAO;
 import com.booking.persistencia.Arrendador;
 import com.booking.persistencia.HibernateUtil;
 import com.booking.persistencia.Libro;
@@ -26,12 +27,14 @@ import com.booking.persistencia.Stack;
 public class Utilidades {
 	
 	public static final int TOTAL_OPCIONES = 13;
-	public static final int CURRENT_YEAR = Year.now().getValue();
+	public static final int ANO_ACTUAL = Year.now().getValue();
+	public static final int ANO_APERTURA = 2010;
 
 	@SuppressWarnings("unused")
 	private static Session session;
 	private static Scanner teclado = new Scanner(System.in);
 	private static LibroDAO libroDao = new LibroDAO();
+	private static StackDAO stackDao = new StackDAO();
 	private static PrestamoDAO prestamoDao = new PrestamoDAO();
 	private static ArrendadorDAO arrendadorDao = new ArrendadorDAO();
 	
@@ -384,8 +387,8 @@ public class Utilidades {
 	public static void prestamosPorAno() throws BookingException {
 		int ano = solicitarEntero("Introduce el año: ");
 		
-		if(ano > CURRENT_YEAR)
-			throw new BookingException("Debe introducir un año válido ("+CURRENT_YEAR+" máx).");
+		if(ano > ANO_ACTUAL || ano < ANO_APERTURA)
+			throw new BookingException("Debe introducir un año válido ("+ANO_APERTURA+" min, "+ANO_ACTUAL+" máx).");
 		
 		int prestamos = prestamoDao.prestamosEnUnAno(ano);
 		int totalLibros = prestamoDao.librosPrestadosEnUnAno(ano);
@@ -394,10 +397,21 @@ public class Utilidades {
 	}
 
 	/**
-	 * Estadísticas de nuestra base de datos
+	 * Muestra estadísticas globales de nuestra base de datos.
 	 */
 	public static void estadisticasPrestamo() {
-		// TODO Total préstamos, total libros prestados, total arrendadores, medias de prestamos por persona
+		// TODO: posibles errores (como que no haya arrendadores)
+		int numeroArrendadores = arrendadorDao.totalArrendadores();
+		String fechaPrimerPrestamo = prestamoDao.fechaPrimerPrestamo();
+		int prestamos = prestamoDao.totalPrestamos();
+		int librosPrestados = stackDao.totalLibrosPrestados();
+		double mediaLibrosPorArrendador = prestamoDao.mediaLibrosPrestados();
 		
+		System.out.println("Ahí van algunas estadísticas sobre nuestro engocio: \n"
+				+ " Total de arrendadores registrados: "+ numeroArrendadores + "\n"
+				+ " Fecha del primer préstamo realizado: "+ fechaPrimerPrestamo + "\n"
+				+ " Total de préstamos realizados: "+ prestamos + "\n"
+				+ " Total de libros que han sido prestados: "+ librosPrestados + "\n"
+				+ " Media de libros prestados por persona: " + mediaLibrosPorArrendador);
 	}
 }

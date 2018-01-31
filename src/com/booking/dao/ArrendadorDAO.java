@@ -43,4 +43,11 @@ public class ArrendadorDAO extends GenericEntity<Arrendador> {
 		return query.list();
 	}
 	
+	public int totalArrendadores() {
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		Query query = session.createQuery("SELECT COUNT(a) FROM Arrendador a");
+		
+		return ((Number) query.uniqueResult()).intValue();
+	}
+	
 }
