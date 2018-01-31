@@ -20,6 +20,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 
 /**
  * Define la estructura de los préstamos.
@@ -42,6 +43,7 @@ public class Prestamo implements Serializable {
 	private Date fecha;
 	
 	@Column
+	@NotNull
 	@Min(1)
 	@Max(365)
 	private int duracionDias;

@@ -12,6 +12,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 
 /**
  * Define la relacion préstamo-libro N-M. Es una pila de una cantidad de un libro.
@@ -32,6 +33,7 @@ public class Stack implements Serializable {
 	private int idStack;
 	
 	@Column
+	@NotNull
 	@Min(1)
 	@Max(255)
 	private int cantidad;
