@@ -18,9 +18,11 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 
 /**
- * Define la estructura de los prestamos.
+ * Define la estructura de los préstamos.
  * @author Ismael Núñez
  *
  */
@@ -40,6 +42,8 @@ public class Prestamo implements Serializable {
 	private Date fecha;
 	
 	@Column
+	@Min(1)
+	@Max(365)
 	private int duracionDias;
 	
 	@ManyToOne

@@ -14,9 +14,13 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Digits;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 /**
- * Representa la persona o entidad que hara prestamos.
+ * Representa la persona o entidad que hará préstamos.
  * @author Ismael Núñez
  *
  */
@@ -33,18 +37,27 @@ public class Arrendador implements Serializable {
 	private int idArrendador;
 	
 	@Column
+	@NotNull
+	@Size(min = 3, max = 50)
 	private String nombre;
 	
 	@Column
+	@Size(min = 0, max = 50)
 	private String entidad;
 	
 	@Column
+	@NotNull
+	@Size(min = 5, max = 100)
 	private String direccion;
 	
 	@Column
+	@NotNull
+	@Digits(integer=5, fraction = 0)
 	private String codigoPostal;
 	
 	@Column
+	@NotNull
+	@Min(99999999)
 	private String telefono;
 	
 	@OneToMany(cascade=CascadeType.ALL, orphanRemoval = true)
