@@ -18,6 +18,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.Valid;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
@@ -50,11 +51,12 @@ public class Prestamo implements Serializable {
 	
 	@ManyToOne
 	@JoinColumn(name="idArrendador")
+	@Valid
 	private Arrendador arrendador;
 	
 	@OneToMany(cascade=CascadeType.ALL, orphanRemoval = true)
 	@JoinColumn(name="idPrestamo")
-	//@IndexColumn(name="")
+	@Valid
 	private List<Stack> listaStacks;
 	
 	/* ------------------- Constructor ------------------- */

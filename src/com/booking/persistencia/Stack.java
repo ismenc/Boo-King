@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.Valid;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
@@ -40,10 +41,12 @@ public class Stack implements Serializable {
 	
 	@ManyToOne
 	@JoinColumn(name="idPrestamo")
+	@Valid
 	private Prestamo prestamo;
 	
 	@ManyToOne
 	@JoinColumn(name="idLibro")
+	@Valid
 	private Libro libro;
 	
 	/* ------------------- Constructor ------------------- */

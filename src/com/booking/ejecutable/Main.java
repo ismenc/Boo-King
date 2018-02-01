@@ -2,12 +2,13 @@ package com.booking.ejecutable;
 
 import com.booking.modelo.BookingException;
 import com.booking.modelo.Utilidades;
+import java.lang.NumberFormatException;
 
 
 /**
  * Clase principal de la aplicación Boo-King.
  * @author Ismael Núñez
- *
+ * 
  */
 public class Main {
 	
@@ -68,6 +69,8 @@ public class Main {
 			
 		} catch (BookingException e) {
 			System.out.println(e.getMessage());
+		}catch (NumberFormatException e) {
+			System.out.println("Debe introducir un número.");
 		}
 	}
 	

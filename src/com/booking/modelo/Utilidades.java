@@ -25,6 +25,7 @@ import com.booking.persistencia.Stack;
 public class Utilidades {
 	
 	private static final int TOTAL_OPCIONES = 9;
+	public static final int ANO = 2018;
 
 	@SuppressWarnings("unused")
 	private static Session session;

@@ -14,9 +14,10 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.validation.constraints.Digits;
+import javax.validation.Valid;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 /**
@@ -34,6 +35,7 @@ public class Arrendador implements Serializable {
 	@Id
 	@Column(name="id")
 	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Min(1)
 	private int idArrendador;
 	
 	@Column
@@ -52,17 +54,20 @@ public class Arrendador implements Serializable {
 	
 	@Column
 	@NotNull
-	@Digits(integer=5, fraction = 0)
+	// Valida entre 2 y 5 dígitos
+	@Pattern(regexp = ".*(^[0-9]{2,5}$)")
 	private String codigoPostal;
 	
 	@Column
 	@NotNull
-	@Min(99999999)
+	// Valida entre 9 y 11 dígitos (por prefijos internacionales)
+	@Pattern(regexp = ".*(^[0-9]{9,11}$)")
 	private String telefono;
 	
 	@OneToMany(cascade=CascadeType.ALL, orphanRemoval = true)
 	@JoinColumn(name="idArrendador")
 	//@IndexColumn(name="")
+	@Valid
 	private List<Prestamo> listaPrestamos;
 	
 	/* ------------------- Constructor ------------------- */
