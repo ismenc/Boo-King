@@ -15,7 +15,6 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import com.booking.modelo.Categoria;
-import com.booking.modelo.Utilidades;
 
 /**
  * Define los libros que serán prestados.
@@ -55,8 +54,7 @@ public class Libro implements Serializable {
 	
 	@Column
 	@NotNull
-	@Max(Utilidades.ANO)
-	// FIXME: desconfiguración por versiones?
+	@Max(2018)
 	private String anoPublicacion;
 
 	/* ------------------- Constructor ------------------- */

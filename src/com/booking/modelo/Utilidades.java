@@ -174,7 +174,7 @@ public class Utilidades {
 	 * Devuelve una lista con todos los arrendadores.
 	 */
 	public static List<Arrendador> obtenerArrendadores() {
-		return arrendadorDao.obtenerLista();
+		return arrendadorDao.obtenerTodos();
 	}
 	
 	/**

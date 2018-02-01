@@ -16,7 +16,9 @@ import com.booking.persistencia.Stack;
  */
 public class StackDAO extends GenericEntity<Stack> {
 
-	
+	/**
+	 * Obtiene una todas las pilas de libros prestadas.
+	 */
 	@SuppressWarnings("unchecked")
 	public List<Stack> obtenerLista()  {
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
@@ -25,6 +27,10 @@ public class StackDAO extends GenericEntity<Stack> {
 		return criterio.list();
 	}
 	
+	/**
+	 * Obtiene la cantidad total de libros prestados.
+	 * @return Cantidad de libros prestados.
+	 */
 	public int totalLibrosPrestados() {
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		Query query = session.createQuery("SELECT SUM(s.cantidad) FROM Stack s");
