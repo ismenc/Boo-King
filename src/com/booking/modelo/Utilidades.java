@@ -124,19 +124,23 @@ public class Utilidades {
 	 * @return Lista de Stacks(pilas)
 	 * @throws BookingException
 	 */
-	public static ArrayList<Stack> nuevaListaStacks() throws BookingException{
+	public static ArrayList<Stack> nuevaListaStacks() {
 		String respuesta;
 		ArrayList<Stack> stacks = new ArrayList<Stack>();
 
 		Stack stack;
 		
 		do {
-			stack = new Stack(
-					solicitarLibro("Introduce la ID del libro: "),
-					solicitarEntero("Introduce la cantidad: "),
-					null /* Aquí va id prestamo */);
-			stacks.add(stack);
-			respuesta = solicitarCadena("¿Desea seguir introduciendo datos? (Si/No)");
+			try {
+				stack = new Stack(
+						solicitarLibro("Introduce la ID del libro: "),
+						solicitarEntero("Introduce la cantidad: "),
+						null /* Aquí va id prestamo */);
+				stacks.add(stack);
+			}catch (BookingException e) {
+				System.out.println("Debe introducir un libro que esté en la base de datos.");
+			}
+			respuesta = solicitarCadena("¿Desea seguir añadiendo libros? (Si/No)");
 		}while(respuesta.equalsIgnoreCase("si") || respuesta.equalsIgnoreCase("sí"));
 		
 		return stacks;
@@ -215,8 +219,9 @@ public class Utilidades {
 	
 	/**
 	 * Solicita datos del arrendador y lo guarda en la BD
+	 * @throws BookingException 
 	 */
-	public static void nuevoArrendador() {
+	public static void nuevoArrendador() throws BookingException {
 		System.out.println("Los campos con * son obligatorios:");
 		
 		Arrendador arrendador = new Arrendador(

@@ -13,5 +13,9 @@
 	<classpathentry kind="lib" path="lib/jboss-logging-3.1.0.CR2.jar"/>
 	<classpathentry kind="lib" path="lib/jboss-transaction-api_1.1_spec-1.0.0.Final.jar"/>
 	<classpathentry kind="lib" path="lib/mysql-connector-java-5.1.5-bin.jar"/>
+	<classpathentry kind="lib" path="lib/validator/lib/required/jboss-logging-3.1.0.CR2.jar"/>
+	<classpathentry kind="lib" path="lib/validator/lib/required/validation-api-1.0.0.GA.jar"/>
+	<classpathentry kind="lib" path="lib/validator/hibernate-validator-4.3.0.Final.jar"/>
+	<classpathentry kind="lib" path="lib/validator/hibernate-validator-annotation-processor-4.3.0.Final.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

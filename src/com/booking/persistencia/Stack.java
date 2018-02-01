@@ -10,9 +10,13 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.Valid;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 
 /**
- * Define la relacion prestamo-libro N-M. Es una pila de una cantidad de un libro.
+ * Define la relacion préstamo-libro N-M. Es una pila de una cantidad de un libro.
  * Alguien puede prestar varias pilas en un prestamo.
  * @author Ismael Núñez
  *
@@ -30,14 +34,19 @@ public class Stack implements Serializable {
 	private int idStack;
 	
 	@Column
+	@NotNull
+	@Min(1)
+	@Max(255)
 	private int cantidad;
 	
 	@ManyToOne
 	@JoinColumn(name="idPrestamo")
+	@Valid
 	private Prestamo prestamo;
 	
 	@ManyToOne
 	@JoinColumn(name="idLibro")
+	@Valid
 	private Libro libro;
 	
 	/* ------------------- Constructor ------------------- */

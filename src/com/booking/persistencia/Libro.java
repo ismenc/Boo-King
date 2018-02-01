@@ -10,11 +10,15 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import com.booking.modelo.Categoria;
+import com.booking.modelo.Utilidades;
 
 /**
- * Define los libros que seran prestados
+ * Define los libros que serán prestados.
  * @author Ismael Núñez
  *
  */
@@ -31,18 +35,28 @@ public class Libro implements Serializable {
 	private int idLibro;
 	
 	@Column
+	@NotNull
+	@Size(min = 3, max = 50)
 	private String titulo;
 	
 	@Column
+	@NotNull
+	@Size(min = 3, max = 50)
 	private String autor;
 	
+	@NotNull
 	@Enumerated(EnumType.ORDINAL)
 	private Categoria categoria;
 	
 	@Column
+	@NotNull
+	@Size(min = 3, max = 50)
 	private String editorial;
 	
 	@Column
+	@NotNull
+	@Max(Utilidades.ANO)
+	// FIXME: desconfiguración por versiones?
 	private String anoPublicacion;
 
 	/* ------------------- Constructor ------------------- */
