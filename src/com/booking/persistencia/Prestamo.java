@@ -18,9 +18,13 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.Valid;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 
 /**
- * Define la estructura de los prestamos.
+ * Define la estructura de los préstamos.
  * @author Ismael Núñez
  *
  */
@@ -40,15 +44,19 @@ public class Prestamo implements Serializable {
 	private Date fecha;
 	
 	@Column
+	@NotNull
+	@Min(1)
+	@Max(365)
 	private int duracionDias;
 	
 	@ManyToOne
 	@JoinColumn(name="idArrendador")
+	@Valid
 	private Arrendador arrendador;
 	
 	@OneToMany(cascade=CascadeType.ALL, orphanRemoval = true)
 	@JoinColumn(name="idPrestamo")
-	//@IndexColumn(name="")
+	@Valid
 	private List<Stack> listaStacks;
 	
 	/* ------------------- Constructor ------------------- */
@@ -115,6 +123,7 @@ public class Prestamo implements Serializable {
 		
 		cadena.append("------> Préstamo " + idPrestamo + " <------\n");
 		cadena.append("Arrendador: " + arrendador.getNombre() + "\n");
+		cadena.append("Fecha: "+ fecha + "\n");
 		cadena.append("Duración: "+ duracionDias + " días\n");
 		cadena.append("Libros: ");
 		
@@ -130,6 +139,6 @@ public class Prestamo implements Serializable {
 	
 	@Override
 	public String toString() {
-		return idPrestamo + " - " + arrendador.getNombre();
+		return idPrestamo + " - " + arrendador.getNombre()+ ", "+ fecha;
 	}
 }

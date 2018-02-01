@@ -14,5 +14,7 @@
 	<mapping class="com.booking.persistencia.Stack"/>
 	<mapping class="com.booking.persistencia.Libro"/>
 
+
   </session-factory>
+  
 </hibernate-configuration>
