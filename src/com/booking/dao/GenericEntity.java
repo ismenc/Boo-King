@@ -1,8 +1,11 @@
 package com.booking.dao;
 
+import java.util.List;
+
 import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
 
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 
 import com.booking.modelo.BookingException;
@@ -17,6 +20,7 @@ import com.booking.persistencia.HibernateUtil;
 public class GenericEntity<T> {
 	
 	private Session session;
+	private Class claseAsociada;
 	
 	/**
 	 * Método que inserta un objeto en la base de datos
@@ -55,6 +59,23 @@ public class GenericEntity<T> {
 	}
 	
 	/**
+	 * Obtiene el objeto préstamo deseado.
+	 * @param id ID del préstamo que queremos obtener.
+	 * @return Objeto préstamo.
+	 * @throws BookingException
+	 */
+	@SuppressWarnings("unchecked")
+	public T obtener(int id) throws BookingException {
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		T entidad = (T) session.get(claseAsociada, id);
+		
+		if(entidad == null)
+			throw new BookingException("Error. El "+ claseAsociada.getName() + " " + id + " no existe.");
+		
+		return entidad;
+	}
+	
+	/**
 	 * Método que actualiza un objeto de la base de datos.
 	 * @param entidad Objeto que queremos actualizar.
 	 * @throws BookingException
@@ -75,6 +96,20 @@ public class GenericEntity<T> {
 			}
 			throw new BookingException(error.toString());
 		}
+	}
+	
+	/**
+	 * Obtiene una lista con todos los objetos de la clase especificada.
+	 * @param clase Clase de la que obtener la lista.
+	 * @return
+	 */
+	@SuppressWarnings("unchecked")
+	public List<T> obtenerTodos()  {
+		
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		Criteria criterio = session.createCriteria(claseAsociada);
+		
+		return criterio.list();
 	}
 
 }

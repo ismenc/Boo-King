@@ -6,6 +6,7 @@ import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
+import com.booking.persistencia.Arrendador;
 import com.booking.persistencia.HibernateUtil;
 import com.booking.persistencia.Stack;
 
@@ -16,16 +17,7 @@ import com.booking.persistencia.Stack;
  */
 public class StackDAO extends GenericEntity<Stack> {
 
-	/**
-	 * Obtiene una todas las pilas de libros prestadas.
-	 */
-	@SuppressWarnings("unchecked")
-	public List<Stack> obtenerLista()  {
-		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-		Criteria criterio = session.createCriteria(Stack.class);
-		
-		return criterio.list();
-	}
+	private static final Class claseAsociada = Stack.class;
 	
 	/**
 	 * Obtiene la cantidad total de libros prestados.

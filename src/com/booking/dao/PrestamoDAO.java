@@ -3,7 +3,6 @@ package com.booking.dao;
 import java.sql.Date;
 import java.util.List;
 
-import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
@@ -17,34 +16,8 @@ import com.booking.persistencia.Prestamo;
  *
  */
 public class PrestamoDAO extends GenericEntity<Prestamo> {
-
-	/**
-	 * Obtiene el objeto préstamo deseado.
-	 * @param id ID del préstamo que queremos obtener.
-	 * @return Objeto préstamo.
-	 * @throws BookingException
-	 */
-	public Prestamo obtener(int id) throws BookingException {
-		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-		Prestamo prestamo = (Prestamo) session.get(Prestamo.class, id);
-		
-		if(prestamo == null)
-			throw new BookingException("Error. El préstamo "+ id + " no existe.");
-		
-		return prestamo;
-	}
 	
-	/**
-	 * Obtiene todos los préstamos registrados en la base de datos.
-	 * @return Lista de objetos préstamo.
-	 */
-	@SuppressWarnings("unchecked")
-	public List<Prestamo> obtenerLista() {
-		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-		Criteria criterio = session.createCriteria(Prestamo.class);
-		
-		return criterio.list();
-	}
+	private static final Class claseAsociada = Prestamo.class;
 
 	/**
 	 * Obtiene una lista de los préstamos realizador por la(s) persona(s) buscada(s).
@@ -110,10 +83,17 @@ public class PrestamoDAO extends GenericEntity<Prestamo> {
 	 * @return Cadena con la fecha del primer préstamo.
 	 */
 	public String fechaPrimerPrestamo() {
+		String fecha;
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		Query query = session.createQuery("SELECT MIN(p.fecha) FROM Prestamo p");
 		
-		return ((Date) query.uniqueResult()).toString();
+		// Comprobación de que haya fechas
+		if (query.uniqueResult() == null)
+			fecha =((Date) query.uniqueResult()).toString();
+		else
+			fecha = "No hay registros.";
+		
+		return fecha;
 	}
 	
 	/**

@@ -181,14 +181,14 @@ public class Utilidades {
 	 * Devuelve una lista con todos los libros.
 	 */
 	public static List<Libro> obtenerLibros() {
-		return libroDao.obtenerLista();
+		return libroDao.obtenerTodos();
 	}
 	
 	/**
 	 * Devuelve una lista con todos los préstamos.
 	 */
 	public static List<Prestamo> obtenerPrestamos() {
-		return prestamoDao.obtenerLista();
+		return prestamoDao.obtenerTodos();
 	}
 	
 	public static int mostrarMenu() {
@@ -404,7 +404,6 @@ public class Utilidades {
 	 * Muestra estadísticas globales de nuestra base de datos.
 	 */
 	public static void estadisticasPrestamo() {
-		// TODO: posibles errores (como que no haya arrendadores)
 		int numeroArrendadores = arrendadorDao.totalArrendadores();
 		String fechaPrimerPrestamo = prestamoDao.fechaPrimerPrestamo();
 		int prestamos = prestamoDao.totalPrestamos();
