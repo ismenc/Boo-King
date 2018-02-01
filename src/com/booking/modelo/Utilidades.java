@@ -292,12 +292,11 @@ public class Utilidades {
 		Libro libro = solicitarLibro("Introduzca la ID del libro: ");
 		System.out.println(libro.informacionDetalle());
 		
-		libro = new Libro(
-				solicitarCadena("Título* : "),
-				solicitarCadena("Autor* : "),
-				solicitarCadena("Editorial* : "),
-				solicitarCategoria("Introduce una categoría* : "),
-				solicitarCadena("Año de publicación*: "));
+		libro.setTitulo(solicitarCadena("Título* : "));
+		libro.setAutor(solicitarCadena("Autor* : "));
+		libro.setEditorial(solicitarCadena("Editorial* : "));
+		libro.setCategoria(solicitarCategoria("Introduce una categoría* : "));
+		libro.setAnoPublicacion(solicitarCadena("Año de publicación*: "));
 		
 		libroDao.actualizar(libro);
 	}
