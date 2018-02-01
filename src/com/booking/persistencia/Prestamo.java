@@ -123,6 +123,7 @@ public class Prestamo implements Serializable {
 		
 		cadena.append("------> Préstamo " + idPrestamo + " <------\n");
 		cadena.append("Arrendador: " + arrendador.getNombre() + "\n");
+		cadena.append("Fecha: "+ fecha + "\n");
 		cadena.append("Duración: "+ duracionDias + " días\n");
 		cadena.append("Libros: ");
 		
@@ -138,6 +139,6 @@ public class Prestamo implements Serializable {
 	
 	@Override
 	public String toString() {
-		return idPrestamo + " - " + arrendador.getNombre();
+		return idPrestamo + " - " + arrendador.getNombre()+ ", "+ fecha;
 	}
 }

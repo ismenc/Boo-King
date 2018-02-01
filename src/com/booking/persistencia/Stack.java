@@ -99,7 +99,7 @@ public class Stack implements Serializable {
 	 * Muestra información en detalle del Stack
 	 * @return
 	 */
-	public String informaciónDetalle() {
+	public String informacionDetalle() {
 		return idStack + " - " + cantidad+ "x" + libro.getTitulo();
 	}
 	

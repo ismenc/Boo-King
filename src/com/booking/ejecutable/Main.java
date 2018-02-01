@@ -11,9 +11,7 @@ import java.lang.NumberFormatException;
  * 
  */
 public class Main {
-	
-	private static final int TOTAL_OPCIONES = 9;
-	
+		
 	/* ========================= Principal ========================= */
 	
 	public static void main(String[] args) throws BookingException {
@@ -24,7 +22,7 @@ public class Main {
 		do {
 			opcion = Utilidades.mostrarMenu();
 			tratarMenu(opcion);
-		} while (opcion != TOTAL_OPCIONES);
+		} while (opcion != Utilidades.TOTAL_OPCIONES);
 
 		Utilidades.cerrarSesion();
 
@@ -51,15 +49,27 @@ public class Main {
 					Utilidades.borrarArrendador();
 				break;
 				case 6:
-					Utilidades.consultarArrendador();
+					Utilidades.consultarDetallesArrendador();
 				break;
 				case 7: 
-					Utilidades.consultarLibro();
+					Utilidades.consultarDetallesLibro();
 				break;
 				case 8:
-					Utilidades.consultarPrestamo();
+					Utilidades.consultarDetallesPrestamo();
 				break;
-				case TOTAL_OPCIONES:
+				case 9:
+					Utilidades.consultarArrendadoresPorNombre();
+				break;
+				case 10:
+					Utilidades.consultarPrestamosPorNombre();
+				break;
+				case 11:
+					Utilidades.prestamosPorAno();
+				break;
+				case 12:
+					Utilidades.estadisticasPrestamo();
+				break;
+				case Utilidades.TOTAL_OPCIONES:
 					System.out.println("¡Hasta la vista!");
 				break;
 				default:
