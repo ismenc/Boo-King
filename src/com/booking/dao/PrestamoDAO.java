@@ -17,8 +17,10 @@ import com.booking.persistencia.Prestamo;
  */
 public class PrestamoDAO extends GenericEntity<Prestamo> {
 	
-	private static final Class claseAsociada = Prestamo.class;
-
+	public PrestamoDAO() {
+		super.claseAsociada = Prestamo.class;
+	}
+	
 	/**
 	 * Obtiene una lista de los préstamos realizador por la(s) persona(s) buscada(s).
 	 * @param nombre Cadena con el nombre completo o parcial de la(s) persona(s) a buscar(s).

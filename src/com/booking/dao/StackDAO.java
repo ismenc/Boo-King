@@ -1,12 +1,8 @@
 package com.booking.dao;
 
-import java.util.List;
-
-import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
-import com.booking.persistencia.Arrendador;
 import com.booking.persistencia.HibernateUtil;
 import com.booking.persistencia.Stack;
 
@@ -16,8 +12,10 @@ import com.booking.persistencia.Stack;
  *
  */
 public class StackDAO extends GenericEntity<Stack> {
-
-	private static final Class claseAsociada = Stack.class;
+	
+	public StackDAO() {
+		super.claseAsociada = Stack.class;
+	}
 	
 	/**
 	 * Obtiene la cantidad total de libros prestados.

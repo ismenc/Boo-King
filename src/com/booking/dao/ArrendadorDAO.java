@@ -16,7 +16,10 @@ import com.booking.persistencia.HibernateUtil;
 public class ArrendadorDAO extends GenericEntity<Arrendador> {
 	
 	// FIXME: encuentra clase null
-	private static Class claseAsociada = Arrendador.class;
+	
+	public ArrendadorDAO() {
+		super.claseAsociada = Arrendador.class;
+	}
 	
 	/**
 	 * Obtiene todos los arrendadores cuyo nombre coincida parcialmente con la búsqueda.

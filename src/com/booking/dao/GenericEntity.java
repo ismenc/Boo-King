@@ -20,8 +20,7 @@ import com.booking.persistencia.HibernateUtil;
 public class GenericEntity<T> {
 	
 	private Session session;
-	// FIXME: Siempre coge la clase esta (null)
-	private Class claseAsociada;
+	protected Class<T> claseAsociada;
 	
 	/**
 	 * Método que inserta un objeto en la base de datos
