@@ -2,11 +2,9 @@ package com.booking.dao;
 
 import java.util.List;
 
-import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
-import com.booking.modelo.BookingException;
 import com.booking.persistencia.Arrendador;
 import com.booking.persistencia.HibernateUtil;
 
@@ -16,33 +14,11 @@ import com.booking.persistencia.HibernateUtil;
  *
  */
 public class ArrendadorDAO extends GenericEntity<Arrendador> {
-
-	/**
-	 * Obtiene un arrendador de la base de datos.
-	 * @param idArrendador ID de la persona que queremos obtener.
-	 * @return Objeto arrendador.
-	 * @throws BookingException
-	 */
-	public Arrendador obtener(int idArrendador) throws BookingException {
-		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-		Arrendador arrendador = (Arrendador) session.get(Arrendador.class, idArrendador);
-		
-		if(arrendador == null)
-			throw new BookingException("Error. El arrendador "+ idArrendador + " no existe.");
-		
-		return arrendador;
-	}
-
-	/**
-	 * Obtiene una lista con todos los objetos arrendador.
-	 * @return Lista de arrendadores.
-	 */
-	@SuppressWarnings("unchecked")
-	public List<Arrendador> obtenerTodos()  {
-		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-		Criteria criterio = session.createCriteria(Arrendador.class);
-		
-		return criterio.list();
+	
+	// FIXME: encuentra clase null
+	
+	public ArrendadorDAO() {
+		super.claseAsociada = Arrendador.class;
 	}
 	
 	/**

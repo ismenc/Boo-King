@@ -1,8 +1,5 @@
 package com.booking.dao;
 
-import java.util.List;
-
-import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
@@ -15,16 +12,9 @@ import com.booking.persistencia.Stack;
  *
  */
 public class StackDAO extends GenericEntity<Stack> {
-
-	/**
-	 * Obtiene una todas las pilas de libros prestadas.
-	 */
-	@SuppressWarnings("unchecked")
-	public List<Stack> obtenerLista()  {
-		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-		Criteria criterio = session.createCriteria(Stack.class);
-		
-		return criterio.list();
+	
+	public StackDAO() {
+		super.claseAsociada = Stack.class;
 	}
 	
 	/**
