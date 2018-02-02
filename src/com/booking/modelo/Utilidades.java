@@ -39,7 +39,7 @@ public class Utilidades {
 	private static PrestamoDAO prestamoDao = new PrestamoDAO();
 	private static ArrendadorDAO arrendadorDao = new ArrendadorDAO();
 	
-	/* ========================= Métodos Básicos ========================= */
+	/* XXX========================= Métodos Básicos =========================XXX */
 	
 	public static void cerrarSesion() {
 		HibernateUtil.closeSessionFactory();
@@ -138,6 +138,44 @@ public class Utilidades {
 	}
 	
 	/**
+	 * Establece las propiedades del objeto libro indicado.
+	 * @param libro Libro que cambiará de propiedades.
+	 * @throws BookingException
+	 */
+	public static void modificarLibro(Libro libro) throws BookingException {
+		libro.setTitulo(solicitarCadena("Título* : "));
+		libro.setAutor(solicitarCadena("Autor* : "));
+		libro.setEditorial(solicitarCadena("Editorial* : "));
+		libro.setCategoria(solicitarCategoria("Introduce una categoría* : "));
+		libro.setAnoPublicacion(solicitarCadena("Año de publicación*: "));
+	}
+	
+	/**
+	 * Establece las propiedades del objeto arrendador indicado.
+	 * @param libro Arrendador que cambiará de propiedades.
+	 * @throws BookingException
+	 */
+	public static void modificarArrendador(Arrendador arrendador) {
+		arrendador.setNombre(solicitarCadena("Nombre* : "));
+		arrendador.setEntidad(solicitarCadena("Entidad: "));
+		arrendador.setDireccion(solicitarCadena("Dirección* : "));
+		arrendador.setCodigoPostal(solicitarCadena("Código postal* : "));
+		arrendador.setTelefono(solicitarCadena("Teléfono*: "));
+	}
+	
+	/**
+	 * Establece las propiedades del objeto préstamo indicado.
+	 * @param libro Prestamo que cambiará de propiedades.
+	 * @throws BookingException
+	 */
+	public static void modificarPrestamo(Prestamo prestamo) throws BookingException {
+		prestamo.setFecha(new Date());
+		prestamo.setDuracionDias(solicitarEntero("Duración en días: "));
+		prestamo.setArrendador(solicitarArrendador("Introduce la ID del arrendador: "));
+		asociarStacksAPrestamo(prestamo);
+	}	
+	
+	/**
 	 * Menu con el que crearemos una lista de Stacks(pilas) introduciendo datos
 	 * @return Lista de Stacks(pilas)
 	 * @throws BookingException
@@ -164,7 +202,22 @@ public class Utilidades {
 		return stacks;
 	}
 	
-	/* XXX ==================== mostrar por pantalla ==================== XXX */
+	/**
+	 * Asocia una nuevalista de libros al préstamo.
+	 * @param prestamo
+	 */
+	public static void asociarStacksAPrestamo(Prestamo prestamo) {
+		ArrayList<Stack> stacks = nuevaListaStacks();
+		prestamo.setListaStacks(stacks);
+		@SuppressWarnings("rawtypes")
+		Iterator iterator;
+		for (iterator = stacks.iterator(); iterator.hasNext();) {
+			Stack stack = (Stack) iterator.next();
+			stack.setPrestamo(prestamo);
+		}
+	}
+	
+	/* XXX==================== Mostrar por pantalla ====================XXX */
 	
 	/**
 	 * Método genérico para mostrar en pantalla una lista con información breve de los objetos
@@ -228,41 +281,8 @@ public class Utilidades {
 		return opcion;
 	}
 	
-	/* XXX ==================== Gestión de opciones ==================== XXX */
+	/* XXX==================== Gestión de opciones ====================XXX */
 	
-	public static void modificarLibro(Libro libro) throws BookingException {
-		libro.setTitulo(solicitarCadena("Título* : "));
-		libro.setAutor(solicitarCadena("Autor* : "));
-		libro.setEditorial(solicitarCadena("Editorial* : "));
-		libro.setCategoria(solicitarCategoria("Introduce una categoría* : "));
-		libro.setAnoPublicacion(solicitarCadena("Año de publicación*: "));
-	}
-	
-	public static void modificarArrendador(Arrendador arrendador) {
-		arrendador.setNombre(solicitarCadena("Nombre* : "));
-		arrendador.setEntidad(solicitarCadena("Entidad: "));
-		arrendador.setDireccion(solicitarCadena("Dirección* : "));
-		arrendador.setCodigoPostal(solicitarCadena("Código postal* : "));
-		arrendador.setTelefono(solicitarCadena("Teléfono*: "));
-	}
-	
-	public static void modificarPrestamo(Prestamo prestamo) throws BookingException {
-		prestamo.setFecha(new Date());
-		prestamo.setDuracionDias(solicitarEntero("Duración en días: "));
-		prestamo.setArrendador(solicitarArrendador("Introduce la ID del arrendador: "));
-		asociarStacks(prestamo);
-	}	
-	
-	public static void asociarStacks(Prestamo prestamo) {
-		ArrayList<Stack> stacks = nuevaListaStacks();
-		prestamo.setListaStacks(stacks);
-		@SuppressWarnings("rawtypes")
-		Iterator iterator;
-		for (iterator = stacks.iterator(); iterator.hasNext();) {
-			Stack stack = (Stack) iterator.next();
-			stack.setPrestamo(prestamo);
-		}
-	}
 	
 	/* ==================== Insertar ==================== */
 	
@@ -338,9 +358,11 @@ public class Utilidades {
 				actualizarGenerico(arrendador);
 			break;
 			case 2:
+				/* FIXME Obliga a meter más libros al préstamo.
 				Prestamo prestamo = solicitarPrestamo("Elige el préstamo que quieres actualizar: ");
 				modificarPrestamo(prestamo);
-				actualizarGenerico(prestamo);
+				actualizarGenerico(prestamo); */
+				System.out.println("Por razones de seguridad no se permite modificaciones en los préstamos.");
 			break;
 			case 3:
 				Libro libro = solicitarLibro("Elige el libro que quieres actualizar: ");
@@ -356,8 +378,9 @@ public class Utilidades {
 		System.out.println("Se ha actualizardo el objeto " + objeto.toString() + ".");
 	}
 	
-	/* XXX ==================== Mostrar detalles ==================== XXX */
-	// TODO Se pueden generalizar estos métodos, pero tendrían que extender de una clase común
+	/* XXX==================== Mostrar detalles ====================XXX */
+	
+	// Se pueden generalizar estos métodos, pero tendrían que extender de una clase común
 	/**
 	 * Muestra los detalles del arrendador solicitado
 	 * @throws BookingException
@@ -400,7 +423,7 @@ public class Utilidades {
 		System.out.println("\n" + prestamo.informacionDetalle());
 	}
 	
-	/* XXX ==================== Opciones avanzadas ==================== XXX */
+	/* XXX==================== Opciones avanzadas ====================XXX */
 	
 	/**
 	 * Consulta los arrendadores por nombre. Puede resultar en varios
@@ -475,7 +498,7 @@ public class Utilidades {
 				+ " Media de libros prestados por persona: " + mediaLibrosPorArrendador);
 	}
 	
-	//XXX DEPRECATED METHODS
+	/* XXX==================== Métodos obsoletos ====================XXX */
 	
 	/**
 	 * Solicita datos del arrendador y lo guarda en la BD
