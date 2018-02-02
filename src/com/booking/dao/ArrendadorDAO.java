@@ -18,7 +18,7 @@ public class ArrendadorDAO extends GenericEntity<Arrendador> {
 	// FIXME: encuentra clase null
 	
 	public ArrendadorDAO() {
-		super.claseAsociada = Arrendador.class;
+		super(Arrendador.class);
 	}
 	
 	/**

@@ -18,7 +18,7 @@ import com.booking.persistencia.Prestamo;
 public class PrestamoDAO extends GenericEntity<Prestamo> {
 	
 	public PrestamoDAO() {
-		super.claseAsociada = Prestamo.class;
+		super(Prestamo.class);
 	}
 	
 	/**

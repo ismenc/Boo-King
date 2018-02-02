@@ -14,7 +14,7 @@ import com.booking.persistencia.Stack;
 public class StackDAO extends GenericEntity<Stack> {
 	
 	public StackDAO() {
-		super.claseAsociada = Stack.class;
+		super(Stack.class);
 	}
 	
 	/**

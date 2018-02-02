@@ -34,39 +34,33 @@ public class Main {
 		try {
 			switch (decision) {
 				case 1:
-					Utilidades.nuevoArrendador();
+					Utilidades.insertar();
 				break;
 				case 2:
-					Utilidades.nuevoLibro();
+					Utilidades.actualizar();
 				break;
 				case 3:
-					Utilidades.nuevoPrestamo();
+					Utilidades.borrar();
 				break;
 				case 4:
-					Utilidades.modificarLibro();
-				break;
-				case 5: 
-					Utilidades.borrarArrendador();
-				break;
-				case 6:
 					Utilidades.consultarDetallesArrendador();
 				break;
-				case 7: 
+				case 5: 
 					Utilidades.consultarDetallesLibro();
 				break;
-				case 8:
+				case 6:
 					Utilidades.consultarDetallesPrestamo();
 				break;
-				case 9:
+				case 7:
 					Utilidades.consultarArrendadoresPorNombre();
 				break;
-				case 10:
+				case 8:
 					Utilidades.consultarPrestamosPorNombre();
 				break;
-				case 11:
+				case 9:
 					Utilidades.prestamosPorAno();
 				break;
-				case 12:
+				case 10:
 					Utilidades.estadisticasPrestamo();
 				break;
 				case Utilidades.TOTAL_OPCIONES:

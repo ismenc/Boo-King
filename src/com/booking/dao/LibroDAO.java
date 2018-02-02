@@ -11,7 +11,7 @@ import com.booking.persistencia.Libro;
 public class LibroDAO extends GenericEntity<Libro> {
 
 	public LibroDAO() {
-		super.claseAsociada = Libro.class;
-	}
+		super(Libro.class);
+		}
 	
 }

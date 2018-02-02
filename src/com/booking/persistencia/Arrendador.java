@@ -35,7 +35,6 @@ public class Arrendador implements Serializable {
 	@Id
 	@Column(name="id")
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Min(1)
 	private int idArrendador;
 	
 	@Column

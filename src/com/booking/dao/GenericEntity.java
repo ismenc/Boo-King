@@ -22,6 +22,19 @@ public class GenericEntity<T> {
 	private Session session;
 	protected Class<T> claseAsociada;
 	
+	public GenericEntity(Class clase) {
+		claseAsociada = clase;
+	}
+	
+	public Class getClaseAsociada() {
+		return claseAsociada;
+	}
+
+	public void setClaseAsociada(Class claseAsociada) {
+		this.claseAsociada = claseAsociada;
+	}
+
+
 	/**
 	 * Método que inserta un objeto en la base de datos
 	 * @param entidad Objeto que se isertará.
