@@ -1,8 +1,14 @@
 # Boo-King
 
+
 Boo-King es una aplicación de préstamo de libros entre **personas** que permite almacenar datos de libros, arrendadores y préstamos en una base de datos MySQL. La aplicación nos permitirá manipular estos datos de forma amigable. Los arrendatarios se han obviado para simplificar un poco el proyecto.
 
+#### Navegación
+[Repositorio](https://github.com/ismenc/Boo-King) | [Página del proyecto](https://ismenc.github.io/Boo-King/)
+
+
 - - - -
+
 
 ## Funcionamiento
 
@@ -30,10 +36,11 @@ Tras elegir una opción, el programa interactuará con el usuario para pedirle l
 
 ### Aplicación Java
 
-**Java** es el encargado de realizar las operaciones correspondientes según la opción de menú elegida. Éste tendrá que realizar operaciones lógicas y manipular las librerías que harán de interfaz con la base de datos.
+**Java** es el encargado de realizar las operaciones correspondientes según la opción de menú elegida. Éste tendrá que realizar operaciones lógicas y manipular las librerías que harán de interfaz con la base de datos. La clase principal (ejecutable) es [Main.java](src/com/booking/ejecutable/Main.java).
 
-La clase principal (ejecutable) es [Main.java](src/com/booking/ejecutable/Main.java).
-El proyecto está organizado en paquetes de forma que su estructura queda de la siguiente forma:
+#### Estructuración en paquetes
+
+El código del proyecto está organizado en paquetes de forma que su estructura queda de la siguiente forma:
 
 Paquete | Descripción
 ------------ | ------------ 
@@ -48,6 +55,8 @@ En secciones siguientes explicamos cómo Java interacciona con la base de datos.
 
 El servidor MySQL será responsable de **almacenar** los datos de nuestra aplicación. Para ello utilizaremos estas 4 tablas:
 
+#### Tablas
+
 Nombre | Descripción
 ------------ | ------------ 
 Arrendador | *Datos de la persona que realizará préstmos de libros*
@@ -55,7 +64,7 @@ Libro | *Datos de un libro*
 Préstamo | *Préstamo realizado por un arrendador*
 Stack | *Tabla intermedia préstamo-libro que almacena la cantidad para cada libro en un préstamo*
 
-Las relaciones son:
+#### Relaciones
 
 Tablas | Relación
 ------------ | ------------ 
@@ -69,7 +78,9 @@ Stack-Libro | N-1
 
 Para conectar nuestro programa Java con MySQL hacemos uso de la librería **Hibernate**, que nos permitirá abstraernos de SQL y trabajar con objetos de forma que el proyecto se agiliza mucho más. También hacemos uso de **Hibernate validator**, que nos ayudará a validar los datos de entrada ahorrándonos el trabajo de programar validaciones en Java.
 
+
 - - - -
+
 
 ## Documentación
 
@@ -83,7 +94,13 @@ Se trata de un white paper o manual dónde se explica el proyecto Boo-King. Pued
 
 Es la documentación web generada a partir de los comentarios Javadoc en código. Puedes acceder a ella a través del [índice Javadoc](./doc/index.html).
 
+### Historial de versiones
+
+Puedes ver el árbol de versiones en este [enlace](https://github.com/ismenc/Boo-King/network).
+
+
 - - - -
+
 
 ## ¿Cómo ejecutar la aplicación?
 
