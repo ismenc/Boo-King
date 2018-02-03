@@ -15,22 +15,21 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.Valid;
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
-/**
+/**********************************************
  * Representa la persona o entidad que hará préstamos.
  * @author Ismael Núñez
  *
- */
+ **********************************************/
 @Entity
 @Table(name="arrendador")
-public class Arrendador implements Serializable {
+public class Arrendador extends ObjetoBookingGenerico implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
-	/* ------------------- Atributos ------------------- */
+	/* ==============XXX==============|  Atributos  |==============XXX==============  */
 
 	@Id
 	@Column(name="id")
@@ -69,7 +68,7 @@ public class Arrendador implements Serializable {
 	@Valid
 	private List<Prestamo> listaPrestamos;
 	
-	/* ------------------- Constructor ------------------- */
+	/* ==============XXX==============|  Constructores  |==============XXX==============  */
 	
 	public Arrendador() {}
 
@@ -90,7 +89,7 @@ public class Arrendador implements Serializable {
 		this.listaPrestamos = new ArrayList<Prestamo>();
 	}
 	
-	/* ----------------- Getter & Setter ----------------- */
+	/* ==============XXX==============|  Getter & Setter  |==============XXX==============  */
 	
 	public int getId() {
 		return idArrendador;
@@ -149,12 +148,13 @@ public class Arrendador implements Serializable {
 	}
 
 	
-	/* -------------------- Métodos -------------------- */
+	/* ==============XXX==============|  Métodos  |==============XXX==============  */
 
-	/**
-	 * Muestra información detallada del arrendador
-	 * @return
-	 */
+	/**********************************************
+	 * Muestra información detallada del arrendador.
+	 * @return Cadena de información
+	 **********************************************/
+	@Override
 	public String informacionDetalle() {
 		StringBuilder cadena = new StringBuilder(150);
 		
@@ -180,7 +180,10 @@ public class Arrendador implements Serializable {
 		
 		return cadena.toString();
 	}
-	
+
+	/**********************************************
+	 * Cadena que muestra información breve.
+	 **********************************************/
 	@Override
 	public String toString() {
 		return idArrendador + " - " + nombre;

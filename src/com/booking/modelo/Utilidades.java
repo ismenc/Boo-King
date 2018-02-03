@@ -15,19 +15,18 @@ import com.booking.dao.LibroDAO;
 import com.booking.dao.PrestamoDAO;
 import com.booking.dao.StackDAO;
 import com.booking.persistencia.Arrendador;
-import com.booking.persistencia.HibernateUtil;
 import com.booking.persistencia.Libro;
 import com.booking.persistencia.Prestamo;
 import com.booking.persistencia.Stack;
+import com.booking.persistencia.ObjetoBookingGenerico;
 
-/**
- * Métodos para mostrar por pantalla y solicitar datos
+/***********************************************
+ * Métodos que gestionan el programa
  * @author Ismael Núñez
- *
- */
+ ***********************************************/
 public class Utilidades {
 	
-	public static final int TOTAL_OPCIONES = 13;
+	public static final int TOTAL_OPCIONES = 9;
 	public static final int ANO_ACTUAL = Year.now().getValue();
 	public static final int ANO_APERTURA = 2010;
 
@@ -39,7 +38,7 @@ public class Utilidades {
 	private static PrestamoDAO prestamoDao = new PrestamoDAO();
 	private static ArrendadorDAO arrendadorDao = new ArrendadorDAO();
 	
-	/* XXX========================= Métodos Básicos =========================XXX */
+	/* ==============XXX==============|  Métodos básicos  |==============XXX==============  */
 	
 	public static void cerrarSesion() {
 		HibernateUtil.closeSessionFactory();
@@ -52,6 +51,12 @@ public class Utilidades {
 
 	}
 	
+	/***********************************************
+	 * Solicita al usuario un número entero mayor que 0.
+	 * @param msg Mensaje a mostrar en pantalla
+	 * @return Número entero > 0.
+	 * @throws BookingException
+	 ***********************************************/
 	public static int solicitarEntero(String msg) throws BookingException {
 		int entero;
 		System.out.print(msg);
@@ -63,6 +68,11 @@ public class Utilidades {
 		return entero;
 	}
 	
+	/**********************************************
+	 * Solicita al usuario una cadena de texto.
+	 * @param msg Mensaje a mostrar por pantalla.
+	 * @return Cadena.
+	 **********************************************/
 	public static String solicitarCadena(String msg) {
 		String descripcion;
 		System.out.println(msg);
@@ -70,12 +80,13 @@ public class Utilidades {
 		return descripcion;
 	}
 	
-	/**
-	 * Muestra las categorías y solicita una con mensaje personalizado
-	 * @param msg
+	/**********************************************
+	 * Muestra las categorías y solicita una con mensaje 
+	 * personalizado.
+	 * @param msg Mensaje a mostrar por pantalla.
 	 * @return Un objeto categoría
 	 * @throws BookingException 
-	 */
+	 **********************************************/
 	public static Categoria solicitarCategoria(String msg) throws BookingException {
 		int i = 1, opcion;
 		
@@ -92,12 +103,12 @@ public class Utilidades {
 		return Categoria.values()[opcion-1];
 	}
 	
-	/**
-	 * Muestra los arrendadores y solicita el que se desea
-	 * @param msg
-	 * @return El arrendador solicitado
+	/**********************************************
+	 * Muestra los arrendadores y solicita el que se desea.
+	 * @param msg Mensaje a mostrar por pantalla.
+	 * @return El arrendador solicitado.
 	 * @throws BookingException
-	 */
+	 **********************************************/
 	public static Arrendador solicitarArrendador(String msg) throws BookingException{
 		List<Arrendador> arrendadores = arrendadorDao.obtenerTodos();
 		mostrarListaBreve(arrendadores);
@@ -107,12 +118,12 @@ public class Utilidades {
 		return arrendadorDao.obtener(idArrendador);
 	}
 	
-	/**
-	 * Muestra los libros y solicita el que se desea
-	 * @param msg
-	 * @return El libro solicitado
+	/**********************************************
+	 * Muestra los libros y solicita el que se desea.
+	 * @param msg Mensaje a mostrar por pantalla.
+	 * @return El libro solicitado.
 	 * @throws BookingException
-	 */
+	 **********************************************/
 	public static Libro solicitarLibro(String msg) throws BookingException{
 		List<Libro> libros = libroDao.obtenerTodos();
 		mostrarListaBreve(libros);
@@ -122,12 +133,12 @@ public class Utilidades {
 		return libroDao.obtener(idLibro);
 	}
 	
-	/**
+	/**********************************************
 	 * Devuelve el préstamo solicitado.
 	 * @param msg Mensaje a mostrar.
 	 * @return Préstamo solicitado.
 	 * @throws BookingException
-	 */
+	 **********************************************/
 	public static Prestamo solicitarPrestamo(String msg) throws BookingException{
 		List<Prestamo> prestamos = prestamoDao.obtenerTodos();
 		mostrarListaBreve(prestamos);
@@ -137,11 +148,11 @@ public class Utilidades {
 		return prestamoDao.obtener(idPrestamo);
 	}
 	
-	/**
+	/**********************************************
 	 * Establece las propiedades del objeto libro indicado.
 	 * @param libro Libro que cambiará de propiedades.
 	 * @throws BookingException
-	 */
+	 **********************************************/
 	public static void modificarLibro(Libro libro) throws BookingException {
 		libro.setTitulo(solicitarCadena("Título* : "));
 		libro.setAutor(solicitarCadena("Autor* : "));
@@ -150,11 +161,11 @@ public class Utilidades {
 		libro.setAnoPublicacion(solicitarCadena("Año de publicación*: "));
 	}
 	
-	/**
+	/**********************************************
 	 * Establece las propiedades del objeto arrendador indicado.
 	 * @param libro Arrendador que cambiará de propiedades.
 	 * @throws BookingException
-	 */
+	 **********************************************/
 	public static void modificarArrendador(Arrendador arrendador) {
 		arrendador.setNombre(solicitarCadena("Nombre* : "));
 		arrendador.setEntidad(solicitarCadena("Entidad: "));
@@ -163,29 +174,29 @@ public class Utilidades {
 		arrendador.setTelefono(solicitarCadena("Teléfono*: "));
 	}
 	
-	/**
+	/**********************************************
 	 * Establece las propiedades del objeto préstamo indicado.
 	 * @param libro Prestamo que cambiará de propiedades.
 	 * @throws BookingException
-	 */
+	 **********************************************/
 	public static void modificarPrestamo(Prestamo prestamo) throws BookingException {
+		// Al préstamo siempre se le pone la fecha del momento en el que se hizo
 		prestamo.setFecha(new Date());
 		prestamo.setDuracionDias(solicitarEntero("Duración en días: "));
 		prestamo.setArrendador(solicitarArrendador("Introduce la ID del arrendador: "));
-		asociarStacksAPrestamo(prestamo);
 	}	
 	
-	/**
+	/**********************************************
 	 * Menu con el que crearemos una lista de Stacks(pilas) introduciendo datos
 	 * @return Lista de Stacks(pilas)
 	 * @throws BookingException
-	 */
+	 **********************************************/
 	public static ArrayList<Stack> nuevaListaStacks() {
 		String respuesta;
-		ArrayList<Stack> stacks = new ArrayList<Stack>();
-
 		Stack stack;
+		ArrayList<Stack> stacks = new ArrayList<Stack>();
 		
+		/* Aquí solicitamos pilas de libros hasta que el usuario quiera */
 		do {
 			try {
 				stack = new Stack(
@@ -202,13 +213,15 @@ public class Utilidades {
 		return stacks;
 	}
 	
-	/**
+	/**********************************************
 	 * Asocia una nuevalista de libros al préstamo.
-	 * @param prestamo
-	 */
+	 * @param prestamo Préstamo al que asociaremos.
+	 **********************************************/
 	public static void asociarStacksAPrestamo(Prestamo prestamo) {
 		ArrayList<Stack> stacks = nuevaListaStacks();
 		prestamo.setListaStacks(stacks);
+		
+		/* Asociamos el préstamo a cada stack */
 		@SuppressWarnings("rawtypes")
 		Iterator iterator;
 		for (iterator = stacks.iterator(); iterator.hasNext();) {
@@ -217,19 +230,20 @@ public class Utilidades {
 		}
 	}
 	
-	/* XXX==================== Mostrar por pantalla ====================XXX */
+	/* ==============XXX==============|  Mostrar por pantalla  |==============XXX==============  */
 	
-	/**
-	 * Método genérico para mostrar en pantalla una lista con información breve de los objetos
+	/**********************************************
+	 * Método genérico para mostrar en pantalla una 
+	 * lista con información breve de los objetos.
 	 * @param lista
 	 * @throws BookingException 
-	 */
+	 **********************************************/
 	public static <T> void mostrarListaBreve(List<T> lista) throws BookingException {
 		if(lista.isEmpty())
 			throw new BookingException("Error. No hay datos que mostrar.");
 		
 		System.out.println("---------------------- Lista ----------------------");
-		
+		/* Mostramos los datos de cada elemento */
 		@SuppressWarnings("rawtypes")
 		Iterator iterator;
 		for (iterator = lista.iterator(); iterator.hasNext();) {
@@ -241,25 +255,28 @@ public class Utilidades {
 		System.out.println("---------------------------------------------------");
 	}
 	
-	/**
+	/**********************************************
 	 * Métodos que muestra el menú.
-	 * @return
-	 */
+	 * @return Opción elegida.
+	 **********************************************/
 	public static int mostrarMenu() {
 		int opcion = 0;
 		do {
 			System.out.println("+------------ MENÚ -------------+");
+			System.out.println("|            Básico             |");
+			System.out.println("|-------------------------------|");
 			System.out.println("| [1] Insertar dato\t\t|");
 			System.out.println("| [2] Actualizar dato\t\t|");
 			System.out.println("| [3] Borrar dato\t\t|");
-			System.out.println("| [4] Consultar arrendador\t|");
-			System.out.println("| [5] Consultar libro\t\t|");
-			System.out.println("| [6] Consultar préstamo\t|");
-			System.out.println("| [7] Buscar arrendadores nombre|");
-			System.out.println("| [8] Buscar prestamos nombre   |");
-			System.out.println("| [9] Préstamos por año\t\t|");
-			System.out.println("| [10] Estadísticas globales    |");
-			System.out.println("| [11] Salir\t\t\t|");
+			System.out.println("| [4] Consultar objeto\t\t|");
+			System.out.println("|-------------------------------|");
+			System.out.println("|           Avanzado            |");
+			System.out.println("|-------------------------------|");
+			System.out.println("| [5] Listar arrendadores nombre|");
+			System.out.println("| [6] Listar prestamos nombre\t|");
+			System.out.println("| [7] Préstamos en un año\t|");
+			System.out.println("| [8] Estadísticas globales\t|");
+			System.out.println("| [9] Salir\t\t\t|");
 			System.out.println("+-------------------------------+");
 			opcion = Integer.parseInt(teclado.nextLine());
 		} while (opcion < 1 || opcion > TOTAL_OPCIONES);
@@ -267,6 +284,12 @@ public class Utilidades {
 		return opcion;
 	}
 	
+	/**********************************************
+	 * Muestra un menú para elegir la clase dónde se
+	 * desea realizar operaciones.
+	 * @return Número representativo de la clase.
+	 * @throws BookingException
+	 **********************************************/
 	public static int elegirTipos() throws BookingException {
 		System.out.println("=== Elige el tipo de objeto ===");
 		System.out.println("\t1.- Arrendador");
@@ -281,11 +304,16 @@ public class Utilidades {
 		return opcion;
 	}
 	
-	/* XXX==================== Gestión de opciones ====================XXX */
+	/* ==============XXX==============|  Gestión de opciones  |==============XXX==============  */
 	
 	
-	/* ==================== Insertar ==================== */
+	/* -------------------------------- Insertar -------------------------------- */
 	
+	/**********************************************
+	 * Solicita el campo sobre el que se desea insertar
+	 * un nuevo dato.
+	 * @throws BookingException
+	 **********************************************/
 	public static void insertar() throws BookingException {
 		int clase = elegirTipos();
 		
@@ -298,6 +326,7 @@ public class Utilidades {
 			case 2:
 				Prestamo prestamo = new Prestamo();
 				modificarPrestamo(prestamo);
+				asociarStacksAPrestamo(prestamo);
 				guardarGenerico(prestamo);
 			break;
 			case 3:
@@ -308,14 +337,24 @@ public class Utilidades {
 		}
 	}
 	
+	/**********************************************
+	 * Insertar el objeto que le pasemos en la tabla
+	 * que le corresponda.
+	 * @param objeto Arrendador, préstamo o libro.
+	 * @throws BookingException
+	 **********************************************/
 	public static <T> void guardarGenerico(T objeto) throws BookingException {
 		GenericEntity<T> genericDao = new GenericEntity<T>(objeto.getClass());
 		genericDao.guardar(objeto);
 		System.out.println("Se ha creado el nuevo objeto " + objeto.toString() + ".");
 	}
 	
-	/* ==================== Borrar ==================== */
+	/* ---------------------- Borrar ---------------------- */
 	
+	/**********************************************
+	 * Borra el objeto que le indiquemos de la BD.
+	 * @throws BookingException
+	 **********************************************/
 	public static void borrar() throws BookingException {
 		int clase = elegirTipos();
 		
@@ -335,11 +374,11 @@ public class Utilidades {
 		}
 	}
 	
-	/**
-	 * Permite borrar un arrendador
-	 * @param <T>
+	/**********************************************
+	 * Permite borrar un objeto que le pasemos.
+	 * @param <T> Arrendador, préstamo o libro.
 	 * @throws BookingException
-	 */
+	 **********************************************/
 	public static <T> void borrarGenerico(T objeto) throws BookingException {
 		GenericEntity<T> genericDao = new GenericEntity<T>(objeto.getClass());
 		genericDao.borrar(objeto);
@@ -348,6 +387,11 @@ public class Utilidades {
 	
 	/* ==================== Actualizar ==================== */
 	
+	/**********************************************
+	 * Actualiza los datos de un objeto existente en
+	 * la BD con los datos que introduzcamos.
+	 * @throws BookingException
+	 **********************************************/
 	public static void actualizar() throws BookingException {
 		int clase = elegirTipos();
 		
@@ -358,11 +402,9 @@ public class Utilidades {
 				actualizarGenerico(arrendador);
 			break;
 			case 2:
-				/* FIXME Obliga a meter más libros al préstamo.
 				Prestamo prestamo = solicitarPrestamo("Elige el préstamo que quieres actualizar: ");
 				modificarPrestamo(prestamo);
-				actualizarGenerico(prestamo); */
-				System.out.println("Por razones de seguridad no se permite modificaciones en los préstamos.");
+				actualizarGenerico(prestamo);
 			break;
 			case 3:
 				Libro libro = solicitarLibro("Elige el libro que quieres actualizar: ");
@@ -372,63 +414,68 @@ public class Utilidades {
 		}
 	}
 	
+	/**********************************************
+	 * Actualiza el objeto existente en la BD con los
+	 * datos del objeto que le pasemos.
+	 * @param objeto Objeto con los nuevos datos.
+	 * @throws BookingException
+	 **********************************************/
 	public static <T> void actualizarGenerico(T objeto) throws BookingException {
 		GenericEntity<T> genericDao = new GenericEntity<T>(objeto.getClass());
 		genericDao.actualizar(objeto);
 		System.out.println("Se ha actualizardo el objeto " + objeto.toString() + ".");
 	}
 	
-	/* XXX==================== Mostrar detalles ====================XXX */
+	/* -------------------------------- Mostrar detalles -------------------------------- */
 	
-	// Se pueden generalizar estos métodos, pero tendrían que extender de una clase común
-	/**
-	 * Muestra los detalles del arrendador solicitado
+	/**********************************************
+	 * Muestra los detalles del objeto que elijamos.
 	 * @throws BookingException
-	 */
-	public static void consultarDetallesArrendador() throws BookingException {
-		List<Arrendador> arrendadores = arrendadorDao.obtenerTodos();
-		mostrarListaBreve(arrendadores);
+	 **********************************************/
+	public static void consultarDetalles() throws BookingException {
+		int claseElegida = elegirTipos();
+		ObjetoBookingGenerico objetoElegido = null;
 		
-		int id = solicitarEntero("Introduce la ID del arrendador: ");
-		Arrendador arrendador = arrendadorDao.obtener(id);
+		switch(claseElegida) {
+			case 1:
+				objetoElegido = new Arrendador();
+			break;
+			case 2:
+				objetoElegido = new Prestamo();
+			break;
+			case 3:
+				objetoElegido = new Libro();
+			break;
+		}
 		
-		System.out.println("\n" + arrendador.informacionDetalle());
+		mostrarDetalles(objetoElegido);
 	}
 	
-	/**
-	 * Muestra los detalles del libro solicitado
+	/**********************************************
+	 * Nos da a elegir el objeto que deseemos de la
+	 * base de datos y muestra sus detalles en la pantalla.
+	 * @param objetoElegido
 	 * @throws BookingException
-	 */
-	public static void consultarDetallesLibro() throws BookingException {
-		List<Libro> libros = libroDao.obtenerTodos();
-		mostrarListaBreve(libros);
+	 **********************************************/
+	public static void mostrarDetalles(ObjetoBookingGenerico objetoElegido) throws BookingException {
+		GenericEntity<ObjetoBookingGenerico> genericDao = new GenericEntity<ObjetoBookingGenerico>(objetoElegido.getClass());
+		List<ObjetoBookingGenerico> lista = genericDao.obtenerTodos();
+		mostrarListaBreve(lista);
 		
-		int id = solicitarEntero("Introduce la ID del libro: ");
-		Libro libro = libroDao.obtener(id);
+		int id = solicitarEntero("Introduce la ID del "+objetoElegido.getClass().getSimpleName()+": ");
+		objetoElegido =  genericDao.obtener(id);
 		
-		System.out.println("\n" + libro.informacionDetalle());
+		System.out.println("\n" + objetoElegido.informacionDetalle());
 	}
 	
-	/**
-	 * Muestra los detalles del prestamo solicitado
-	 * @throws BookingException
-	 */
-	public static void consultarDetallesPrestamo() throws BookingException {
-		List<Prestamo> prestamos = prestamoDao.obtenerTodos();
-		mostrarListaBreve(prestamos);
-		
-		int id = solicitarEntero("Introduce la ID del préstamo: ");
-		Prestamo prestamo = prestamoDao.obtener(id);
-		
-		System.out.println("\n" + prestamo.informacionDetalle());
-	}
 	
-	/* XXX==================== Opciones avanzadas ====================XXX */
+	/* ==============XXX==============|  Opciones avanzadas  |==============XXX==============  */
 	
-	/**
-	 * Consulta los arrendadores por nombre. Puede resultar en varios
+	/**********************************************
+	 * Consulta los arrendadores por nombre. 
+	 * Puede resultar en varios.
 	 * @throws BookingException 
-	 */
+	 **********************************************/
 	public static void consultarArrendadoresPorNombre() throws BookingException {
 		String nombre = solicitarCadena("Introduce el nombre: ");
 		List<Arrendador> resultado = arrendadorDao.obtenerPorNombre(nombre);
@@ -436,6 +483,7 @@ public class Utilidades {
 		if(resultado.isEmpty())
 			throw new BookingException("No se ha encontrado ningún arrendador con ese nombre.");
 		
+		/* Mostramos información en detalle de cada arrendador encontrado */
 		@SuppressWarnings("rawtypes")
 		Iterator iterator;
 		for (iterator = resultado.iterator(); iterator.hasNext();) {
@@ -444,10 +492,10 @@ public class Utilidades {
 		}
 	}
 	
-	/**
+	/**********************************************
 	 * Consulta los préstamos de una persona por nombre.
 	 * @throws BookingException 
-	 */
+	 **********************************************/
 	public static void consultarPrestamosPorNombre() throws BookingException {
 		String nombre = solicitarCadena("Introduce el nombre: ");
 		List<Prestamo> resultado = prestamoDao.obtenerPorNombre(nombre);
@@ -464,10 +512,11 @@ public class Utilidades {
 		}
 	}
 
-	/**
+	/**********************************************
+	 * Muestra por pantalla la cantidad de préstamos 
+	 * y libros prestados en el año introducido.
 	 * @throws BookingException 
-	 * 
-	 */
+	 **********************************************/
 	public static void prestamosPorAno() throws BookingException {
 		int ano = solicitarEntero("Introduce el año: ");
 		
@@ -480,9 +529,9 @@ public class Utilidades {
 		System.out.println("En el año "+ano+" hubo "+ prestamos + " préstamos y un total de "+ totalLibros + " libros prestados.");
 	}
 
-	/**
+	/**************************************************
 	 * Muestra estadísticas globales de nuestra base de datos.
-	 */
+	 **************************************************/
 	public static void estadisticasPrestamo() {
 		int numeroArrendadores = arrendadorDao.totalArrendadores();
 		String fechaPrimerPrestamo = prestamoDao.fechaPrimerPrestamo();
@@ -498,12 +547,12 @@ public class Utilidades {
 				+ " Media de libros prestados por persona: " + mediaLibrosPorArrendador);
 	}
 	
-	/* XXX==================== Métodos obsoletos ====================XXX */
+	/* ==============XXX==============|  Métodos obsoletos  |==============XXX==============  */
 	
-	/**
-	 * Solicita datos del arrendador y lo guarda en la BD
+	/*************************************************
+	 * Solicita datos del arrendador y lo guarda en la BD.
 	 * @throws BookingException 
-	 */
+	 *************************************************/
 	@Deprecated
 	public static void nuevoArrendador() throws BookingException {
 		System.out.println("Los campos con * son obligatorios:");
@@ -515,10 +564,10 @@ public class Utilidades {
 		System.out.println("Se ha creado el nuevo arrendador con ID: "+ arrendador.getId() +".");
 	}
 	
-	/**
-	 * Solicita datos del libro y lo guarda en la BD
+	/**********************************************
+	 * Solicita datos del libro y lo guarda en la BD.
 	 * @throws BookingException 
-	 */
+	 **********************************************/
 	@Deprecated
 	public static void nuevoLibro() throws BookingException {
 		System.out.println("Los campos con * son obligatorios:");
@@ -530,9 +579,9 @@ public class Utilidades {
 		System.out.println("Se ha creado el nuevo arrendador con ID: "+ libro.getId() +".");
 	}
 	
-	/**
-	 * Solicita datos y da de alta un nuevo préstamo
-	 */
+	/**********************************************
+	 * Solicita datos y da de alta un nuevo préstamo.
+	 **********************************************/
 	@Deprecated
 	public static void nuevoPrestamo() throws BookingException {
 		
@@ -541,6 +590,8 @@ public class Utilidades {
 		
 		ArrayList<Stack> stacks = nuevaListaStacks();
 		prestamo.setListaStacks(stacks);
+		
+		/* Soy un comentario feliz >.< */
 		@SuppressWarnings("rawtypes")
 		Iterator iterator;
 		for (iterator = stacks.iterator(); iterator.hasNext();) {
@@ -551,10 +602,10 @@ public class Utilidades {
 		prestamoDao.guardar(prestamo);
 	}
 	
-	/**
+	/***********************************************
 	 * Actualiza los datos de un libro ya existente.
 	 * @throws BookingException
-	 */
+	 **********************************************/
 	@Deprecated
 	public static void actualizarLibro() throws BookingException {
 		Libro libro = solicitarLibro("Introduzca la ID del libro: ");
@@ -565,14 +616,60 @@ public class Utilidades {
 		libroDao.actualizar(libro);
 	}
 	
-	/**
+	/**********************************************
 	 * Permite borrar un arrendador
 	 * @throws BookingException
-	 */
+	 **********************************************/
 	@Deprecated
 	public static void borrarArrendador() throws BookingException {
 		Arrendador arrendador = solicitarArrendador("Introduzca la ID del arrendador: ");
 		arrendadorDao.borrar(arrendador);
 		System.out.println("Se ha borrado el arrendador con id " + arrendador.getId() + " y sus préstamos asociados.");
+	}
+	
+	/**********************************************
+	 * Muestra los detalles del arrendador solicitado.
+	 * @throws BookingException
+	 **********************************************/
+	@Deprecated
+	public static void consultarDetallesArrendador() throws BookingException {
+		List<Arrendador> arrendadores = arrendadorDao.obtenerTodos();
+		mostrarListaBreve(arrendadores);
+		
+		/* Pienso que Fátima no va a leer hasta aquí jajajaj */
+		int id = solicitarEntero("Introduce la ID del arrendador: ");
+		Arrendador arrendador = arrendadorDao.obtener(id);
+		
+		System.out.println("\n" + arrendador.informacionDetalle());
+	}
+	
+	/**********************************************
+	 * Muestra los detalles del libro solicitado.
+	 * @throws BookingException
+	 **********************************************/
+	@Deprecated
+	public static void consultarDetallesLibro() throws BookingException {
+		List<Libro> libros = libroDao.obtenerTodos();
+		mostrarListaBreve(libros);
+		
+		int id = solicitarEntero("Introduce la ID del libro: ");
+		Libro libro = libroDao.obtener(id);
+		
+		System.out.println("\n" + libro.informacionDetalle());
+	}
+	
+	/**********************************************
+	 * Muestra los detalles del prestamo solicitado.
+	 * @throws BookingException
+	 **********************************************/
+	@Deprecated
+	public static void consultarDetallesPrestamo() throws BookingException {
+		List<Prestamo> prestamos = prestamoDao.obtenerTodos();
+		mostrarListaBreve(prestamos);
+		
+		int id = solicitarEntero("Introduce la ID del préstamo: ");
+		Prestamo prestamo = prestamoDao.obtener(id);
+		
+		System.out.println("\n" + prestamo.informacionDetalle());
 	}
 }

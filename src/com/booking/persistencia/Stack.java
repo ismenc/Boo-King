@@ -15,18 +15,18 @@ import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
-/**
+/*********************************************************************************
  * Define la relacion préstamo-libro N-M. Es una pila de una cantidad de un libro.
  * Alguien puede prestar varias pilas en un prestamo.
  * @author Ismael Núñez
  *
- */
+ *********************************************************************************/
 @Entity
 @Table(name="stack")
-public class Stack implements Serializable {
+public class Stack extends ObjetoBookingGenerico implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	/* ------------------- Atributos ------------------- */
+	/* ==============XXX==============|  Atributos  |==============XXX==============  */
 	
 	@Id
 	@Column(name="id")
@@ -49,7 +49,7 @@ public class Stack implements Serializable {
 	@Valid
 	private Libro libro;
 	
-	/* ------------------- Constructor ------------------- */
+	/* ==============XXX==============|  Constructores  |==============XXX==============  */
 	
 	public Stack() { }
 
@@ -59,7 +59,7 @@ public class Stack implements Serializable {
 		this.libro = libro;
 	}
 
-	/* ----------------- Getter & Setter ----------------- */
+	/* ==============XXX==============|  Getter & Setter  |==============XXX==============  */
 
 	public int getIdStack() {
 		return idStack;
@@ -93,16 +93,20 @@ public class Stack implements Serializable {
 		this.libro = libro;
 	}
 	
-	/* -------------------- Métodos -------------------- */
+	/* ==============XXX==============|  Métodos  |==============XXX==============  */
 
-	/**
+	/**********************************************
 	 * Muestra información en detalle del Stack
 	 * @return
-	 */
+	 **********************************************/
+	@Override
 	public String informacionDetalle() {
 		return idStack + " - " + cantidad+ "x" + libro.getTitulo();
 	}
 	
+	/**********************************************
+	 * Muestra información breve de la pila de libros.
+	 **********************************************/
 	@Override
 	public String toString() {
 		return idStack + " - " + cantidad+ "x" + libro.getTitulo();

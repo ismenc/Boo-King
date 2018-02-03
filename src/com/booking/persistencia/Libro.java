@@ -16,17 +16,17 @@ import javax.validation.constraints.Size;
 
 import com.booking.modelo.Categoria;
 
-/**
+/**********************************************
  * Define los libros que serán prestados.
  * @author Ismael Núñez
  *
- */
+ **********************************************/
 @Entity
 @Table(name="libro")
-public class Libro implements Serializable {
+public class Libro extends ObjetoBookingGenerico implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
-	/* ------------------- Atributos ------------------- */
+	/* ==============XXX==============|  Atributos  |==============XXX==============  */
 	
 	@Id
 	@Column(name="id")
@@ -57,7 +57,7 @@ public class Libro implements Serializable {
 	@Max(2018)
 	private String anoPublicacion;
 
-	/* ------------------- Constructor ------------------- */
+	/* ==============XXX==============|  Constructores  |==============XXX==============  */
 
 	public Libro() { }
 
@@ -69,7 +69,7 @@ public class Libro implements Serializable {
 		this.anoPublicacion = anoPublicacion;
 	}
 	
-	/* ----------------- Getter & Setter ----------------- */
+	/* ==============XXX==============|  Getter & Setter  |==============XXX==============  */
 
 	public int getId() {
 		return idLibro;
@@ -119,12 +119,13 @@ public class Libro implements Serializable {
 		this.categoria = categoria;
 	}
 	
-	/* -------------------- Métodos -------------------- */
+	/* ==============XXX==============|  Métodos  |==============XXX==============  */
 
-	/**
-	 * Muestra información en detalle del Libro
+	/**********************************************
+	 * Muestra información en detalle del Libro.
 	 * @return
-	 */
+	 **********************************************/
+	@Override
 	public String informacionDetalle() {
 		StringBuilder cadena = new StringBuilder(150);
 		
@@ -137,6 +138,9 @@ public class Libro implements Serializable {
 		return cadena.toString();
 	}
 	
+	/**********************************************
+	 * Muestra información breve del libro
+	 **********************************************/
 	@Override
 	public String toString() {
 		return idLibro + " - " + titulo;

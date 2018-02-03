@@ -1,29 +1,45 @@
-# Boo-King
+# Sobre Boo-King
 
-Boo-King es una aplicación de préstamo de libros entre **personas, no bibliotecas** que permite almacenar datos de libros, arrendadores y préstamos en una base de datos MySQL. Los arrendatarios se han obviado para simplificar un poco el proyecto.
+Boo-King es una aplicación de préstamo de libros entre **personas** que permite almacenar datos de libros, arrendadores y préstamos en una base de datos MySQL. La aplicación nos permitirá manipular estos datos de forma amigable. Los arrendatarios se han obviado para simplificar un poco el proyecto.
 
 ## Funcionamiento
 
 Nuestra aplicación ofrece al usuario un menú con las siguientes opciones:
 ```
-[1] Añadir arrendador
-[2] Añadir libro
-[3] Nuevo préstamo
-[4] Modificar libro
-[5] Borrar arrendador
-[6] Consultar arrendador
-[7] Consultar libro
-[8] Consultar préstamo
-[9] Buscar arrendadores nombre
-[10] Buscar prestamos nombre
-[11] Salir
++------------ MENÚ -------------+
+|            Básico             |
+|-------------------------------|
+| [1] Insertar dato		        |
+| [2] Actualizar dato	     	|
+| [3] Borrar dato		        |
+| [4] Consultar objeto	     	|
+|-------------------------------|
+|           Avanzado            |
+|-------------------------------|
+| [5] Listar arrendadores nombre|
+| [6] Listar prestamos nombre	|
+| [7] Préstamos en un año	    |
+| [8] Estadísticas globales	    |
+| [9] Salir			            |
++-------------------------------+
 ```
 
-Tras elegir una opción, el programa preguntará al usuario por los datos necesarios para operar.
+Tras elegir una opción, el programa interactuará con el usuario para pedirle los datos necesarios para operar.
 
 ### Aplicación Java
 
-Java es el encargado de realizar las operaciones correspondientes según la opción de menú elegida. La clase principal (ejecutable) es [Main.java](src/com/booking/ejecutable/Main.java).
+**Java** es el encargado de realizar las operaciones correspondientes según la opción de menú elegida. Éste tendrá que realizar operaciones lógicas y manipular las librerías que harán de interfaz con la base de datos.
+
+La clase principal (ejecutable) es [Main.java](src/com/booking/ejecutable/Main.java).
+El proyecto está organizado en paquetes de forma que su estructura queda de la siguiente forma:
+
+Paquete | Descripción
+------------ | ------------ 
+[ejecutable](./src/com/booking/ejecutable/) | Paquete con los archivos que serán ejecutados
+[persistencia](./src/com/booking/persistencia/) | Clases que definen los objetos que manipularemos
+[modelo](./src/com/booking/modelo/) | Clases con utilidades recurridas
+[dao](./src/com/booking/dao/) | Clases que definen la interacción con la BD
+
 En secciones siguientes explicamos cómo Java interacciona con la base de datos.
 
 ### Servidor MySQL
@@ -49,16 +65,4 @@ Stack-Libro | N-1
 
 ### Hibernate
 
-Para conectar nuestro programa Java con MySQL hacemos uso de la librería **Hibernate**, que nos permitirá abstraernos de SQL y trabajar con objetos de forma que el proyecto se agiliza mucho más. También nos ayudará a validar los datos de entrada ahorrandonos el trabajo de programarlo en Java.
-
-## Estructura del proyecto
-
-Hemos organizado el proyecto en paquetes de forma que su estructura queda definida así:
-
-Paquete | Descripción
------------- | ------------ 
-[ejecutable](./src/com/booking/ejecutable/) | Paquete con los archivos que serán ejecutados
-[persistencia](./src/com/booking/persistencia/) | Clases que definen los objetos que manipularemos
-[modelo](./src/com/booking/modelo/) | Clases con utilidades recurridas
-[dao](./src/com/booking/dao/) | Clases que definen la interacción con la BD
-
+Para conectar nuestro programa Java con MySQL hacemos uso de la librería **Hibernate**, que nos permitirá abstraernos de SQL y trabajar con objetos de forma que el proyecto se agiliza mucho más. También hacemos uso de **Hibernate validator**, que nos ayudará a validar los datos de entrada ahorrándonos el trabajo de programar validaciones en Java.

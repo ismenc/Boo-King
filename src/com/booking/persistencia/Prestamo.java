@@ -23,17 +23,17 @@ import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
-/**
+/**********************************************
  * Define la estructura de los préstamos.
  * @author Ismael Núñez
  *
- */
+ **********************************************/
 @Entity
 @Table(name="prestamo")
-public class Prestamo implements Serializable {
+public class Prestamo extends ObjetoBookingGenerico implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	/* ------------------- Atributos ------------------- */
+	/* ==============XXX==============|  Atributos  |==============XXX==============  */
 
 	@Id
 	@Column(name="id")
@@ -59,7 +59,7 @@ public class Prestamo implements Serializable {
 	@Valid
 	private List<Stack> listaStacks;
 	
-	/* ------------------- Constructor ------------------- */
+	/* ==============XXX==============|  Constructores  |==============XXX==============  */
 	
 	public Prestamo() {	}
 
@@ -70,7 +70,7 @@ public class Prestamo implements Serializable {
 		this.listaStacks = new ArrayList<Stack>();
 	}
 
-	/* ----------------- Getter & Setter ----------------- */
+	/* ==============XXX==============|  Getter & Setter  |==============XXX==============  */
 	
 	public int getIdPrestamo() {
 		return idPrestamo;
@@ -112,12 +112,13 @@ public class Prestamo implements Serializable {
 		this.listaStacks = listaStacks;
 	}
 
-	/* -------------------- Métodos -------------------- */
+	/* ==============XXX==============|  Métodos  |==============XXX==============  */
 
-	/**
+	/**********************************************
 	 * Muestra información en detalle del préstamo
 	 * @return
-	 */
+	 **********************************************/
+	@Override
 	public String informacionDetalle() {
 		StringBuilder cadena = new StringBuilder(150);
 		
@@ -137,8 +138,11 @@ public class Prestamo implements Serializable {
 		return cadena.toString();
 	}
 	
+	/**********************************************
+	 * Muestra información breve del préstamo.
+	 **********************************************/
 	@Override
 	public String toString() {
-		return idPrestamo + " - " + arrendador.getNombre()+ ", "+ fecha;
+		return idPrestamo + " - Préstamo de " + arrendador.getNombre()+ ", "+ fecha;
 	}
 }

@@ -1,4 +1,4 @@
-package com.booking.persistencia;
+package com.booking.modelo;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -7,11 +7,10 @@ import org.hibernate.context.internal.ThreadLocalSessionContext;
 import org.hibernate.service.ServiceRegistry;
 import org.hibernate.service.ServiceRegistryBuilder;
 
-/**
+/************************************
  * Métodos de conexión de Hibernate.
- * @author Ismael Núñez
- *
- */
+ * @author Fátima :U
+ ************************************/
 public class HibernateUtil {
 
     private static SessionFactory sessionFactory;
