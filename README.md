@@ -82,11 +82,11 @@ Es la documentación web generada a partir de los comentarios Javadoc en código
 
 ### Base de datos
 
-1.- Deberemos instalar la base de datos MySQL con PHPMyAdmin.
-2.- Desde PHPMyAdmin, crear la base de datos 'booking'.
-3.- Importar el archivo [BaseDatos.sql](BaseDatos.sql) en la base de datos que acabamos de crear.
+1. Deberemos instalar la base de datos MySQL con PHPMyAdmin.
+2. Desde PHPMyAdmin, crear la base de datos 'booking'.
+3. Importar el archivo [BaseDatos.sql](BaseDatos.sql) en la base de datos que acabamos de crear.
 
 ### Lanzar aplicación Java
 
-1.- Configurar datos de acceso a BD en el archivo [hibernate.cfg.xml](./src/hibernate.cfg.xml).
-2.- Lanzar Main.java desde un entorno de desarrollo Java.u
+1. Configurar datos de acceso a BD en el archivo [hibernate.cfg.xml](./src/hibernate.cfg.xml).
+2. Lanzar Main.java desde un entorno de desarrollo Java.u
