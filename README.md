@@ -33,11 +33,6 @@ Boo-King es una aplicación de préstamo de libros entre **personas** que permit
   * [Desarrollo](#especificaciones-de-desarrollo)
     * [Acceso a datos](#acceso-a-datos-1)
     * [Desarrollo de interfaces](#desarrollo-de-interfaces-1)
-  
-<canvas width="980" height="600" style="z-index: 0; cursor: move;">
-          <p>Sorry, your browser doesn’t support the &lt;canvas&gt; element.</p>
-          <p>Please upgrade to the latest <a href="https://www.microsoft.com/ie">Internet Explorer</a>, <a href="https://www.google.com/chrome">Chrome</a> or <a href="https://mozilla.org/firefox">Firefox</a>.</p>
-        </canvas>
 
 - - - -
 
@@ -166,6 +161,22 @@ Es la documentación web generada a partir de los comentarios Javadoc en código
 
 Es un representación gráfica de todas las versiones (commits) por las que ha pasado el proyecto. Te recomiendo que le eches un vistazo.
 > Puedes ver el árbol de versiones en este [enlace](https://github.com/ismenc/Boo-King/network).
+
+<div id="network" class="network">
+      <div class="Box mb-3 position-relative overflow-hidden lh-condensed-ultra js-network-graph-container" data-network-graph-meta-url="/ismenc/Boo-King/network/meta" data-network-graph-chunk-url="/ismenc/Boo-King/network/chunk">
+        <canvas width="980" height="600" style="z-index: 0; cursor: move;">
+          <p>Sorry, your browser doesn’t support the &lt;canvas&gt; element.</p>
+          <p>Please upgrade to the latest <a href="https://www.microsoft.com/ie">Internet Explorer</a>, <a href="https://www.google.com/chrome">Chrome</a> or <a href="https://mozilla.org/firefox">Firefox</a>.</p>
+        </canvas>
+        <div class="position-absolute top-0 right-0 left-0 large-loading-area d-none">
+          <img alt="" height="32" src="https://assets-cdn.github.com/images/spinners/octocat-spinner-64.gif" width="32">
+        </div>
+      </div>
+
+      <button type="button" class="btn-link keyboard-shortcuts text-small text-gray js-keyboard-shortcuts">
+        Keyboard shortcuts available <svg aria-hidden="true" class="octicon octicon-keyboard" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M10 5H9V4h1v1zM3 6H2v1h1V6zm5-2H7v1h1V4zM4 4H2v1h2V4zm8 7h2v-1h-2v1zM8 7h1V6H8v1zm-4 3H2v1h2v-1zm8-6h-1v1h1V4zm2 0h-1v1h1V4zm-2 5h2V6h-2v3zm4-6v9c0 .55-.45 1-1 1H1c-.55 0-1-.45-1-1V3c0-.55.45-1 1-1h14c.55 0 1 .45 1 1zm-1 0H1v9h14V3zM6 7h1V6H6v1zm0-3H5v1h1V4zM4 7h1V6H4v1zm1 4h6v-1H5v1zm5-4h1V6h-1v1zM3 8H2v1h1V8zm5 0v1h1V8H8zM6 8v1h1V8H6zM5 8H4v1h1V8zm5 1h1V8h-1v1z"></path></svg>
+      </button>
+    </div>
 
 
 - - - -
