@@ -1,4 +1,4 @@
-# Sobre Boo-King
+# Boo-King
 
 Boo-King es una aplicación de préstamo de libros entre **personas** que permite almacenar datos de libros, arrendadores y préstamos en una base de datos MySQL. La aplicación nos permitirá manipular estos datos de forma amigable. Los arrendatarios se han obviado para simplificar un poco el proyecto.
 
