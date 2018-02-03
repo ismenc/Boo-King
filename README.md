@@ -9,18 +9,18 @@ Nuestra aplicación ofrece al usuario un menú con las siguientes opciones:
 +------------ MENÚ -------------+
 |            Básico             |
 |-------------------------------|
-| [1] Insertar dato		        |
-| [2] Actualizar dato	     	|
-| [3] Borrar dato		        |
-| [4] Consultar objeto	     	|
+| [1] Insertar dato             |
+| [2] Actualizar dato           |
+| [3] Borrar dato               |
+| [4] Consultar objeto          |
 |-------------------------------|
 |           Avanzado            |
 |-------------------------------|
 | [5] Listar arrendadores nombre|
-| [6] Listar prestamos nombre	|
-| [7] Préstamos en un año	    |
-| [8] Estadísticas globales	    |
-| [9] Salir			            |
+| [6] Listar prestamos nombre   |
+| [7] Préstamos en un año       |
+| [8] Estadísticas globales     |
+| [9] Salir                     |
 +-------------------------------+
 ```
 
@@ -62,7 +62,6 @@ Préstamo-Stack | 1-N
 Stack-Libro | N-1
 (Préstamo-Libro) | N-M
 
-
 ### Hibernate
 
 Para conectar nuestro programa Java con MySQL hacemos uso de la librería **Hibernate**, que nos permitirá abstraernos de SQL y trabajar con objetos de forma que el proyecto se agiliza mucho más. También hacemos uso de **Hibernate validator**, que nos ayudará a validar los datos de entrada ahorrándonos el trabajo de programar validaciones en Java.
@@ -71,13 +70,13 @@ Para conectar nuestro programa Java con MySQL hacemos uso de la librería **Hibe
 
 Toda la **documentación** se encuentra en la carpeta [doc](./doc/) incluyendo los siguientes documentos.
 
-### Documentación Javadoc
-
-Es la documentación web generada a partir de los comentarios Javadoc en código. Puedes acceder a ella a través del [índice Javadoc](./doc/index.html).
-
 ### Monografía del proyecto
 
 Se trata de un white paper o manual dónde se explica el proyecto Boo-King. Puedes encontrarlo aquí: [dosier](./doc/dosier/Booking.pdf).
+
+### Documentación Javadoc
+
+Es la documentación web generada a partir de los comentarios Javadoc en código. Puedes acceder a ella a través del [índice Javadoc](./doc/index.html).
 
 ## ¿Cómo ejecutar la aplicación?
 
