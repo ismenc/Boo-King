@@ -184,7 +184,7 @@ Es un representación gráfica de todas las versiones (commits) por las que ha p
       
     <div id="network" class="network">
       <div class="Box mb-3 position-relative overflow-hidden lh-condensed-ultra js-network-graph-container" data-network-graph-meta-url="/ismenc/Boo-King/network/meta" data-network-graph-chunk-url="/ismenc/Boo-King/network/chunk">
-        <canvas width="980" height="600" style="z-index: 0; cursor: move;">
+        <canvas width="504" height="250" style="z-index: 0; cursor: move;">
           <p>Sorry, your browser doesn’t support the &lt;canvas&gt; element.</p>
           <p>Please upgrade to the latest <a href="https://www.microsoft.com/ie">Internet Explorer</a>, <a href="https://www.google.com/chrome">Chrome</a> or <a href="https://mozilla.org/firefox">Firefox</a>.</p>
         </canvas>
