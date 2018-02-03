@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project default="javadoc">
+    <target name="javadoc">
+        <javadoc access="public" additionalparam="-encoding utf8 -docencoding utf8 -charset utf8 " author="true" classpath="lib/antlr-2.7.7.jar;lib/jboss-transaction-api_1.1_spec-1.0.0.Final.jar;lib/hibernate-core-4.1.0.Final.jar;lib/hibernate-jpa-2.0-api-1.0.1.Final.jar;lib/validator/lib/required/jboss-logging-3.1.0.CR2.jar;lib/dom4j-1.6.1.jar;lib/validator/hibernate-validator-4.3.0.Final.jar;lib/validator/hibernate-validator-annotation-processor-4.3.0.Final.jar;lib/javassist-3.15.0-GA.jar;lib/validator/lib/required/validation-api-1.0.0.GA.jar;lib/mysql-connector-java-5.1.5-bin.jar;lib/hibernate-entitymanager-4.1.0.Final.jar;lib/hibernate-commons-annotations-4.0.1.Final.jar;lib/jboss-logging-3.1.0.CR2.jar;lib/commons-collections-3.2.1.jar" destdir="doc" doctitle="Documentación Booking" nodeprecated="false" nodeprecatedlist="false" noindex="false" nonavbar="false" notree="false" packagenames="com.booking.ejecutable,com.booking.persistencia,com.booking.modelo,com.booking.dao" source="1.8" sourcepath="src" splitindex="true" use="true" version="true">
+            <link href="file:/C:/Users/Ismael/Documents/GitHub/eclipse/Boo-King/doc/"/>
+        </javadoc>
+    </target>
+</project>
