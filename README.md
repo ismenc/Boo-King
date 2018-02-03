@@ -66,3 +66,28 @@ Stack-Libro | N-1
 ### Hibernate
 
 Para conectar nuestro programa Java con MySQL hacemos uso de la librería **Hibernate**, que nos permitirá abstraernos de SQL y trabajar con objetos de forma que el proyecto se agiliza mucho más. También hacemos uso de **Hibernate validator**, que nos ayudará a validar los datos de entrada ahorrándonos el trabajo de programar validaciones en Java.
+
+## Documentación
+
+Toda la **documentación** se encuentra en la carpeta [doc](./doc/) incluyendo los siguientes documentos.
+
+### Documentación Javadoc
+
+Es la documentación web generada a partir de los comentarios Javadoc en código. Puedes acceder a ella a través del [índice Javadoc](./doc/index.html).
+
+### Monografía del proyecto
+
+Se trata de un white paper o manual dónde se explica el proyecto Boo-King. Puedes encontrarlo aquí: [dosier](./doc/dosier/Booking.pdf).
+
+## ¿Cómo ejecutar la aplicación?
+
+### Base de datos
+
+1.- Deberemos instalar la base de datos MySQL con PHPMyAdmin.
+2.- Desde PHPMyAdmin, crear la base de datos 'booking'.
+3.- Importar el archivo [BaseDatos.sql](BaseDatos.sql) en la base de datos que acabamos de crear.
+
+### Lanzar aplicación Java
+
+1.- Configurar datos de acceso a BD en el archivo [hibernate.cfg.xml](./src/hibernate.cfg.xml).
+2.- Lanzar Main.java desde un entorno de desarrollo Java.u
