@@ -1,4 +1,4 @@
-# Sobre Boo-King
+# Boo-King
 
 Boo-King es una aplicación de préstamo de libros entre **personas** que permite almacenar datos de libros, arrendadores y préstamos en una base de datos MySQL. La aplicación nos permitirá manipular estos datos de forma amigable. Los arrendatarios se han obviado para simplificar un poco el proyecto.
 
@@ -11,18 +11,18 @@ Nuestra aplicación ofrece al usuario un menú con las siguientes opciones:
 +------------ MENÚ -------------+
 |            Básico             |
 |-------------------------------|
-| [1] Insertar dato		        |
-| [2] Actualizar dato	     	|
-| [3] Borrar dato		        |
-| [4] Consultar objeto	     	|
+| [1] Insertar dato             |
+| [2] Actualizar dato           |
+| [3] Borrar dato               |
+| [4] Consultar objet           |
 |-------------------------------|
 |           Avanzado            |
 |-------------------------------|
 | [5] Listar arrendadores nombre|
-| [6] Listar prestamos nombre	|
-| [7] Préstamos en un año	    |
-| [8] Estadísticas globales	    |
-| [9] Salir			            |
+| [6] Listar prestamos nombre   |
+| [7] Préstamos en un año       |
+| [8] Estadísticas globales     |
+| [9] Salir                     |
 +-------------------------------+
 ```
 
@@ -75,13 +75,13 @@ Para conectar nuestro programa Java con MySQL hacemos uso de la librería **Hibe
 
 Toda la **documentación** se encuentra en la carpeta [doc](./doc/) incluyendo los siguientes documentos.
 
-### Documentación Javadoc
-
-Es la documentación web generada a partir de los comentarios Javadoc en código. Puedes acceder a ella a través del [índice Javadoc](./doc/index.html).
-
 ### Monografía del proyecto
 
 Se trata de un white paper o manual dónde se explica el proyecto Boo-King. Puedes encontrarlo aquí: [dosier](./doc/dosier/Booking.pdf).
+
+### Documentación Javadoc
+
+Es la documentación web generada a partir de los comentarios Javadoc en código. Puedes acceder a ella a través del [índice Javadoc](./doc/index.html).
 
 - - - -
 
@@ -89,11 +89,11 @@ Se trata de un white paper o manual dónde se explica el proyecto Boo-King. Pued
 
 ### Base de datos
 
-1.- Deberemos instalar la base de datos MySQL con PHPMyAdmin.
-2.- Desde PHPMyAdmin, crear la base de datos 'booking'.
-3.- Importar el archivo [BaseDatos.sql](BaseDatos.sql) en la base de datos que acabamos de crear.
+1. Deberemos instalar la base de datos MySQL con PHPMyAdmin.
+2. Desde PHPMyAdmin, crear la base de datos 'booking'.
+3. Importar el archivo [BaseDatos.sql](BaseDatos.sql) en la base de datos que acabamos de crear.
 
 ### Lanzar aplicación Java
 
-1.- Configurar datos de acceso a BD en el archivo [hibernate.cfg.xml](./src/hibernate.cfg.xml).
-2.- Lanzar Main.java desde un entorno de desarrollo Java.u
+1. Configurar datos de acceso a BD en el archivo [hibernate.cfg.xml](./src/hibernate.cfg.xml).
+2. Lanzar Main.java desde un entorno de desarrollo Java.u
