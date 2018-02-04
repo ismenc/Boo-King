@@ -1,17 +1,17 @@
 # Descripción
 
 
-Boo-King es una aplicación de préstamo de libros entre **personas** que permite almacenar datos de libros, arrendadores y préstamos en una base de datos MySQL. La aplicación nos permitirá manipular estos datos de una forma mucho más *user-friendly*. Los receptores de préstamos se han obviado para simplificar un poco el proyecto :sweat_smile:.
-> No ha sido un proyecto fácil y, aunque el resultado no es atractivo visualmente, se han aprendido muchas cosas y ha merecido la pena :dancer:
+Boo-King es una aplicación de préstamo de libros entre **personas** que permite almacenar datos de libros, arrendadores y préstamos en una base de datos MySQL. La aplicación nos permitirá manipular estos datos de una forma mucho más *user-friendly*. Los receptores de préstamos se han obviado para simplificar un poco el proyecto.
+> No ha sido un proyecto fácil y, aunque el resultado no es atractivo visualmente, se han aprendido muchas cosas y ha merecido la pena.
 
 - - - -
 
 ## Navegación
-* [:octocat: Repositorio GitHub](https://github.com/ismenc/Boo-King)
-* [:globe_with_meridians: Página del proyecto](https://ismenc.github.io/Boo-King/)
-* [:scroll: Historial de versiones](https://github.com/ismenc/Boo-King/network)
-* [:arrow_down: Descargas](https://github.com/ismenc/Boo-King/releases)
-* [:memo: Tareas y mejoras propuestas](https://github.com/ismenc/Boo-King/issues)
+* [Repositorio GitHub](https://github.com/ismenc/Boo-King)
+* [Página del proyecto](https://ismenc.github.io/Boo-King/)
+* [Historial de versiones](https://github.com/ismenc/Boo-King/network)
+* [Descargas](https://github.com/ismenc/Boo-King/releases)
+* [Tareas y mejoras propuestas](https://github.com/ismenc/Boo-King/issues)
 
 - - - -
 
@@ -150,7 +150,7 @@ Clase | Clase víctima del cascada | Razón
 
 ## Documentación
 
-:information_source: La información y **documentación** se encuentra en la carpeta [doc](./doc/) incluyendo los siguientes documentos.
+La información y **documentación** se encuentra en la carpeta [doc](./doc/) incluyendo los siguientes documentos.
 
 ### Manual del proyecto
 
@@ -186,10 +186,9 @@ Es un representación gráfica de todas las versiones (commits) por las que ha p
 
 ### Aplicación Boo-King
 
-:exclamation::exclamation::exclamation: Los ejecutables son sólo válidos si tus datos de acceso a la BD son:
+Los ejecutables son sólo válidos si tus datos de acceso a la BD son:
 Usuario: `root`
 Contraseña: `123456`
-:exclamation::exclamation::exclamation:
 
 En el caso de que esto no sea así, salta al punto: [Ejecución a través de IDE](#ejecución-a-través-de-un-ide).
 
@@ -206,7 +205,7 @@ En el caso de que esto no sea así, salta al punto: [Ejecución a través de IDE
 
 #### Si no lanzan los ejecutables
 
-:warning: Asegúrate de que has leido la advertencia de [Aplicación Boo-King](#aplicación-boo-king).
+Asegúrate de que has leido la advertencia de [Aplicación Boo-King](#aplicación-boo-king).
 1. Descarga el archivo *Boo-King.jar* en [releases](https://github.com/ismenc/Boo-King/releases).
 2. Abre una terminal cmd o linux y navega a la carpeta dónde lo has descargado mediante el comando `cd carpeta`.
 3. Escribe el comando `java -jar Boo-King.jar`.
@@ -215,11 +214,11 @@ En el caso de que esto no sea así, salta al punto: [Ejecución a través de IDE
 
 Puedes usar esta opción si:
 
-:red_circle: Tus datos de acceso no son `root` y `123456`.
+Tus datos de acceso no son `root` y `123456`.
 
-:broken_heart: Si las otras alternativas no funcionaron.
+Si las otras alternativas no funcionaron.
 
-:thumbsup: Si deseas ver y modificar el código fuente.
+Si deseas ver y modificar el código fuente.
 
 1. Descargar código fuente del proyecto en [releases](https://github.com/ismenc/Boo-King/releases).
 2. Impórtalo en tu IDE Java favorito.
@@ -243,7 +242,7 @@ Puedes usar esta opción si:
 	- [X] Deben poder realizarse operaciones de modificación de al menos una tabla de la BD
 	- [X] Deben poder realizarse operaciones de baja de al menos una tabla de la BD
 	- [X] Utilización del patrón DAO
-	- [X] Gestión de transacciones :grey_question:
+	- [X] Gestión de transacciones
 
 * Aspiras alto, amigo
 	- [X] Existencia de una relación N:M implementada como dos relaciones y 1:N
@@ -258,7 +257,7 @@ Puedes usar esta opción si:
   
 ### Desarrollo de interfaces
 
-> :construction: This is work in progress my frienderino! :construction:
+> This is work in progress my frienderino!
 
 - - - -
 
@@ -272,18 +271,18 @@ Puedes usar esta opción si:
 
 #### Cosas que caben destacar
 
-* En todo momento he deseado superarme programando este proyecto, a nivel de organización, documentación, control de versiones y presentación. Sé que no he hecho un proyecto atractivo por fuera, pero he intentado que por dentro sea *adorable* :koala:.
+* En todo momento he deseado superarme programando este proyecto, a nivel de organización, documentación, control de versiones y presentación. Sé que no he hecho un proyecto atractivo por fuera, pero he intentado que por dentro sea *adorable*.
 > La verdad es que estoy tan ~~muerto~~ fuera de combate que no quiero ni saber qué nota tendrá.
 * He invertido la mayoría del tiempo en re-escribir código y documentar la aplicación para que sea mantenible.
 * He tenido dificultades puntuales con alguna consulta HQL.
 * He aprendido cómo conectar lenguajes lógicos con bases de datos de forma muy práctica.
-* He aprendido mazo de Git & GitHub :octocat: con mucho esfuerzo, pero por que yo he decido que así sea :heart:.
+* He aprendido mazo de Git & GitHub con mucho esfuerzo, pero por que yo he decido que así sea.
 > Creo que ha valido mucho la pena.
 * A mi pesar he tenido que renunciar a presentar la interfaz gráfica y funcionalidades como la paginación en los plazos.
 
 ### Desarrollo de interfaces
 
-> :construction: Estamos repartiendo alquitrán por aquí, vuelve más tarde :construction:
+> Estamos repartiendo alquitrán por aquí, vuelve más tarde
 
 - - - -
 
@@ -291,10 +290,10 @@ Puedes usar esta opción si:
 
 
 Agradecimientos especiales a las siguientes personas sin las cuales el proyecto no podría haber acabado:
-* Profesora Fátima Olías que ha transmitido sus conocimientos y me ha salvado de obstáculos importantes :heart_eyes:
-* Compañeros de clase que, aunque algo pillos, siempre están ahí :stuck_out_tongue_closed_eyes:
-* StackOveflow, cuna de programadores :computer:
-* GitHub, plataforma en la que se basa estas páginas :octocat:
+* Profesora Fátima Olías que ha transmitido sus conocimientos y me ha salvado de obstáculos importantes 
+* Compañeros de clase que, aunque algo pillos, siempre están ahí
+* StackOveflow, cuna de programadores
+* GitHub, plataforma en la que se basa estas páginas
 
 > Hasta el siguiente!!
 :kissing_closed_eyes:
