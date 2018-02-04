@@ -1,5 +1,6 @@
 # Descripción
 <br>
+
 Boo-King es una aplicación de préstamo de libros entre **personas** que permite almacenar datos de libros, arrendadores y préstamos en una base de datos MySQL. La aplicación nos permitirá manipular estos datos de una forma mucho más *user-friendly*. Los receptores de préstamos se han obviado para simplificar un poco el proyecto :sweat_smile:.
 
 > No ha sido un proyecto fácil y, aunque el resultado no es atractivo visualmente, he aprendido muchas cosas y ha merecido la pena :dancer:
@@ -7,15 +8,19 @@ Boo-King es una aplicación de préstamo de libros entre **personas** que permit
 - - - -
 
 # Navegación
+<br>
+
 > [:octocat: Repositorio GitHub](https://github.com/ismenc/Boo-King)<br>
 > [:globe_with_meridians: Página del proyecto](https://ismenc.github.io/Boo-King/)<br>
 > [:scroll: Historial de versiones](https://github.com/ismenc/Boo-King/network)<br>
 > [:arrow_down: Descargas](https://github.com/ismenc/Boo-King/releases)<br>
-> [:memo: Tareas y mejoras propuestas](https://github.com/ismenc/Boo-King/issues)<br>
+> [:memo: Tareas y mejoras propuestas](https://github.com/ismenc/Boo-King/issues)<br><br>
+<br>
 
 - - - -
 
 # Índice
+<br>
 
 * Índice de contenidos
   * [1. Funcionalidad](#1-funcionamiento-de-la-aplicación)
@@ -40,6 +45,7 @@ Boo-King es una aplicación de préstamo de libros entre **personas** que permit
   * [6. Agradecimientos](#6-agradecimientos)
 
 - - - -
+<br>
 
 
 # 1. Funcionamiento de la aplicación
@@ -146,6 +152,7 @@ Clase | Clase víctima del cascada | Razón
 [Préstamo](./src/com/booking/persistencia/Prestamo.java) | [Stack](./src/com/booking/persistencia/Stack.java) | Naturaleza de la relación (no puede haber pilas de libros prestados sin su préstamo)
 
 - - - -
+<br>
 
 # 2. Documentación
 
@@ -173,6 +180,7 @@ Es un representación gráfica de todas las versiones (commits) por las que ha p
 
 
 - - - -
+<br>
 
 
 # 3. ¿Cómo ejecutar la aplicación?
@@ -226,6 +234,7 @@ Puedes usar esta opción si:
 4. Ejecutar el *Main.java*.
 
 - - - -
+<br>
 
 # 4. Objetivos
 
@@ -260,6 +269,7 @@ Puedes usar esta opción si:
 > :construction: This is work in progress my frienderino! :construction:
 
 - - - -
+<br>
 
 # 5. Especificaciones de desarrollo
 
@@ -287,6 +297,7 @@ Puedes usar esta opción si:
 > :construction: Estamos repartiendo alquitrán por aquí, vuelve más tarde :construction:
 
 - - - -
+<br>
 
 # 6. Agradecimientos
 
