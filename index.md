@@ -10,11 +10,11 @@ Boo-King es una aplicación de préstamo de libros entre **personas** que permit
 # Navegación
 <br>
 
-> [Repositorio GitHub](https://github.com/ismenc/Boo-King)<br>
-> [Página del proyecto](https://ismenc.github.io/Boo-King/)<br>
-> [Historial de versiones](https://github.com/ismenc/Boo-King/network)<br>
-> [Descargas](https://github.com/ismenc/Boo-King/releases)<br>
-> [Tareas y mejoras propuestas](https://github.com/ismenc/Boo-King/issues)<br>
+* [Repositorio GitHub](https://github.com/ismenc/Boo-King)<br>
+* [Página del proyecto](https://ismenc.github.io/Boo-King/)<br>
+* [Historial de versiones](https://github.com/ismenc/Boo-King/network)<br>
+* [Descargas](https://github.com/ismenc/Boo-King/releases)<br>
+* [Tareas y mejoras propuestas](https://github.com/ismenc/Boo-King/issues)<br>
 <br>
 
 - - - -
@@ -260,6 +260,7 @@ Puedes usar esta opción si:
   - [X] Calidad de la documentación
   
 ## Desarrollo de interfaces
+<br>
 
 > This is work in progress my frienderino!
 
@@ -288,6 +289,7 @@ Puedes usar esta opción si:
 * A mi pesar he tenido que renunciar a presentar la interfaz gráfica y funcionalidades como la paginación en los plazos.
 
 ## Desarrollo de interfaces
+<br>
 
 > Estamos repartiendo alquitrán por aquí, vuelve más tarde
 
