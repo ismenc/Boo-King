@@ -109,7 +109,7 @@ Para conectar nuestro programa Java con MySQL hacemos uso de la librería *Hiber
 
 #### Diagrama de clases
 
-![picture alt](./docs/DiagramaClases.jpg "**Aquí va la imagen de clases**")
+![Imagen de clases](/doc/DiagramaClases.jpg "**Aquí va la imagen de clases**")
 
 #### Consultas realizadas
 
