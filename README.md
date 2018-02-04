@@ -109,10 +109,10 @@ Para conectar nuestro programa Java con MySQL hacemos uso de la librería *Hiber
 
 #### Diagrama de clases
 
-![Imagen de clases](/assets/diagramaclases.jpg "**Aquí va la imagen de clases**")
 <img src="https://guides.github.com/activities/hello-world/branching.png" alt="">
-<img src="/assets/diagramaclases.jpg">
-<img src="/assets/diagramaclases.JPG">
+<img src="./assets/diagramaclases.jpg" alt="">
+Separador
+<img src="https://github.com/ismenc/Boo-King/blob/master/assets/diagramaclases.jpg" alt="">
 
 #### Consultas realizadas
 
