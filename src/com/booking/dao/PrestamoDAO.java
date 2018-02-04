@@ -90,7 +90,7 @@ public class PrestamoDAO extends GenericEntity<Prestamo> {
 		Query query = session.createQuery("SELECT MIN(p.fecha) FROM Prestamo p");
 		
 		// Comprobación de que haya fechas
-		if (query.uniqueResult() == null)
+		if (query.uniqueResult() != null)
 			fecha =((Date) query.uniqueResult()).toString();
 		else
 			fecha = "No hay registros.";

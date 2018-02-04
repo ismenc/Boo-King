@@ -1,4 +1,6 @@
-/*
+
+/* --------------------------- CONSULTAS SQL ---------------------------
+
 create table arrendador (id int AUTO_INCREMENT primary key not null, nombre varchar(50) not null, 
 	entidad varchar(50), telefono varchar(11) not null, direccion varchar(100) not null, 
 	codigoPostal varchar(10) not null);
@@ -19,12 +21,13 @@ create table stack(id int AUTO_INCREMENT primary key not null, idPrestamo int, i
 COMMIT
 */
 
+-- ----------------------- SCRIPT -----------------------
 -- phpMyAdmin SQL Dump
 -- version 4.7.4
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 30-01-2018 a las 18:04:19
+-- Tiempo de generación: 04-02-2018 a las 09:44:19
 -- Versión del servidor: 10.1.29-MariaDB
 -- Versión de PHP: 7.2.0
 
@@ -64,7 +67,12 @@ CREATE TABLE `arrendador` (
 
 INSERT INTO `arrendador` (`id`, `nombre`, `entidad`, `telefono`, `direccion`, `codigoPostal`) VALUES
 (1, 'Ismael', '', '34999888777', 'Benajete, 100', '41510'),
-(2, 'Juan Manue Pere Romuald', 'Ayala', '34656565656', 'Polígono Azucena, 26', '5100');
+(2, 'Juan Manue Pere Romuald', 'Ayala', '34656565656', 'Polígono Azucena, 26', '5100'),
+(4, 'Paco Manue', NULL, '111222333', 'Arrabal, 15', '51000'),
+(5, 'Lucía', NULL, '123456789', 'Lucero de Almadena, 5', '43260'),
+(6, 'Agapito Pérez Blancaflor', NULL, '255638994', 'Melainventao, 1000', '41510'),
+(7, 'Asunción del Amor de Dios', 'Google', '222555888', 'MountainView, 8', '26262'),
+(8, 'Alejander Jiménez Gómez', 'Mahou', '444666332', 'Lalalandia, 19', '18023');
 
 -- --------------------------------------------------------
 
@@ -87,7 +95,12 @@ CREATE TABLE `libro` (
 
 INSERT INTO `libro` (`id`, `titulo`, `autor`, `editorial`, `categoria`, `anoPublicacion`) VALUES
 (1, 'Don Quixote de la Mancha', 'Cervantes', 'Cervicales', 0, '1605'),
-(2, 'The Obstacle is the Way', 'Ryan Holiday', 'Yokse', 4, '2005');
+(2, 'The Obstacle is the Way', 'Ryan Holiday', 'Yokse', 4, '2005'),
+(3, 'Awakening the Giant Within', 'Anthony Robbins', 'Clave debolsillo', 4, '1998'),
+(4, 'Emotional Intelligence', 'Daniel Goleman', 'Unknown', 4, '1953'),
+(5, 'Spiderman', 'Stan Lee', 'Marvel', 1, '1980'),
+(6, 'Campos de castilla', 'Antonio Machado', 'Clave', 2, '1912'),
+(7, 'Las biografías están sobrevaloradas', 'Yo', 'Obelisco', 3, '1994');
 
 -- --------------------------------------------------------
 
@@ -107,8 +120,17 @@ CREATE TABLE `prestamo` (
 --
 
 INSERT INTO `prestamo` (`id`, `fecha`, `duracionDias`, `idArrendador`) VALUES
-(2, '2018-01-26', 5, 2),
-(4, '2018-01-26', 4, 1);
+(2, '2017-05-14', 5, 2),
+(4, '2017-06-03', 10, 1),
+(5, '2017-06-30', 7, 1),
+(6, '2017-11-08', 100, 5),
+(7, '2018-01-02', 280, 8),
+(8, '2018-01-08', 27, 5),
+(9, '2018-01-17', 145, 4),
+(10, '2018-02-01', 31, 7),
+(11, '2018-02-04', 57, 5),
+(12, '2018-02-04', 160, 6),
+(13, '2018-02-04', 189, 2);
 
 -- --------------------------------------------------------
 
@@ -129,7 +151,23 @@ CREATE TABLE `stack` (
 
 INSERT INTO `stack` (`id`, `idLibro`, `cantidad`, `idPrestamo`) VALUES
 (2, 2, 3, 2),
-(4, 1, 3, 4);
+(4, 1, 3, 4),
+(5, 1, 3, 5),
+(6, 2, 1, 5),
+(7, 3, 2, 6),
+(8, 5, 3, 6),
+(9, 7, 1, 6),
+(10, 1, 1, 6),
+(11, 2, 1, 7),
+(12, 3, 6, 8),
+(13, 2, 3, 8),
+(14, 6, 1, 9),
+(15, 5, 1, 10),
+(16, 7, 1, 11),
+(17, 6, 1, 11),
+(18, 6, 40, 12),
+(19, 7, 65, 12),
+(20, 3, 1, 13);
 
 --
 -- Índices para tablas volcadas
@@ -170,25 +208,25 @@ ALTER TABLE `stack`
 -- AUTO_INCREMENT de la tabla `arrendador`
 --
 ALTER TABLE `arrendador`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `libro`
 --
 ALTER TABLE `libro`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `prestamo`
 --
 ALTER TABLE `prestamo`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT de la tabla `stack`
 --
 ALTER TABLE `stack`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- Restricciones para tablas volcadas

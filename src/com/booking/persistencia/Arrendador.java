@@ -159,7 +159,7 @@ public class Arrendador extends ObjetoBookingGenerico implements Serializable {
 		StringBuilder cadena = new StringBuilder(150);
 		
 		cadena.append("------> " + nombre + " <------\n");
-		if(!entidad.equals("") && !entidad.equals(" "))
+		if(!(entidad==null) && !entidad.equals(" "))
 			cadena.append("Organización: " + entidad + "\n");
 		cadena.append("Dirección: "+ direccion + "\n");
 		cadena.append("Código postal: " + codigoPostal + "\n");

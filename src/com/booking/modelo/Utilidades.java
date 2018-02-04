@@ -478,6 +478,10 @@ public class Utilidades {
 	 **********************************************/
 	public static void consultarArrendadoresPorNombre() throws BookingException {
 		String nombre = solicitarCadena("Introduce el nombre: ");
+		
+		if(nombre.length() < 3)
+			throw new BookingException("Debe introducir un nombre válido.");
+		
 		List<Arrendador> resultado = arrendadorDao.obtenerPorNombre(nombre);
 		
 		if(resultado.isEmpty())
@@ -539,12 +543,12 @@ public class Utilidades {
 		int librosPrestados = stackDao.totalLibrosPrestados();
 		double mediaLibrosPorArrendador = prestamoDao.mediaLibrosPrestados();
 		
-		System.out.println("Ahí van algunas estadísticas sobre nuestro engocio: \n"
+		System.out.printf("Ahí van algunas estadísticas sobre nuestro engocio: \n"
 				+ " Total de arrendadores registrados: "+ numeroArrendadores + "\n"
 				+ " Fecha del primer préstamo realizado: "+ fechaPrimerPrestamo + "\n"
 				+ " Total de préstamos realizados: "+ prestamos + "\n"
 				+ " Total de libros que han sido prestados: "+ librosPrestados + "\n"
-				+ " Media de libros prestados por persona: " + mediaLibrosPorArrendador);
+				+ " Media de libros prestados por persona: %.2f\n", mediaLibrosPorArrendador);
 	}
 	
 	/* ==============XXX==============|  Métodos obsoletos  |==============XXX==============  */
