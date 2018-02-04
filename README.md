@@ -1,15 +1,15 @@
-# Boo-King
+# Descripción
 
 
 Boo-King es una aplicación de préstamo de libros entre **personas** que permite almacenar datos de libros, arrendadores y préstamos en una base de datos MySQL. La aplicación nos permitirá manipular estos datos de una forma mucho más *user-friendly*. Los receptores de préstamos se han obviado para simplificar un poco el proyecto :sweat_smile:.
-> No ha sido un proyecto fácil y, aunque el resultado no es atractivo visualmente, se han aprendido muchas cosas y ha merecido la pena :dancer:.
+> No ha sido un proyecto fácil y, aunque el resultado no es atractivo visualmente, se han aprendido muchas cosas y ha merecido la pena :dancer:
 
 * Navegación
-  * [Repositorio GitHub](https://github.com/ismenc/Boo-King)
-  * [Página del proyecto](https://ismenc.github.io/Boo-King/)
-  * [Historial de versiones](https://github.com/ismenc/Boo-King/network)
-  * [Descargas](https://github.com/ismenc/Boo-King/releases)
-  * [Tareas y mejoras propuestas](https://github.com/ismenc/Boo-King/issues)
+  * [:octocat: Repositorio GitHub](https://github.com/ismenc/Boo-King)
+  * [:globe_with_meridians: Página del proyecto](https://ismenc.github.io/Boo-King/)
+  * [:scroll: Historial de versiones](https://github.com/ismenc/Boo-King/network)
+  * [:arrow_down: Descargas](https://github.com/ismenc/Boo-King/releases)
+  * [:memo: Tareas y mejoras propuestas](https://github.com/ismenc/Boo-King/issues)
 
 - - - -
 
@@ -23,10 +23,12 @@ Boo-King es una aplicación de préstamo de libros entre **personas** que permit
   * [Documentación](#documentación)
     * [Manual del proyecto](#manual-del-proyecto)
     * [Documentación JavaDoc](#documentación-javadoc)
+    * [Diagrama de clases](#diagrama-de-clases)
     * [Historial de versiones](#historial-de-versiones)
   * [Cómo ejecutar la aplicación](#cómo-ejecutar-la-aplicación)
     * [Base de datos](#base-de-datos)
-    * [Lanzar aplicación Java](#lanzar-aplicación-java)
+    * [Aplicación Boo-King](#aplicación-boo-king)
+    * [Ejecución a través de IDE](#ejecución-a-través-de-un-ide)
   * [Cumplimiento de objetivos](#objetivos)
     * [Acceso a datos](#acceso-a-datos)
     * [Desarrollo de interfaces](#desarrollo-de-interfaces)
@@ -109,7 +111,7 @@ Para conectar nuestro programa Java con MySQL hacemos uso de la librería *Hiber
 
 #### Diagrama de clases
 
-<img src="./assets/diagramaclases.jpg" alt="">
+<img src="./doc/diagramaclases.jpg" alt="">
 
 #### Consultas realizadas
 
@@ -145,17 +147,22 @@ Clase | Clase víctima del cascada | Razón
 
 ## Documentación
 
-Toda la **documentación** se encuentra en la carpeta [doc](./doc/) incluyendo los siguientes documentos.
+:information_source: La información y **documentación** se encuentra en la carpeta [doc](./doc/) incluyendo los siguientes documentos.
 
 ### Manual del proyecto
 
 Se trata de un white paper o manual dónde se explica el proyecto Boo-King. 
-> Puedes encontrarlo en el [dosier del proyecto](./doc/dosier/Booking.pdf).
+> Es el documento actual [README.md]().
 
-### Documentación Javadoc
+### Documentación JavaDoc
 
-Es la documentación web generada a partir de los comentarios Javadoc en código, principalmente para desarrolladores y colaboradores.
-> Puedes acceder a ella a través del [índice Javadoc](./doc/index.html).
+Es la documentación web generada a partir de los comentarios JavaDoc en código, principalmente para desarrolladores y colaboradores.
+> Puedes acceder a ella a través del [Index JavaDoc](./doc/index.html).
+
+### Diagrama de clases
+
+Es el **esquema UML** que representa las clases persistencia de Hibernate y sus relaciones entre sí.
+> [Diagrama de clases](./doc/diagramaclases.jpg)
 
 ### Historial de versiones
 
@@ -174,10 +181,47 @@ Es un representación gráfica de todas las versiones (commits) por las que ha p
 2. Desde PHPMyAdmin, crear la base de datos 'booking'.
 3. Importar el archivo [BaseDatos.sql](BaseDatos.sql) en la base de datos que acabamos de crear.
 
-### Lanzar aplicación Java
+### Aplicación Boo-King
 
-1. Configurar datos de acceso a BD en el archivo [hibernate.cfg.xml](./src/hibernate.cfg.xml).
-2. Lanzar Main.java desde un entorno de desarrollo Java.u
+:exclamation::exclamation::exclamation: Los ejecutables son sólo válidos si tus datos de acceso a la BD son:
+Usuario: `root`
+Contraseña: `123456`
+:exclamation::exclamation::exclamation:
+
+En el caso de que esto no sea así, salta al punto: [Ejecución a través de IDE](#ejecución-a-través-de-un-ide).
+
+#### Linux
+
+1. Descargar el archivo *Boo-King-linux.run* en [releases](https://github.com/ismenc/Boo-King/releases).
+2. Ejecútalo.
+3. (Si no funciona) Abrir terminal en el directorio del archivo y darle permisos de ejecución `sudo chmod +x Boo-King.jar`
+
+#### Windows
+
+1. Descargar el archivo *Boo-King-windows.zip* en [releases](https://github.com/ismenc/Boo-King/releases).
+2. Ejecuta el launcher.
+
+#### Si no lanzan los ejecutables
+
+:warning: Asegúrate de que has leido la advertencia de [Aplicación Boo-King](#aplicación-boo-king).
+1. Descarga el archivo *Boo-King.jar* en [releases](https://github.com/ismenc/Boo-King/releases).
+2. Abre una terminal cmd o linux y navega a la carpeta dónde lo has descargado mediante el comando `cd carpeta`.
+3. Escribe el comando `java -jar Boo-King.jar`.
+
+### Ejecución a través de un IDE
+
+Puedes usar esta opción si:
+
+:red_circle: Tus datos de acceso no son `root` y `123456`.
+
+:broken_heart: Si las otras alternativas no funcionaron.
+
+:thumbsup: Si deseas ver y modificar el código fuente.
+
+1. Descargar código fuente del proyecto en [releases](https://github.com/ismenc/Boo-King/releases).
+2. Impórtalo en tu IDE Java favorito.
+3. Configurar datos de acceso a BD en el archivo *hibernate.cfg.xml*.
+4. Ejecutar el *Main.java*.
 
 - - - -
 
@@ -196,7 +240,7 @@ Es un representación gráfica de todas las versiones (commits) por las que ha p
 	- [X] Deben poder realizarse operaciones de modificación de al menos una tabla de la BD
 	- [X] Deben poder realizarse operaciones de baja de al menos una tabla de la BD
 	- [X] Utilización del patrón DAO
-	- [X] Gestión de transacciones (?)
+	- [X] Gestión de transacciones :grey_question:
 
 * Aspiras alto, amigo
 	- [X] Existencia de una relación N:M implementada como dos relaciones y 1:N
