@@ -10,11 +10,11 @@ Boo-King es una aplicación de préstamo de libros entre **personas** que permit
 # Navegación
 <br>
 
-> [:octocat: Repositorio GitHub](https://github.com/ismenc/Boo-King)<br>
-> [:globe_with_meridians: Página del proyecto](https://ismenc.github.io/Boo-King/)<br>
-> [:scroll: Historial de versiones](https://github.com/ismenc/Boo-King/network)<br>
-> [:arrow_down: Descargas](https://github.com/ismenc/Boo-King/releases)<br>
-> [:memo: Tareas y mejoras propuestas](https://github.com/ismenc/Boo-King/issues)<br>
+> [Repositorio GitHub](https://github.com/ismenc/Boo-King)<br>
+> [Página del proyecto](https://ismenc.github.io/Boo-King/)<br>
+> [Historial de versiones](https://github.com/ismenc/Boo-King/network)<br>
+> [Descargas](https://github.com/ismenc/Boo-King/releases)<br>
+> [Tareas y mejoras propuestas](https://github.com/ismenc/Boo-King/issues)<br>
 <br>
 
 - - - -
@@ -219,11 +219,9 @@ Asegúrate de que has leido la advertencia de [Aplicación Boo-King](#aplicació
 
 Puedes usar esta opción si:
 
-Tus datos de acceso no son `root` y `123456`.
-
-Si las otras alternativas no funcionaron.
-
-Si deseas ver y modificar el código fuente.
+* Tus datos de acceso no son `root` y `123456`.
+* Si las otras alternativas no funcionaron.
+* Si deseas ver y modificar el código fuente.
 
 1. Descargar código fuente del proyecto en [releases](https://github.com/ismenc/Boo-King/releases).
 2. Impórtalo en tu IDE Java favorito.
