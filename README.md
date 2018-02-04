@@ -186,28 +186,28 @@ Es un representación gráfica de todas las versiones (commits) por las que ha p
 ### Acceso a Datos
 
 * Requisitos mínimos
-	* - [X] La BD debe constar de al menos tres tablas relacionadas entre si
-	* - [X] Deben existir relaciones 1:N (al menos 1)
-	* - [X] Debe existir algún campo autonumérico
-	* - [X] Tipo enumerado en alguna tabla
-	* - [X] Validaciones con Hibernate Validator
-	* - [X] Deben poder realizarse operaciones de inserción en todas las tablas de la BD (>= 3)
-	* - [X] Deben poder realizarse operaciones de consultas HQL de todas las tablas de la BD (>= 3)
-	* - [X] Deben poder realizarse operaciones de modificación de al menos una tabla de la BD
-	* - [X] Deben poder realizarse operaciones de baja de al menos una tabla de la BD
-	* - [X] Utilización del patrón DAO
-	* - [X] Gestión de transacciones (?)
+	- [X] La BD debe constar de al menos tres tablas relacionadas entre si
+	- [X] Deben existir relaciones 1:N (al menos 1)
+	- [X] Debe existir algún campo autonumérico
+	- [X] Tipo enumerado en alguna tabla
+	- [X] Validaciones con Hibernate Validator
+	- [X] Deben poder realizarse operaciones de inserción en todas las tablas de la BD (>= 3)
+	- [X] Deben poder realizarse operaciones de consultas HQL de todas las tablas de la BD (>= 3)
+	- [X] Deben poder realizarse operaciones de modificación de al menos una tabla de la BD
+	- [X] Deben poder realizarse operaciones de baja de al menos una tabla de la BD
+	- [X] Utilización del patrón DAO
+	- [X] Gestión de transacciones (?)
 
 * Aspiras alto, amigo
-	* - [X] Existencia de una relación N:M implementada como dos relaciones y 1:N
-	* - [ ] Existencia de relación 1:N ordenada
-	* - [X] Tipo fecha en alguna tabla
-	* - [ ] Paginación
-	* - [X] Métodos java de validación
-	* - [X] Existencia de claves únicas
-	* - [X] Complejidad de la aplicación, de las consultas y operaciones realizadas
-	* - [X] Calidad de software y estilo de programación. YEA
-	* - [X] Calidad de la documentación
+	- [X] Existencia de una relación N:M implementada como dos relaciones y 1:N
+	- [ ] Existencia de relación 1:N ordenada
+	- [X] Tipo fecha en alguna tabla
+	- [ ] Paginación
+	- [X] Métodos java de validación
+	- [X] Existencia de claves únicas
+	- [X] Complejidad de la aplicación, de las consultas y operaciones realizadas
+	- [X] Calidad de software y estilo de programación. YEA
+	- [X] Calidad de la documentación
   
 ### Desarrollo de interfaces
 
