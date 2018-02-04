@@ -29,3 +29,4 @@ footer-links:
   
   plugins:
   - jemoji
+  gems: ["emoji_for_jekyll"]

@@ -35,6 +35,7 @@ Boo-King es una aplicación de préstamo de libros entre **personas** que permit
   * [Desarrollo](#especificaciones-de-desarrollo)
     * [Acceso a datos](#acceso-a-datos-1)
     * [Desarrollo de interfaces](#desarrollo-de-interfaces-1)
+  * [Agradecimientos](#agradecimientos)
 
 - - - -
 
@@ -281,3 +282,18 @@ Puedes usar esta opción si:
 ### Desarrollo de interfaces
 
 > :construction: Estamos repartiendo alquitrán por aquí, vuelve más tarde :construction:
+
+- - - -
+
+## Agradecimientos
+
+
+Agradecimientos especiales a las siguientes personas sin las cuales el proyecto no podría haber acabado:
+* Profesora Fátima Olías que ha transmitido sus conocimientos y me ha salvado de obstáculos importantes :heart_eyes:
+* Compañeros de clase que, aunque algo pillos, siempre están ahí :stuck_out_tongue_closed_eyes:
+* StackOveflow, cuna de programadores :computer:
+* GitHub, plataforma en la que se basa estas páginas :octocat:
+
+> Hasta el siguiente!!
+:kissing_closed_eyes:
+
