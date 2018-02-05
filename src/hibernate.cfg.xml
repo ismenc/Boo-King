@@ -7,7 +7,7 @@
     <property name="connection.username">root</property>
     <property name="connection.password">123456</property>
     <property name="dialect">org.hibernate.dialect.MySQL5Dialect</property>
-    <property name="hibernate.show_sql">true</property>
+    <property name="hibernate.show_sql">false</property>
 
 	<mapping class="com.booking.persistencia.Arrendador"/>
 	<mapping class="com.booking.persistencia.Prestamo"/>

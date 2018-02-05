@@ -201,7 +201,7 @@ En el caso de que esto no sea así, salta al punto: [Ejecución a través de IDE
 
 1. Descargar el archivo *Boo-King-linux.run* en [releases](https://github.com/ismenc/Boo-King/releases).
 2. Ejecútalo.
-3. (Si no funciona) Abrir terminal en el directorio del archivo y darle permisos de ejecución `sudo chmod +x Boo-King.jar`
+3. (Si no funciona) Abrir terminal en el directorio del archivo y darle permisos de ejecución `sudo chmod +x Boo-King.jar` o probar a ejecutar con `./Boo-King*-linux.run`
 
 #### Windows
 

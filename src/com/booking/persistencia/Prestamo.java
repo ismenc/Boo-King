@@ -122,11 +122,11 @@ public class Prestamo extends ObjetoBookingGenerico implements Serializable {
 	public String informacionDetalle() {
 		StringBuilder cadena = new StringBuilder(150);
 		
-		cadena.append("------> Préstamo " + idPrestamo + " <------\n");
-		cadena.append("Arrendador: " + arrendador.getNombre() + "\n");
-		cadena.append("Fecha: "+ fecha + "\n");
-		cadena.append("Duración: "+ duracionDias + " días\n");
-		cadena.append("Libros: ");
+		cadena.append("-----------> Préstamo " + idPrestamo + " <-----------\n");
+		cadena.append("\tArrendador: " + arrendador.getNombre() + "\n");
+		cadena.append("\tFecha: "+ fecha + "\n");
+		cadena.append("\tDuración: "+ duracionDias + " días\n");
+		cadena.append("\tLibros: \n");
 		
 		@SuppressWarnings("rawtypes")
 		Iterator iterator;
@@ -134,6 +134,7 @@ public class Prestamo extends ObjetoBookingGenerico implements Serializable {
 			Stack stack = (Stack) iterator.next();
 			cadena.append(stack.getCantidad() + "x " + stack.getLibro().getTitulo() + "\n");
 		}
+		cadena.append("-----------------------------------");
 		
 		return cadena.toString();
 	}

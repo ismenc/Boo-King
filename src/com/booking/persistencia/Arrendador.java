@@ -158,12 +158,12 @@ public class Arrendador extends ObjetoBookingGenerico implements Serializable {
 	public String informacionDetalle() {
 		StringBuilder cadena = new StringBuilder(150);
 		
-		cadena.append("------> " + nombre + " <------\n");
+		cadena.append("----------> " + nombre + " <----------\n");
 		if(!(entidad==null) && !entidad.equals(" "))
-			cadena.append("Organización: " + entidad + "\n");
-		cadena.append("Dirección: "+ direccion + "\n");
-		cadena.append("Código postal: " + codigoPostal + "\n");
-		cadena.append("Teléfono: " + telefono + "\n");
+			cadena.append("\tOrganización: " + entidad + "\n");
+		cadena.append("\tDirección: "+ direccion + "\n");
+		cadena.append("\tCódigo postal: " + codigoPostal + "\n");
+		cadena.append("\tTeléfono: " + telefono + "\n");
 		
 		if(!listaPrestamos.isEmpty()) {
 			cadena.append("Préstamos: ");
@@ -177,6 +177,7 @@ public class Arrendador extends ObjetoBookingGenerico implements Serializable {
 			cadena.append(".\n");
 		}else
 			cadena.append("No ha realizado ningún préstamo.");
+		cadena.append("------------------------------");
 		
 		return cadena.toString();
 	}

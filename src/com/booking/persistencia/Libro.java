@@ -129,11 +129,12 @@ public class Libro extends ObjetoBookingGenerico implements Serializable {
 	public String informacionDetalle() {
 		StringBuilder cadena = new StringBuilder(150);
 		
-		cadena.append("------> " + titulo + " <------\n");
-		cadena.append("Autor: " + autor + "\n");
-		cadena.append("Editorial: "+ editorial + "\n");
-		cadena.append("Categoría: " + categoria.name() + "\n");
-		cadena.append("Año de publicación: " + anoPublicacion + "\n");
+		cadena.append("---------> " + titulo + " <---------\n");
+		cadena.append("\tAutor: " + autor + "\n");
+		cadena.append("\tEditorial: "+ editorial + "\n");
+		cadena.append("\tCategoría: " + categoria.name() + "\n");
+		cadena.append("\tAño de publicación: " + anoPublicacion + "\n");
+		cadena.append("-----------------------------------------");
 		
 		return cadena.toString();
 	}

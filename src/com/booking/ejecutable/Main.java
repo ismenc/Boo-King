@@ -17,6 +17,7 @@ public class Main {
 		
 		Utilidades.configurarSesion();
 		
+		mostrarMensajeBienvenida();
 		lanzarMenu();
 
 		Utilidades.cerrarSesion();
@@ -27,15 +28,17 @@ public class Main {
 	
 	private static void lanzarMenu() {
 		int opcion;
-		try {
-			do {
+		
+		do {
+			try {
 				opcion = Utilidades.mostrarMenu();
 				tratarMenu(opcion);
-			} while (opcion != Utilidades.TOTAL_OPCIONES);
-		}
-		catch (NumberFormatException e) {
-			System.out.println("Debe introducir un número.");
-		}
+			}
+			catch (NumberFormatException e) {
+				System.out.println("Debe introducir un número.");
+				opcion = 0;
+			}
+		} while (opcion != Utilidades.TOTAL_OPCIONES);
 	}
 
 	private static void tratarMenu(int decision) throws NumberFormatException {
@@ -78,6 +81,15 @@ public class Main {
 		}
 	}
 	
-	
+	private static void mostrarMensajeBienvenida() {
+		System.out.println(
+				"+-----------------------------------+\n"
+				+ "|Bienvenido a nuestro marketplace...|\n"
+				+ "|---------> Boo-King.com <----------|\n"
+				+ "|                                   |\n"
+				+ "| Dale vida a eso libros empolvados |\n"
+				+ "|   Solicita libros prestados       |\n"
+				+ "+-----------------------------------+");
+	}
 
 }
