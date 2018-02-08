@@ -150,6 +150,16 @@ Clase | Clase víctima del cascada | Razón
 [Arrendador](./src/com/booking/persistencia/Arrendador.java) | [Préstamo](./src/com/booking/persistencia/Prestamo.java) | Naturaleza de la relación (préstamo no puede existir sin arrendador)
 [Préstamo](./src/com/booking/persistencia/Prestamo.java) | [Stack](./src/com/booking/persistencia/Stack.java) | Naturaleza de la relación (no puede haber pilas de libros prestados sin su préstamo)
 
+#### Validaciones
+
+Se han implementado validaciones en los objetos con hibernate validator, tales validaciones incluyen:
+* Introducción de números, máximos y mínimos.
+* Limitación de cadenas de carácteres.
+* Patrones
+* Condiciones definidas en métodos
+* Tipo fecha
+* Objetos válidos
+
 - - - -
 <br>
 
@@ -277,6 +287,7 @@ Puedes usar esta opción si:
 
 ### Cosas que caben destacar
 
+* Validaciones realizadas en métodos, ver [Validaciones](#validaciones).
 * En todo momento he deseado superarme programando este proyecto, a nivel de organización, documentación, control de versiones y presentación. Sé que no he hecho un proyecto atractivo por fuera, pero he intentado que por dentro sea *adorable*.
 
   > La verdad es que estoy tan ~~muerto~~ fuera de combate que no quiero ni saber qué nota tendrá.
