@@ -13,9 +13,9 @@ create table libro(id int AUTO_INCREMENT primary key not null, titulo varchar(50
 	
 BEGIN;
 
-create table prestamo(id int AUTO_INCREMENT primary key not null, fecha date not null, duracionDias int not null, idArrendador int,
+create table prestamo(id int AUTO_INCREMENT primary key not null, fecha date not null, duracionDias int not null, idArrendador int not null,
                      FOREIGN KEY(idArrendador) REFERENCES arrendador(id));
-create table stack(id int AUTO_INCREMENT primary key not null, idPrestamo int, idLibro int not null, cantidad int not null,
+create table stack(id int AUTO_INCREMENT primary key not null, idPrestamo int not null, idLibro int not null, cantidad int not null,
                   FOREIGN KEY(idPrestamo) REFERENCES prestamo(id),
                    FOREIGN KEY(idLibro) REFERENCES libro(id));
 COMMIT

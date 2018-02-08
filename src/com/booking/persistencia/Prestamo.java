@@ -19,6 +19,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.Valid;
+import javax.validation.constraints.AssertFalse;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
@@ -113,7 +114,16 @@ public class Prestamo extends ObjetoBookingGenerico implements Serializable {
 	}
 
 	/* ==============XXX==============|  Métodos  |==============XXX==============  */
-
+	
+	/**********************************************
+	 * Valida que el préstamo no se introduzca vacío
+	 * @return
+	 **********************************************/
+	@AssertFalse(message="El préstamo debe tener libros")
+	public boolean hasStacks() {
+		return listaStacks.isEmpty();
+	}
+	
 	/**********************************************
 	 * Muestra información en detalle del préstamo
 	 * @return

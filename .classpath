@@ -17,5 +17,9 @@
 	<classpathentry kind="lib" path="lib/validator/lib/required/validation-api-1.0.0.GA.jar"/>
 	<classpathentry kind="lib" path="lib/validator/hibernate-validator-4.3.0.Final.jar"/>
 	<classpathentry kind="lib" path="lib/validator/hibernate-validator-annotation-processor-4.3.0.Final.jar"/>
+	<classpathentry kind="lib" path="lib/validator/lib/optional/hibernate-jpa-2.0-api-1.0.1.Final.jar"/>
+	<classpathentry kind="lib" path="lib/validator/lib/optional/joda-time-1.6.jar"/>
+	<classpathentry kind="lib" path="lib/validator/lib/optional/jsoup-1.6.1.jar"/>
+	<classpathentry kind="lib" path="lib/validator/lib/optional/log4j-1.2.16.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

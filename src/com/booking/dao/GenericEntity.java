@@ -43,11 +43,11 @@ public class GenericEntity<T> {
 			session.beginTransaction();
 			session.save(entidad);
 			session.getTransaction().commit();
-			session.clear();
 		} 
 		// Excepciones provocados por Hibernate validator
 		catch (ConstraintViolationException cve) {
 			session.getTransaction().rollback();
+			session.clear();
 			StringBuilder error = new StringBuilder(300);
 			
 			error.append("No se ha podido insertar el "+ entidad.getClass().getName() + " debido a los siguientes errores:\n");
@@ -66,6 +66,7 @@ public class GenericEntity<T> {
 	public  void borrar(T entidad) {
 		session = HibernateUtil.getSessionFactory().getCurrentSession();
 		session.beginTransaction();
+		session.refresh(entidad);
 		session.delete(entidad);
 		session.getTransaction().commit();
 	}
@@ -85,6 +86,7 @@ public class GenericEntity<T> {
 		// Excepciones provocadas por hibernate validator
 		catch (ConstraintViolationException cve) {
 			session.getTransaction().rollback();
+			session.clear();
 			StringBuilder error = new StringBuilder(300);
 			
 			error.append("No se ha podido insertar el "+ entidad.getClass().getName() + " debido a los siguientes errores:\n");

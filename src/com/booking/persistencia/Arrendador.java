@@ -53,13 +53,12 @@ public class Arrendador extends ObjetoBookingGenerico implements Serializable {
 	@Column
 	@NotNull
 	// Valida entre 2 y 5 dígitos
-	@Pattern(regexp = ".*(^[0-9]{2,5}$)")
+	@Pattern(regexp = ".*(^[0-9]{2,5}$)", message="Debe ser 5 dígitos")
 	private String codigoPostal;
 	
 	@Column
 	@NotNull
-	// Valida entre 9 y 11 dígitos (por prefijos internacionales)
-	@Pattern(regexp = ".*(^[0-9]{9,11}$)")
+	@Pattern(regexp = ".*(^[0-9]{9,11}$)", message="Debe tener entre 9 y 11 digitos (prefijo + tlfn)")
 	private String telefono;
 	
 	@OneToMany(cascade=CascadeType.ALL, orphanRemoval = true)
