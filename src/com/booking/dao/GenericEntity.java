@@ -43,6 +43,7 @@ public class GenericEntity<T> {
 			session.beginTransaction();
 			session.save(entidad);
 			session.getTransaction().commit();
+			session.clear();
 		} 
 		// Excepciones provocados por Hibernate validator
 		catch (ConstraintViolationException cve) {
@@ -55,6 +56,7 @@ public class GenericEntity<T> {
 			}
 			throw new BookingException(error.toString());
 		}
+		
 	}
 	
 	/************************************************

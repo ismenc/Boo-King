@@ -176,7 +176,7 @@ public class Arrendador extends ObjetoBookingGenerico implements Serializable {
 			cadena.setLength(cadena.length()-2);
 			cadena.append(".\n");
 		}else
-			cadena.append("No ha realizado ningún préstamo.");
+			cadena.append("No ha realizado ningún préstamo.\n");
 		cadena.append("------------------------------");
 		
 		return cadena.toString();

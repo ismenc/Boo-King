@@ -9,7 +9,7 @@ import java.lang.NumberFormatException;
  * Clase principal de la aplicación Boo-King.
  * @author Ismael Núñez
  *******************************************/
-public class Main {
+public class MainBooking {
 		
 	/* ==============XXX==============|  Principal  |==============XXX==============  */
 	
