@@ -1,4 +1,4 @@
-package com.booking;
+package com.booking.ejecutable;
 
 import java.io.IOException;
 
@@ -20,7 +20,7 @@ public class MainGui extends Application {
         this.primaryStage.setTitle("BooKing");
         
 		iniciarRaiz();
-		mostrarVistaPrincipal();
+		mostrarVista("VistaPrincipal");
 	}
 	
 	/**
@@ -28,12 +28,10 @@ public class MainGui extends Application {
      */
     public void iniciarRaiz() {
         try {
-            // Load root layout from fxml file.
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(MainGui.class.getResource("vista/RootLayout.fxml"));
+            loader.setLocation(MainGui.class.getResource("../vista/RootLayout.fxml"));
             capaRaiz = (BorderPane) loader.load();
 
-            // Show the scene containing the root layout.
             Scene scene = new Scene(capaRaiz);
             primaryStage.setScene(scene);
             primaryStage.show();
@@ -45,15 +43,13 @@ public class MainGui extends Application {
     /**
      * Shows the person overview inside the root layout.
      */
-    public void mostrarVistaPrincipal() {
+    public void mostrarVista(String vista) {
         try {
-            // Load person overview.
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(MainGui.class.getResource("vista/VistaPrincipal.fxml"));
-            AnchorPane personOverview = (AnchorPane) loader.load();
+            loader.setLocation(MainGui.class.getResource("../vista/"+vista+".fxml"));
+            AnchorPane interfaz = (AnchorPane) loader.load();
 
-            // Set person overview into the center of root layout.
-            capaRaiz.setCenter(personOverview);
+            capaRaiz.setCenter(interfaz);
         } catch (IOException e) {
             e.printStackTrace();
         }
