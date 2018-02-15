@@ -2,7 +2,10 @@ package com.booking.ejecutable;
 
 import java.io.IOException;
 
+import com.booking.vista.ControladorConsultaArrendadores;
+
 import javafx.application.Application;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
@@ -66,4 +69,27 @@ public class MainGui extends Application {
 	public static void main(String[] args) {
 		launch(args);
 	}
+	
+	/**
+     * Shows the person overview inside the root layout.
+     */
+    public void showPersonOverview() {
+        try {
+            // Load person overview.
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainGui.class.getResource("../vista/MostrarArrendador.fxml"));
+            AnchorPane personOverview = (AnchorPane) loader.load();
+            
+            // Set person overview into the center of root layout.
+            capaRaiz.setCenter(personOverview);
+            
+            // Give the controller access to the main app.
+            ControladorConsultaArrendadores controller = loader.getController();
+            controller.setMainApp(this);
+            
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+	
 }

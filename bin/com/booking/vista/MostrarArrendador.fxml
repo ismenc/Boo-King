@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane minHeight="360.0" minWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8">
+   <children>
+      <TableView prefHeight="282.0" prefWidth="600.0">
+        <columns>
+          <TableColumn prefWidth="75.0" text="ID" />
+          <TableColumn prefWidth="115.0" text="Nombre" />
+            <TableColumn prefWidth="82.0" text="Organizacion" />
+            <TableColumn prefWidth="158.0" text="Direccion" />
+            <TableColumn prefWidth="77.0" text="Codigo Postal" />
+            <TableColumn prefWidth="92.0" text="Telefono" />
+        </columns>
+      </TableView>
+      <HBox layoutX="115.0" layoutY="306.0">
+         <children>
+            <Button layoutX="103.0" layoutY="307.0" mnemonicParsing="false" text="Pagina anterior" />
+            <Button layoutX="221.0" layoutY="307.0" mnemonicParsing="false" text="Pagina siguiente" />
+            <Button layoutX="374.0" layoutY="307.0" mnemonicParsing="false" text="Editar arrendador" />
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>
