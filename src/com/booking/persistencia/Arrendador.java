@@ -164,18 +164,22 @@ public class Arrendador extends ObjetoBookingGenerico implements Serializable {
 		cadena.append("\tCódigo postal: " + codigoPostal + "\n");
 		cadena.append("\tTeléfono: " + telefono + "\n");
 		
-		if(!listaPrestamos.isEmpty()) {
-			cadena.append("Préstamos: ");
-			@SuppressWarnings("rawtypes")
-			Iterator iterator;
-			for (iterator = listaPrestamos.iterator(); iterator.hasNext();) {
-				Prestamo prestamo = (Prestamo) iterator.next();
-				cadena.append(prestamo.getIdPrestamo() + ", ");
-			}
-			cadena.setLength(cadena.length()-2);
-			cadena.append(".\n");
-		}else
+		if(listaPrestamos != null) 
+			if(!listaPrestamos.isEmpty()) {
+				cadena.append("Préstamos: ");
+				@SuppressWarnings("rawtypes")
+				Iterator iterator;
+				for (iterator = listaPrestamos.iterator(); iterator.hasNext();) {
+					Prestamo prestamo = (Prestamo) iterator.next();
+					cadena.append(prestamo.getIdPrestamo() + ", ");
+				}
+				cadena.setLength(cadena.length()-2);
+				cadena.append(".\n");
+			}else
+				cadena.append("No ha realizado ningún préstamo.\n");
+		else
 			cadena.append("No ha realizado ningún préstamo.\n");
+			
 		cadena.append("------------------------------");
 		
 		return cadena.toString();
