@@ -9,7 +9,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 
-public class ControladorConsultaArrendadores {
+public class ControladorArrendadores {
 	
 	private MainGui mainApp;
 
@@ -28,7 +28,7 @@ public class ControladorConsultaArrendadores {
     @FXML
     private TableColumn<Arrendador, String> telefono;
     
-    public ControladorConsultaArrendadores() {
+    public ControladorArrendadores() {
     	
 	}
 	
@@ -56,7 +56,7 @@ public class ControladorConsultaArrendadores {
         this.mainApp = mainApp;
 
         // Add observable list data to the table
-        tablaArrendador.setItems( Utilidades.obtenerArrendadores() );
+        tablaArrendador.setItems( mainApp.getTablaArrendador() );
     }
     
     

@@ -2,9 +2,13 @@ package com.booking.ejecutable;
 
 import java.io.IOException;
 
-import com.booking.vista.ControladorConsultaArrendadores;
+import com.booking.modelo.Utilidades;
+import com.booking.persistencia.Arrendador;
+import com.booking.vista.ControladorArrendadores;
+import com.booking.vista.ControladorPrincipal;
 
 import javafx.application.Application;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -16,43 +20,44 @@ public class MainGui extends Application {
 	
 	private Stage primaryStage;
 	private BorderPane capaRaiz;
+	private AnchorPane menuPrincipal, vistaArrendadores;
+	private ObservableList<Arrendador> tablaArrendadores;
+	private ControladorPrincipal controladorMain;
 
 	@Override
 	public void start(Stage primaryStage) {
 		this.primaryStage = primaryStage;
         this.primaryStage.setTitle("BooKing");
         
+        
+        
 		iniciarRaiz();
-		mostrarVista("VistaPrincipal");
+		
 	}
 	
 	/**
-     * Initializes the root layout.
+     * Inicializa la ventana
      */
     public void iniciarRaiz() {
         try {
             FXMLLoader loader = new FXMLLoader();
+            FXMLLoader loader2 = new FXMLLoader();
+            
             loader.setLocation(MainGui.class.getResource("../vista/RootLayout.fxml"));
             capaRaiz = (BorderPane) loader.load();
+            
+            loader2.setLocation(MainGui.class.getResource("../vista/VistaPrincipal.fxml"));
+            menuPrincipal = (AnchorPane) loader2.load();
+            
+            controladorMain = loader2.getController();
+            controladorMain.setMainApp(this);
+            
+            capaRaiz.setCenter(menuPrincipal);
 
             Scene scene = new Scene(capaRaiz);
             primaryStage.setScene(scene);
+            
             primaryStage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    /**
-     * Shows the person overview inside the root layout.
-     */
-    public void mostrarVista(String vista) {
-        try {
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(MainGui.class.getResource("../vista/"+vista+".fxml"));
-            AnchorPane interfaz = (AnchorPane) loader.load();
-
-            capaRaiz.setCenter(interfaz);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -70,21 +75,24 @@ public class MainGui extends Application {
 		launch(args);
 	}
 	
+	public ObservableList<Arrendador> getTablaArrendador(){
+		return tablaArrendadores;
+	}
+	
 	/**
      * Shows the person overview inside the root layout.
      */
-    public void showPersonOverview() {
+    public void mostarArrendadores() {
         try {
-            // Load person overview.
+        	// FIXME Falla por aquí
+        	tablaArrendadores = FXCollections.observableArrayList(Utilidades.obtenerTablaArrendadores());
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(MainGui.class.getResource("../vista/MostrarArrendador.fxml"));
-            AnchorPane personOverview = (AnchorPane) loader.load();
+            vistaArrendadores = (AnchorPane) loader.load();
             
-            // Set person overview into the center of root layout.
-            capaRaiz.setCenter(personOverview);
+            capaRaiz.setCenter(vistaArrendadores);
             
-            // Give the controller access to the main app.
-            ControladorConsultaArrendadores controller = loader.getController();
+            ControladorArrendadores controller = loader.getController();
             controller.setMainApp(this);
             
         } catch (IOException e) {

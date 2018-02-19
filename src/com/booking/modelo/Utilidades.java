@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Observable;
 import java.util.Scanner;
 
 import org.hibernate.Session;
@@ -19,8 +18,6 @@ import com.booking.persistencia.Arrendador;
 import com.booking.persistencia.Libro;
 import com.booking.persistencia.Prestamo;
 import com.booking.persistencia.Stack;
-
-import javafx.collections.ObservableList;
 
 import com.booking.persistencia.ObjetoBookingGenerico;
 
@@ -474,9 +471,9 @@ public class Utilidades {
 	
 	// WIP  
 	
-	public static ObservableList<Arrendador> obtenerArrendadores(){
+	public static List<Arrendador> obtenerTablaArrendadores(){
 		GenericEntity<Arrendador> genericDao = new GenericEntity<Arrendador>(Arrendador.class);
-		ObservableList<Arrendador> lista = (ObservableList<Arrendador>) genericDao.obtenerTodos();
+		List<Arrendador> lista = genericDao.obtenerTodos();
 		return lista;
 	}
 	
