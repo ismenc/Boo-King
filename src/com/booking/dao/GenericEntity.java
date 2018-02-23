@@ -122,10 +122,12 @@ public class GenericEntity<T> {
 	@SuppressWarnings("unchecked")
 	public List<T> obtenerTodos()  {
 		
-		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		session = HibernateUtil.getSessionFactory().getCurrentSession();
+		session.beginTransaction();
 		Criteria criterio = session.createCriteria(claseAsociada);
-		
-		return criterio.list();
+		List<T> lista = criterio.list();
+		session.getTransaction().commit();
+		return lista;
 	}
 
 }

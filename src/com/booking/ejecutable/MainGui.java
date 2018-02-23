@@ -1,6 +1,7 @@
 package com.booking.ejecutable;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import com.booking.modelo.Utilidades;
 import com.booking.persistencia.Arrendador;
@@ -85,13 +86,18 @@ public class MainGui extends Application {
     public void mostarArrendadores() {
         try {
         	// FIXME Falla por aquí
-        	tablaArrendadores = FXCollections.observableArrayList(Utilidades.obtenerTablaArrendadores());
+        	ArrayList<Arrendador> tabla = new ArrayList<Arrendador>(Utilidades.obtenerTablaArrendadores());
+        	tablaArrendadores = FXCollections.observableArrayList(tabla);
+        	System.out.println(1);
+        	
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(MainGui.class.getResource("../vista/MostrarArrendador.fxml"));
+            
+            System.out.println(1);
             vistaArrendadores = (AnchorPane) loader.load();
             
             capaRaiz.setCenter(vistaArrendadores);
-            
+            System.out.println(1);
             ControladorArrendadores controller = loader.getController();
             controller.setMainApp(this);
             
