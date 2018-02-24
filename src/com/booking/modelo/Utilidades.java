@@ -469,12 +469,30 @@ public class Utilidades {
 		System.out.println("\n" + objetoElegido.informacionDetalle());
 	}
 	
-	// WIP  
+	// XXX
 	
 	public static List<Arrendador> obtenerTablaArrendadores(){
 		GenericEntity<Arrendador> genericDao = new GenericEntity<Arrendador>(Arrendador.class);
 		List<Arrendador> lista = genericDao.obtenerTodos();
 		return lista;
+	}
+	
+	public static <T> boolean actualizarObjeto(T objeto) throws BookingException {
+		boolean resultado = false;
+		GenericEntity<T> genericDao = new GenericEntity<T>(objeto.getClass());
+		genericDao.actualizar(objeto);
+		resultado = true;
+		
+		return resultado;
+	}
+	
+	public static <T> boolean insertarObjeto(T objeto) throws BookingException {
+		boolean resultado = false;
+		GenericEntity<T> genericDao = new GenericEntity<T>(objeto.getClass());
+		genericDao.guardar(objeto);
+		resultado = true;
+		
+		return resultado;
 	}
 	
 	

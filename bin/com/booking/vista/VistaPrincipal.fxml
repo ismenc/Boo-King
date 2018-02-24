@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
@@ -11,81 +16,49 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="380.0" maxWidth="680.0" prefHeight="300.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.booking.vista.ControladorPrincipal">
+<AnchorPane maxHeight="380.0" maxWidth="680.0" prefHeight="300.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.booking.vista.ControladorPrincipal">
    <children>
-      <SplitPane dividerPositions="0.3311036789297659" prefHeight="300.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <SplitPane dividerPositions="0.5" prefHeight="300.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <items>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="178.0">
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="298.0" prefWidth="285.0">
                <children>
-                  <Label layoutX="22.0" layoutY="61.0" text="Boo-King" textFill="#fc3232cf">
+                  <Label alignment="CENTER" contentDisplay="CENTER" layoutY="41.0" prefHeight="98.0" prefWidth="296.0" text="Boo-King" textFill="#fc3232cf" textOverrun="CLIP" wrapText="true" AnchorPane.bottomAnchor="159.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="41.0">
                      <font>
-                        <Font size="33.0" />
+                        <Font name="System Bold" size="33.0" />
                      </font>
                   </Label>
-                  <Label layoutX="22.0" layoutY="141.0" prefHeight="77.0" prefWidth="166.0" text="Tu app de prestamos de libros. La economia circular llega al mundo de la lectura" textFill="#010405c8" textOverrun="CLIP" wrapText="true">
+                  <Label layoutY="127.0" prefHeight="104.0" prefWidth="296.0" text="Tu app de prestamos de libros. La economia circular llega al mundo de la lectura" textAlignment="CENTER" textFill="#010405c8" textOverrun="CLIP" wrapText="true" AnchorPane.bottomAnchor="67.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="127.0">
                      <font>
                         <Font size="14.0" />
                      </font>
+                     <padding>
+                        <Insets left="45.0" right="45.0" />
+                     </padding>
                   </Label>
                </children>
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                <children>
-                  <GridPane alignment="CENTER" gridLinesVisible="true" layoutX="38.0" layoutY="66.0" prefHeight="298.0" prefWidth="389.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                    <columnConstraints>
-                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                    </columnConstraints>
-                    <rowConstraints>
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                    </rowConstraints>
+                  <VBox alignment="CENTER" layoutX="57.0" layoutY="65.0" prefHeight="298.0" prefWidth="397.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
-                        <VBox alignment="CENTER">
-                           <children>
-                              <Button minWidth="160.0" mnemonicParsing="false" onAction="#abrirVistaArrendador" text="Consultar arrendador" textOverrun="CLIP" />
-                              <Button minWidth="160.0" mnemonicParsing="false" text="Consultar prestamo">
-                                 <VBox.margin>
-                                    <Insets bottom="10.0" top="10.0" />
-                                 </VBox.margin></Button>
-                              <Button minWidth="160.0" mnemonicParsing="false" text="Consultar libro" />
-                           </children>
-                        </VBox>
-                        <VBox alignment="CENTER" GridPane.rowIndex="1">
-                           <children>
-                              <Button minWidth="160.0" mnemonicParsing="false" text="Modificar arrendador" />
-                              <Button minWidth="160.0" mnemonicParsing="false" text="Modificar prestamo">
-                                 <VBox.margin>
-                                    <Insets bottom="10.0" top="10.0" />
-                                 </VBox.margin>
-                              </Button>
-                              <Button minWidth="160.0" mnemonicParsing="false" text="Modificar datos libro" />
-                           </children>
-                        </VBox>
-                        <VBox alignment="CENTER" GridPane.columnIndex="1">
-                           <children>
-                              <Button minWidth="160.0" mnemonicParsing="false" text="Añadir un arrendador" />
-                              <Button minWidth="160.0" mnemonicParsing="false" text="Añadir un prestamo">
-                                 <VBox.margin>
-                                    <Insets bottom="10.0" top="10.0" />
-                                 </VBox.margin>
-                              </Button>
-                              <Button minWidth="160.0" mnemonicParsing="false" text="Añadir un nuevo libro" />
-                           </children>
-                        </VBox>
-                        <VBox alignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                           <children>
-                              <Button minWidth="160.0" mnemonicParsing="false" text="Borrar arrendador" />
-                              <Button minWidth="160.0" mnemonicParsing="false" text="Borrar prestamo">
-                                 <VBox.margin>
-                                    <Insets bottom="10.0" top="10.0" />
-                                 </VBox.margin>
-                              </Button>
-                              <Button minWidth="160.0" mnemonicParsing="false" text="Borar libro" />
-                           </children>
-                        </VBox>
+                        <Button minHeight="40.0" minWidth="200.0" mnemonicParsing="false" onAction="#abrirVistaArrendador" text="Administrar arrendadores" textOverrun="CLIP">
+                           <font>
+                              <Font name="Corbel" size="16.0" />
+                           </font></Button>
+                        <Button minHeight="40.0" minWidth="200.0" mnemonicParsing="false" text="Administrar libros">
+                           <VBox.margin>
+                              <Insets bottom="10.0" top="10.0" />
+                           </VBox.margin>
+                           <font>
+                              <Font name="Corbel" size="16.0" />
+                           </font>
+                        </Button>
+                        <Button minHeight="40.0" minWidth="200.0" mnemonicParsing="false" text="Administrar préstamos">
+                           <font>
+                              <Font name="Corbel" size="16.0" />
+                           </font></Button>
                      </children>
-                  </GridPane>
+                  </VBox>
                </children>
             </AnchorPane>
         </items>

@@ -1,11 +1,15 @@
 package com.booking.vista;
 
+
 import com.booking.ejecutable.MainGui;
+import com.booking.modelo.BookingException;
 import com.booking.modelo.Utilidades;
 import com.booking.persistencia.Arrendador;
 
 import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 
@@ -58,6 +62,68 @@ public class ControladorArrendadores {
         // Add observable list data to the table
         tablaArrendador.setItems( mainApp.getTablaArrendador() );
     }
+    
+    public void volverAlMenu() {
+    	mainApp.mostrarMenuPrincipal();
+    }
+    
+    
+    @FXML
+	private void nuevoArrendador() {
+		Arrendador arrendador = new Arrendador();
+		boolean okClicked = mainApp.editarArrendador(arrendador, true);
+		if (okClicked) {
+			// Habría que refrescar la tabla.
+			mainApp.mostarArrendadores();
+		}
+	}
+
+	/**
+	 * Called when the user clicks the edit button. Opens a dialog to edit
+	 * details for the selected person.
+	 */
+	@FXML
+	private void editarArrendador() {
+		Arrendador arrendador = tablaArrendador.getSelectionModel().getSelectedItem();
+		if (arrendador != null) {
+			boolean okClicked = mainApp.editarArrendador(arrendador, false);
+			if (okClicked) {
+				mainApp.mostarArrendadores();
+			}
+
+		} else {
+			// Nothing selected.
+			Alert alert = new Alert(AlertType.WARNING);
+			alert.setTitle("Falta información");
+			alert.setHeaderText("No se ha seleccionado ningún arrendador");
+			alert.setContentText("Por favor, para editar un arrendador debe seleccionarlo en la tabla.");
+
+			alert.showAndWait();
+		}
+	}
+	
+	@FXML
+	private void borrarArrendador() {
+		int idSeleccion = tablaArrendador.getSelectionModel().getSelectedIndex();
+		if (idSeleccion >= 0) {
+			Arrendador arrendador = tablaArrendador.getItems().get(idSeleccion);
+			try {
+				Utilidades.borrarGenerico(arrendador);
+			} catch (BookingException e) {
+				e.printStackTrace();
+			}
+			tablaArrendador.getItems().remove(idSeleccion);
+			
+		} else {
+			// Nothing selected.
+			Alert alert = new Alert(AlertType.WARNING);
+			alert.setTitle("Falta información");
+			alert.setHeaderText("No se ha seleccionado ningún arrendador");
+			alert.setContentText("Por favor, para borrar un arrendador debe seleccionarlo en la tabla.");
+
+			alert.showAndWait();
+		}
+	}
     
     
 }

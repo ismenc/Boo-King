@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import com.booking.modelo.Utilidades;
 import com.booking.persistencia.Arrendador;
 import com.booking.vista.ControladorArrendadores;
+import com.booking.vista.ControladorEditarArrendador;
 import com.booking.vista.ControladorPrincipal;
 
 import javafx.application.Application;
@@ -15,6 +16,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 public class MainGui extends Application {
@@ -23,7 +25,7 @@ public class MainGui extends Application {
 	private BorderPane capaRaiz;
 	private AnchorPane menuPrincipal, vistaArrendadores;
 	private ObservableList<Arrendador> tablaArrendadores;
-	private ControladorPrincipal controladorMain;
+	private ControladorPrincipal controladorMain, controladorMenu;
 
 	@Override
 	public void start(Stage primaryStage) {
@@ -33,7 +35,7 @@ public class MainGui extends Application {
         
         
 		iniciarRaiz();
-		
+		mostrarMenuPrincipal();
 	}
 	
 	/**
@@ -42,18 +44,12 @@ public class MainGui extends Application {
     public void iniciarRaiz() {
         try {
             FXMLLoader loader = new FXMLLoader();
-            FXMLLoader loader2 = new FXMLLoader();
             
             loader.setLocation(MainGui.class.getResource("../vista/RootLayout.fxml"));
             capaRaiz = (BorderPane) loader.load();
             
-            loader2.setLocation(MainGui.class.getResource("../vista/VistaPrincipal.fxml"));
-            menuPrincipal = (AnchorPane) loader2.load();
-            
-            controladorMain = loader2.getController();
-            controladorMain.setMainApp(this);
-            
-            capaRaiz.setCenter(menuPrincipal);
+            controladorMenu = loader.getController();
+	        controladorMenu.setMainApp(this);
 
             Scene scene = new Scene(capaRaiz);
             primaryStage.setScene(scene);
@@ -62,6 +58,24 @@ public class MainGui extends Application {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+    
+    public void mostrarMenuPrincipal() {
+        try {
+	        FXMLLoader loader = new FXMLLoader();
+	
+	    	loader.setLocation(MainGui.class.getResource("../vista/VistaPrincipal.fxml"));
+
+			menuPrincipal = (AnchorPane) loader.load();
+		
+	        controladorMain = loader.getController();
+	        controladorMain.setMainApp(this);
+	        
+	        capaRaiz.setCenter(menuPrincipal);
+	        
+        } catch (IOException e) {
+			e.printStackTrace();
+		}
     }
 
     /**
@@ -85,19 +99,15 @@ public class MainGui extends Application {
      */
     public void mostarArrendadores() {
         try {
-        	// FIXME Falla por aquí
-        	ArrayList<Arrendador> tabla = new ArrayList<Arrendador>(Utilidades.obtenerTablaArrendadores());
-        	tablaArrendadores = FXCollections.observableArrayList(tabla);
-        	System.out.println(1);
+        	refrescarTablaArrendadores();
         	
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(MainGui.class.getResource("../vista/MostrarArrendador.fxml"));
             
-            System.out.println(1);
             vistaArrendadores = (AnchorPane) loader.load();
             
             capaRaiz.setCenter(vistaArrendadores);
-            System.out.println(1);
+
             ControladorArrendadores controller = loader.getController();
             controller.setMainApp(this);
             
@@ -105,5 +115,40 @@ public class MainGui extends Application {
             e.printStackTrace();
         }
     }
+    
+    public void refrescarTablaArrendadores() {
+    	ArrayList<Arrendador> tabla = new ArrayList<Arrendador>(Utilidades.obtenerTablaArrendadores());
+    	tablaArrendadores = FXCollections.observableArrayList(tabla);
+    }
+    
+    
+    public boolean editarArrendador(Arrendador arrendador, boolean nuevo) {
+		try {
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(MainGui.class.getResource("../vista/EditarArrendador.fxml"));
+			AnchorPane contenido = (AnchorPane) loader.load();
+
+			// Creamos el dialogo de edicion
+			Stage dialogo = new Stage();
+			dialogo.setTitle("Editar arrendador");
+			dialogo.initModality(Modality.WINDOW_MODAL);
+			dialogo.initOwner(primaryStage);
+			Scene scene = new Scene(contenido);
+			dialogo.setScene(scene);
+
+			// Le pasamos el arrendador a editar
+			ControladorEditarArrendador controlador = loader.getController();
+			controlador.setDialogStage(dialogo);
+			controlador.setArrendador(arrendador, nuevo);
+
+			// lanzamos
+			dialogo.showAndWait();
+
+			return controlador.isOkClicked();
+		} catch (IOException e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
 	
 }

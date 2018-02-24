@@ -1,29 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane maxHeight="400.0" maxWidth="680.0" minHeight="300.0" minWidth="600.0" prefHeight="340.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="400.0" maxWidth="680.0" minHeight="300.0" minWidth="600.0" prefHeight="340.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.booking.vista.ControladorPrincipal">
    <top>
       <MenuBar BorderPane.alignment="CENTER">
         <menus>
-          <Menu mnemonicParsing="false" text="File">
+          <Menu mnemonicParsing="false" text="Archivo">
             <items>
-              <MenuItem mnemonicParsing="false" text="Close" />
+              <MenuItem mnemonicParsing="false" onAction="#salir" text="Salir" />
             </items>
           </Menu>
-          <Menu mnemonicParsing="false" text="Edit">
+          <Menu mnemonicParsing="false" text="Administrar">
             <items>
-              <MenuItem mnemonicParsing="false" text="Delete" />
+              <MenuItem mnemonicParsing="false" onAction="#abrirVistaArrendador" text="Arrendadores" />
+                  <MenuItem mnemonicParsing="false" text="Libros" />
+                  <MenuItem mnemonicParsing="false" text="Préstamos" />
             </items>
           </Menu>
-          <Menu mnemonicParsing="false" text="Help">
+          <Menu mnemonicParsing="false" text="Sobre nosotros">
             <items>
-              <MenuItem mnemonicParsing="false" text="About" />
+              <MenuItem mnemonicParsing="false" onAction="#sobreBooking" text="Sobre Boo-King" />
+                  <Menu mnemonicParsing="false" text="Sobre el autor">
+                    <items>
+                      <MenuItem mnemonicParsing="false" onAction="#linkedinAutor" text="LinkedIn" />
+                        <MenuItem mnemonicParsing="false" onAction="#gitHubAutor" text="GitHub" />
+                    </items>
+                  </Menu>
             </items>
           </Menu>
+            <Menu mnemonicParsing="false" text="Ayuda">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#sobreBooking" text="Documentacion Boo-King" />
+                  <MenuItem mnemonicParsing="false" text="¿Cómo se usa?" />
+               </items>
+            </Menu>
         </menus>
       </MenuBar>
    </top>
