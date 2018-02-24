@@ -47,10 +47,10 @@ public class GenericEntity<T> {
 		// Excepciones provocados por Hibernate validator
 		catch (ConstraintViolationException cve) {
 			session.getTransaction().rollback();
-			session.clear();
+			//session.clear();
 			StringBuilder error = new StringBuilder(300);
 			
-			error.append("No se ha podido insertar el "+ entidad.getClass().getName() + " debido a los siguientes errores:\n");
+			error.append("No se ha podido insertar el "+ entidad.getClass().getSimpleName() + " debido a los siguientes errores:\n");
 			for (ConstraintViolation<?> constraintViolation : cve.getConstraintViolations()) {
 				error.append("Para el campo " + constraintViolation.getPropertyPath() + ": " + constraintViolation.getMessage() + ".\n");
 			}
@@ -86,10 +86,10 @@ public class GenericEntity<T> {
 		// Excepciones provocadas por hibernate validator
 		catch (ConstraintViolationException cve) {
 			session.getTransaction().rollback();
-			session.clear();
+			//session.clear();
 			StringBuilder error = new StringBuilder(300);
 			
-			error.append("No se ha podido insertar el "+ entidad.getClass().getName() + " debido a los siguientes errores:\n");
+			error.append("No se ha podido insertar el "+ entidad.getClass().getSimpleName() + " debido a los siguientes errores:\n");
 			for (ConstraintViolation<?> constraintViolation : cve.getConstraintViolations()) {
 				error.append("Para el campo " + constraintViolation.getPropertyPath() + ": " + constraintViolation.getMessage() + ".\n");
 			}
@@ -122,10 +122,12 @@ public class GenericEntity<T> {
 	@SuppressWarnings("unchecked")
 	public List<T> obtenerTodos()  {
 		
-		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		session = HibernateUtil.getSessionFactory().getCurrentSession();
+		session.beginTransaction();
 		Criteria criterio = session.createCriteria(claseAsociada);
-		
-		return criterio.list();
+		List<T> lista = criterio.list();
+		session.getTransaction().commit();
+		return lista;
 	}
 
 }

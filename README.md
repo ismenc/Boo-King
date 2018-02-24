@@ -307,6 +307,8 @@ Puedes usar esta opción si:
 
 > :construction: Estamos repartiendo alquitrán por aquí, vuelve más tarde :construction:
 
+> sudo apt-get install openjfx
+
 - - - -
 <br>
 

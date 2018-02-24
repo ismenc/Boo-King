@@ -18,6 +18,7 @@ import com.booking.persistencia.Arrendador;
 import com.booking.persistencia.Libro;
 import com.booking.persistencia.Prestamo;
 import com.booking.persistencia.Stack;
+
 import com.booking.persistencia.ObjetoBookingGenerico;
 
 /***********************************************
@@ -385,7 +386,7 @@ public class Utilidades {
 		System.out.println("Se ha borrado el objeto " + objeto.toString() + ".");
 	}
 	
-	/* ==================== Actualizar ==================== */
+	/* ---------------------- Actualizar ---------------------- */
 	
 	/**********************************************
 	 * Actualiza los datos de un objeto existente en
@@ -466,6 +467,32 @@ public class Utilidades {
 		objetoElegido =  genericDao.obtener(id);
 		
 		System.out.println("\n" + objetoElegido.informacionDetalle());
+	}
+	
+	// XXX
+	
+	public static List<Arrendador> obtenerTablaArrendadores(){
+		GenericEntity<Arrendador> genericDao = new GenericEntity<Arrendador>(Arrendador.class);
+		List<Arrendador> lista = genericDao.obtenerTodos();
+		return lista;
+	}
+	
+	public static <T> boolean actualizarObjeto(T objeto) throws BookingException {
+		boolean resultado = false;
+		GenericEntity<T> genericDao = new GenericEntity<T>(objeto.getClass());
+		genericDao.actualizar(objeto);
+		resultado = true;
+		
+		return resultado;
+	}
+	
+	public static <T> boolean insertarObjeto(T objeto) throws BookingException {
+		boolean resultado = false;
+		GenericEntity<T> genericDao = new GenericEntity<T>(objeto.getClass());
+		genericDao.guardar(objeto);
+		resultado = true;
+		
+		return resultado;
 	}
 	
 	
