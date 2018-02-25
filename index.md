@@ -1,9 +1,11 @@
 # Descripción
 <br>
 
-Boo-King es una aplicación de préstamo de libros entre **personas** que permite almacenar datos de libros, arrendadores y préstamos en una base de datos MySQL. La aplicación nos permitirá manipular estos datos de una forma mucho más *user-friendly*. Los receptores de préstamos se han obviado para simplificar un poco el proyecto.
+<p align="center"><img src="./doc/vista-principal.jpg" alt=""></p>
 
-> No ha sido un proyecto fácil y, aunque el resultado no es atractivo visualmente, he aprendido muchas cosas y ha merecido la pena.
+Boo-King es una aplicación de préstamo de libros entre **personas** que permite almacenar datos de libros, arrendadores y préstamos en una base de datos MySQL. La aplicación nos permitirá manipular estos datos de una forma mucho más *user-friendly*. Los receptores de préstamos se han obviado para simplificar un poco el proyecto :sweat_smile:.
+
+> Este proyecto ha supuesto mucho trabajo pero como resultado, ha valido la pena.
 
 - - - -
 
@@ -52,7 +54,7 @@ Boo-King es una aplicación de préstamo de libros entre **personas** que permit
 
 La aplicación de *Boo-King* ofrece al usuario una interfaz agradable con la que administrar la base de datos de nuestra aplicación de préstamo de libros. Dicha aplicación ofrece una interfaz como la siguiente:
 
-<img src="./doc/vista-principal.jpg" alt="">
+<p align="center"><img src="./doc/vista-principal.jpg" alt=""></p>
 
 Tras elegir una opción, el programa interactuará con el usuario para pedirle los datos necesarios para operar y ofrecer los resultados.
 
@@ -209,14 +211,14 @@ Es un representación gráfica de todas las versiones (commits) por las que ha p
 
 La aplicación mostrará una barra de menús y 3 botones con los que podremos acceder a todas las funcionalidades.
 
-<img src="./doc/vista-principal.jpg" alt="">
+<p align="center"><img src="./doc/vista-principal.jpg" alt=""></p>
 
 * El menú `Archivo` muestra opciones de configuración de la aplicación.
 * El menú `Administrar` da acceso a los paneles de administración de *arrendadores*, *libros* y *préstamos*, al igual que los botones que aparecen en pantalla.
 * El menú `Informes` ofrece opciones para generar informes (reportes) en pdf sobre los datos de nuestra aplicación.
 * El resto de menús ofrece fuentes de información adicionales al usuario.
 
-<img src="./doc/barra-menus.jpg" alt="">
+<p align="center"><img src="./doc/vista-menus.jpg" alt=""></p>
 
 ### Administración y uso
 
@@ -225,11 +227,11 @@ Ahora podremos operar con nuestra aplicación.
 
 Cualquiera de las opciones de **administrar** que abramos, contiene una tabla con los datos en cuestión, extraídos de la base de datos, y una serie de botones que nos ofrecerán diferentes operaciones como *añadir*, *editar* y *borrar* tuplas de la tabla. Tan sólo tenemos que seleccionar la tupla que queremos alterar y pulsar sobre *editar* o *borrar* para manipularla o simplemente pulsar sobre *añadir* y en cualquier caso nos aparecerá un diálogo adicional solicitando los datos que sean necesarios.
 
-<img src="./doc/vista-tabla.jpg" alt="">
+<p align="center"><img src="./doc/vista-tabla.jpg" alt=""></p>
 
 Nuestra aplicación ofrece una función para generar **reportes**. Estos reportes consisten en informes PDF con los datos de la tabla, estadísticas, gráficas y su fecha de emisión. Para generarlos, tendremos que volver al menú principal y pulsar sobre `Informes` y la opción que deseemos. Se generará un PDF en la carpeta de instalación y se abrirá automáticamente una ventana para visualizarlo, ¡pero tendrás que ser paciente!
 
-<img src="./doc/vista-reporte.jpg" alt="">
+<p align="center"><img src="./doc/vista-reporte.jpg" alt=""></p>
 
 ## Ejecución a través de un IDE
 
