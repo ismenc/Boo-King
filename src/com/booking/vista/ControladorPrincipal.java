@@ -115,7 +115,7 @@ public class ControladorPrincipal {
 	public void abrirManual() {
 		if (Desktop.isDesktopSupported()) {
 		    try {
-				Desktop.getDesktop().browse(new URI("https://github.com/ismenc/Boo-King#manual-del-proyecto"));
+				Desktop.getDesktop().browse(new URI("https://github.com/ismenc/Boo-King#manual-de-instalación-y-uso"));
 			} catch (IOException e) {
 				e.printStackTrace();
 			} catch (URISyntaxException e) {

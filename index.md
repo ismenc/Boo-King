@@ -26,6 +26,7 @@ Boo-King es una aplicación de préstamo de libros entre **personas** que permit
   * [1. Funcionalidad](#1-funcionamiento-de-la-aplicación)
     * [Base de datos](#base-de-datos-mysql)
     * [Aplicación Java](#aplicación-java)
+    * [Interfaz gráfica](#interfaz-gráfica)
     * [Hibernate](#hibernate)
   * [2. Documentación](#2-documentación)
     * [Manual del proyecto](#manual-del-proyecto)
@@ -33,8 +34,7 @@ Boo-King es una aplicación de préstamo de libros entre **personas** que permit
     * [Diagrama de clases](#diagrama-de-clases)
     * [Historial de versiones](#historial-de-versiones)
   * [3. Cómo ejecutar la aplicación](#3-cómo-ejecutar-la-aplicación)
-    * [Base de datos](#base-de-datos)
-    * [Aplicación Boo-King](#aplicación-boo-king)
+    * [Manual de instalación y uso](#manual-de-instalación-y-uso)
     * [Ejecución a través de IDE](#ejecución-a-través-de-un-ide)
   * [4. Cumplimiento de objetivos](#4-objetivos)
     * [Acceso a datos](#acceso-a-datos)
@@ -47,29 +47,14 @@ Boo-King es una aplicación de préstamo de libros entre **personas** que permit
 - - - -
 <br>
 
+
 # 1. Funcionamiento de la aplicación
 
-Nuestra aplicación ofrece al usuario un menú con las siguientes opciones:
-```
-+------------ MENÚ -------------+
-|            Básico             |
-|-------------------------------|
-| [1] Insertar dato             |
-| [2] Actualizar dato           |
-| [3] Borrar dato               |
-| [4] Consultar objet           |
-|-------------------------------|
-|           Avanzado            |
-|-------------------------------|
-| [5] Listar arrendadores nombre|
-| [6] Listar prestamos nombre   |
-| [7] Préstamos en un año       |
-| [8] Estadísticas globales     |
-| [9] Salir                     |
-+-------------------------------+
-```
+La aplicación de *Boo-King* ofrece al usuario una interfaz agradable con la que administrar la base de datos de nuestra aplicación de préstamo de libros. Dicha aplicación ofrece una interfaz como la siguiente:
 
-Tras elegir una opción, el programa interactuará con el usuario para pedirle los datos necesarios para operar.
+<img src="./doc/vista-principal.jpg" alt="">
+
+Tras elegir una opción, el programa interactuará con el usuario para pedirle los datos necesarios para operar y ofrecer los resultados.
 
 ## Base de datos MySQL
 
@@ -111,6 +96,12 @@ Paquete | Descripción
 [persistencia](./src/com/booking/persistencia/) | Clases que definen los objetos que manipularemos
 [modelo](./src/com/booking/modelo/) | Clases con utilidades recurridas
 [dao](./src/com/booking/dao/) | Clases que definen la interacción con la BD
+
+## Interfaz gráfica
+
+La *graphic user interface* (GUI) ha sido realizada mediante la librería **JavaFX** y la aplicación java **SceneBuilder**. La combinación de estas dos herramientas nos permite realizar interfaces de forma potente y aplicarles hojas de estilo (css) para dotar a nuestras aplicaciónes de un aspecto atractivo y colorido.
+> La clase principal (ejecutable) de la interfaz es [MainGui.java](src/com/booking/ejecutable/MainGui.java).
+> Podemos encontrar todo lo relativo a la visualización en el paquete [vista](src/com/booking/vista).
 
 ## Hibernate
 
@@ -193,50 +184,67 @@ Es un representación gráfica de todas las versiones (commits) por las que ha p
 
 # 3. ¿Cómo ejecutar la aplicación?
 
-## Base de datos
+## Manual de instalación y uso
+
+#### Base de datos
 
 1. Deberemos instalar la base de datos MySQL con PHPMyAdmin.
 2. Desde PHPMyAdmin, crear la base de datos 'booking'.
 3. Importar el archivo [BaseDatos.sql](BaseDatos.sql) en la base de datos que acabamos de crear.
 
-## Aplicación Boo-King
-
-Los ejecutables son sólo válidos si tus datos de acceso a la BD son:
-Usuario: `root`
-Contraseña: `123456`
-
-En el caso de que esto no sea así, salta al punto: [Ejecución a través de IDE](#ejecución-a-través-de-un-ide).
-
 #### Linux
 
-1. Descargar el archivo *Boo-King-linux.run* en [releases](https://github.com/ismenc/Boo-King/releases).
-2. Ejecútalo.
-3. (Si no funciona) Abrir terminal en el directorio del archivo y darle permisos de ejecución `sudo chmod +x Boo-King.jar` o probar a ejecutar con `./Boo-King*-linux.run`
+1. Dirígete a [releases](https://github.com/ismenc/Boo-King/releases) y descarga el instalador `.jar`.
+2. Abre el instalador con *doble click* o *abrir con JVM*.
+3. (Si no funcionó) Abre una terminal y navega a la carpeta dónde lo has descargado mediante el comando `cd carpeta`.
+4. Abre el instalador mediante `java -jar Boo-King4.1-install.jar` y sigue los pasos.
 
 #### Windows
 
-1. Descargar el archivo *Boo-King-windows.zip* en [releases](https://github.com/ismenc/Boo-King/releases).
-2. Ejecuta el launcher.
+1. Dirígete a [releases](https://github.com/ismenc/Boo-King/releases) y descarga el instalador `.exe`.
+2. Abre el instalador mediante *doble click*.
+3. Sigue los pasos.
 
-#### Si no lanzan los ejecutables
+### Configuración
 
-Asegúrate de que has leido la advertencia de [Aplicación Boo-King](#aplicación-boo-king).
-1. Descarga el archivo *Boo-King.jar* en [releases](https://github.com/ismenc/Boo-King/releases).
-2. Abre una terminal cmd o linux y navega a la carpeta dónde lo has descargado mediante el comando `cd carpeta`.
-3. Escribe el comando `java -jar Boo-King.jar`.
+La aplicación mostrará una barra de menús y 3 botones con los que podremos acceder a todas las funcionalidades.
+
+<img src="./doc/vista-principal.jpg" alt="">
+
+* El menú `Archivo` muestra opciones de configuración de la aplicación.
+* El menú `Administrar` da acceso a los paneles de administración de *arrendadores*, *libros* y *préstamos*, al igual que los botones que aparecen en pantalla.
+* El menú `Informes` ofrece opciones para generar informes (reportes) en pdf sobre los datos de nuestra aplicación.
+* El resto de menús ofrece fuentes de información adicionales al usuario.
+
+<img src="./doc/barra-menus.jpg" alt="">
+
+### Administración y uso
+
+Antes de empezar a usar nuestra aplicación, deberemos configurar las **credenciales de acceso** a la base de datos. Para ello abrimos el menú `Archivo` -> `Configurar BBDD`. Si no realizamos este paso los valores por defecto serán `root` y `123456`.
+Ahora podremos operar con nuestra aplicación.
+
+Cualquiera de las opciones de **administrar** que abramos, contiene una tabla con los datos en cuestión, extraídos de la base de datos, y una serie de botones que nos ofrecerán diferentes operaciones como *añadir*, *editar* y *borrar* tuplas de la tabla. Tan sólo tenemos que seleccionar la tupla que queremos alterar y pulsar sobre *editar* o *borrar* para manipularla o simplemente pulsar sobre *añadir* y en cualquier caso nos aparecerá un diálogo adicional solicitando los datos que sean necesarios.
+
+<img src="./doc/vista-tabla.jpg" alt="">
+
+Nuestra aplicación ofrece una función para generar **reportes**. Estos reportes consisten en informes PDF con los datos de la tabla, estadísticas, gráficas y su fecha de emisión. Para generarlos, tendremos que volver al menú principal y pulsar sobre `Informes` y la opción que deseemos. Se generará un PDF en la carpeta de instalación y se abrirá automáticamente una ventana para visualizarlo, ¡pero tendrás que ser paciente!
+
+<img src="./doc/vista-reporte.jpg" alt="">
 
 ## Ejecución a través de un IDE
 
 Puedes usar esta opción si:
 
-* Tus datos de acceso no son `root` y `123456`.
+* Quieres configurar en profundidad la base de datos.
+
 * Si las otras alternativas no funcionaron.
+
 * Si deseas ver y modificar el código fuente.
 
-1. Descargar código fuente del proyecto en [releases](https://github.com/ismenc/Boo-King/releases).
+1. Descargar código fuente del proyecto mediante clone o en [releases](https://github.com/ismenc/Boo-King/releases).
 2. Impórtalo en tu IDE Java favorito.
 3. Configurar datos de acceso a BD en el archivo *hibernate.cfg.xml*.
-4. Ejecutar el *Main.java*.
+4. Ejecuta *Main.java* o bien *MainGui.java*.
 
 - - - -
 <br>
@@ -260,7 +268,7 @@ Puedes usar esta opción si:
 
 * Aspiras alto, amigo
   - [X] Existencia de una relación N:M implementada como dos relaciones y 1:N
-  - [ ] Existencia de relación 1:N ordenada
+  - [X] Existencia de relación 1:N ordenada
   - [X] Tipo fecha en alguna tabla
   - [ ] Paginación
   - [X] Métodos java de validación
@@ -297,7 +305,7 @@ Puedes usar esta opción si:
 * He aprendido mazo de Git & GitHub con mucho esfuerzo, pero porque yo he decido que así sea.
 
   > Creo que ha valido mucho la pena.
-* A mi pesar he tenido que renunciar a presentar la interfaz gráfica y funcionalidades como la paginación en los plazos.
+* A mi pesar he tenido que retrasar la interfaz gráfica y funcionalidades como la paginación en los plazos.
 
 ## Desarrollo de interfaces
 <br>
