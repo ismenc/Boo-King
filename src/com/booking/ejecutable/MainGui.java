@@ -20,6 +20,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
@@ -82,6 +83,8 @@ public class MainGui extends Application {
 
             Scene scene = new Scene(capaRaiz);
             primaryStage.setScene(scene);
+            
+            primaryStage.getIcons().add(new Image(MainGui.class.getResourceAsStream("../../../resources/icon.png")));
             
             primaryStage.show();
         } catch (IOException e) {

@@ -14,10 +14,10 @@
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="111" splitType="Stretch">
+		<band height="140" splitType="Stretch">
 			<image>
-				<reportElement x="180" y="10" width="209" height="101" uuid="622b1102-0c89-42ea-93c6-d7150d9f10fe"/>
-				<imageExpression><![CDATA["titulo.jpg"]]></imageExpression>
+				<reportElement x="162" y="10" width="238" height="130" uuid="622b1102-0c89-42ea-93c6-d7150d9f10fe"/>
+				<imageExpression><![CDATA["src/resources/titulo.jpg"]]></imageExpression>
 			</image>
 		</band>
 	</title>
@@ -140,12 +140,6 @@
 			</textField>
 		</band>
 	</detail>
-	<columnFooter>
-		<band height="45" splitType="Stretch"/>
-	</columnFooter>
-	<pageFooter>
-		<band height="54" splitType="Stretch"/>
-	</pageFooter>
 	<summary>
 		<band height="53" splitType="Stretch">
 			<staticText>

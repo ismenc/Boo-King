@@ -2,7 +2,7 @@
 
 #raiz {
     
-    -fx-background-image: url("../../../books.jpg");
+    -fx-background-image: url("../../../resources/books.jpg");
     -fx-background-size: cover ;
     
 }

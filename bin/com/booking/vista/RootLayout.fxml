@@ -14,7 +14,8 @@
         <menus>
           <Menu id="menuItem" mnemonicParsing="false" text="Archivo">
             <items>
-              <MenuItem id="menuItem" mnemonicParsing="false" onAction="#salir" text="Salir" />
+              <MenuItem id="menuItem" mnemonicParsing="false" onAction="#configurarBD" text="Configuración BBDD" />
+                  <MenuItem id="menuItem" mnemonicParsing="false" onAction="#salir" text="Salir" />
             </items>
           </Menu>
           <Menu id="menuItem" mnemonicParsing="false" text="Administrar">
@@ -45,7 +46,7 @@
             <Menu id="menuItem" mnemonicParsing="false" text="Ayuda">
                <items>
                   <MenuItem id="menuItem" mnemonicParsing="false" onAction="#sobreBooking" text="Documentacion Boo-King" />
-                  <MenuItem id="menuItem" mnemonicParsing="false" text="¿Cómo se usa?" />
+                  <MenuItem id="menuItem" mnemonicParsing="false" onAction="#abrirManual" text="¿Cómo se usa?" />
                </items>
             </Menu>
         </menus>

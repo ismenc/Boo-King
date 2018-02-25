@@ -14,11 +14,15 @@ import org.hibernate.service.ServiceRegistryBuilder;
 public class HibernateUtil {
 
     private static SessionFactory sessionFactory;
+    private static String user = "root", pass = "123456";
 
     public static synchronized void buildSessionFactory() {
-        Configuration configuration = new Configuration();
+    	Configuration configuration = new Configuration();
         configuration.configure();
         configuration.setProperty("hibernate.current_session_context_class", "thread");
+        
+        configuration.getProperties().setProperty("hibernate.connection.username", user);
+        configuration.getProperties().setProperty("hibernate.connection.password", pass);
 
         ServiceRegistry serviceRegistry = new ServiceRegistryBuilder().applySettings(configuration.getProperties()).buildServiceRegistry();
         sessionFactory = configuration.buildSessionFactory(serviceRegistry);
@@ -48,5 +52,12 @@ public class HibernateUtil {
         if ((sessionFactory!=null) && (sessionFactory.isClosed()==false)) {
             sessionFactory.close();
         }
+    }
+    
+    public static void setUser(String user) {
+    	HibernateUtil.user = user;
+    }
+    public static void setPass(String pass) {
+    	HibernateUtil.pass = pass;
     }
 }

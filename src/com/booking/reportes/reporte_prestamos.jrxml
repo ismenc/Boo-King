@@ -8,14 +8,18 @@
 	<field name="fecha" class="java.util.Date"/>
 	<field name="duracionDias" class="java.lang.Integer"/>
 	<field name="nombreArrendador" class="java.lang.String"/>
+	<variable name="prestamos" class="java.lang.Integer" calculation="Count">
+		<variableExpression><![CDATA[$F{fecha}.getYear()]]></variableExpression>
+		<initialValueExpression><![CDATA[0]]></initialValueExpression>
+	</variable>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="111" splitType="Stretch">
+		<band height="120" splitType="Stretch">
 			<image>
-				<reportElement x="180" y="10" width="209" height="101" uuid="622b1102-0c89-42ea-93c6-d7150d9f10fe"/>
-				<imageExpression><![CDATA["src/titulo.jpg"]]></imageExpression>
+				<reportElement x="160" y="10" width="240" height="110" uuid="622b1102-0c89-42ea-93c6-d7150d9f10fe"/>
+				<imageExpression><![CDATA["src/resources/titulo.jpg"]]></imageExpression>
 			</image>
 		</band>
 	</title>
@@ -81,14 +85,14 @@
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="36" splitType="Stretch">
+		<band height="17" splitType="Stretch">
 			<textField>
 				<reportElement x="91" y="0" width="40" height="16" uuid="956a8bc5-a4d9-476b-8fa1-666ea278a392">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="ec07ed86-decf-416e-a46a-0ae2a6fd02bd"/>
 				</reportElement>
 				<textFieldExpression><![CDATA[$F{idPrestamo}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField pattern="dd/MM/yyyy">
 				<reportElement x="130" y="0" width="120" height="16" uuid="6e819ac3-3ad9-4c9a-be63-229f2cf70cfe">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f3171018-ed2e-4dee-bdcb-f69df6dab946"/>
 				</reportElement>
@@ -108,14 +112,19 @@
 			</textField>
 		</band>
 	</detail>
-	<columnFooter>
-		<band height="45" splitType="Stretch"/>
-	</columnFooter>
-	<pageFooter>
-		<band height="228" splitType="Stretch">
+	<summary>
+		<band height="210" splitType="Stretch">
+			<staticText>
+				<reportElement x="90" y="10" width="110" height="16" uuid="d3c0f245-bb1b-4077-8a5b-7b4d37629b76"/>
+				<text><![CDATA[Total de préstamos:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="200" y="10" width="148" height="15" uuid="1ab9e410-b986-49e4-a53b-52ee00a75451"/>
+				<textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
+			</textField>
 			<barChart>
 				<chart theme="default">
-					<reportElement x="100" y="30" width="369" height="170" uuid="e9ba20d9-6455-41b9-8e4b-7f60028e0be4"/>
+					<reportElement x="93" y="40" width="369" height="170" uuid="5faa13db-ee02-40a0-9de4-003394194627"/>
 					<chartTitle/>
 					<chartSubtitle/>
 					<chartLegend/>
@@ -124,7 +133,7 @@
 					<categorySeries>
 						<seriesExpression><![CDATA["Cantidad de préstamos"]]></seriesExpression>
 						<categoryExpression><![CDATA[$F{fecha}.getYear()]]></categoryExpression>
-						<valueExpression><![CDATA[$V{REPORT_COUNT}]]></valueExpression>
+						<valueExpression><![CDATA[$V{prestamos}]]></valueExpression>
 					</categorySeries>
 				</categoryDataset>
 				<barPlot>
@@ -138,18 +147,6 @@
 					</valueAxisFormat>
 				</barPlot>
 			</barChart>
-		</band>
-	</pageFooter>
-	<summary>
-		<band height="53" splitType="Stretch">
-			<staticText>
-				<reportElement x="90" y="10" width="110" height="16" uuid="d3c0f245-bb1b-4077-8a5b-7b4d37629b76"/>
-				<text><![CDATA[Total de préstamos:]]></text>
-			</staticText>
-			<textField>
-				<reportElement x="200" y="10" width="148" height="15" uuid="1ab9e410-b986-49e4-a53b-52ee00a75451"/>
-				<textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
-			</textField>
 		</band>
 	</summary>
 </jasperReport>
