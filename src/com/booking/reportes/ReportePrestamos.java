@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import javax.swing.JFrame;
 
 import com.booking.modelo.Utilidades;
-import com.booking.persistencia.Libro;
+import com.booking.persistencia.Prestamo;
 
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperCompileManager;
@@ -18,21 +18,21 @@ import net.sf.jasperreports.export.SimpleExporterInput;
 import net.sf.jasperreports.export.SimpleOutputStreamExporterOutput;
 import net.sf.jasperreports.swing.JRViewer;
 
-public class ReporteLibros extends JFrame {
+public class ReportePrestamos extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 
-	public ReporteLibros() throws JRException{
+	public ReportePrestamos() throws JRException{
 		
-		ArrayList<Libro> libros = (ArrayList<Libro>) Utilidades.obtenerTablaLibro();
-		JasperReport reporte = JasperCompileManager.compileReport("src/com/booking/reportes/reporte_libros.jrxml");
-		JasperPrint escritor = JasperFillManager.fillReport(reporte, null, new JRBeanCollectionDataSource(libros));
+		ArrayList<Prestamo> prestamos = (ArrayList<Prestamo>) Utilidades.obtenerTablaPrestamo();
+		JasperReport reporte = JasperCompileManager.compileReport("src/com/booking/reportes/reporte_prestamos.jrxml");
+		JasperPrint escritor = JasperFillManager.fillReport(reporte, null, new JRBeanCollectionDataSource(prestamos));
 		
 		JRViewer visor = new JRViewer(escritor);
 		
 		JRPdfExporter exportador = new JRPdfExporter();
 		exportador.setExporterInput(new SimpleExporterInput(escritor));
-		exportador.setExporterOutput(new SimpleOutputStreamExporterOutput("booking-libros.pdf"));
+		exportador.setExporterOutput(new SimpleOutputStreamExporterOutput("booking-prestamos.pdf"));
 		exportador.exportReport();
 		
 		visor.setOpaque(true);
@@ -41,7 +41,7 @@ public class ReporteLibros extends JFrame {
 		add(visor);
 		setSize(600, 900);
 		setVisible(true);
-		setTitle("Reporte de libros");
+		setTitle("Reporte de préstamos");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 	}
 }

@@ -112,6 +112,10 @@ public class Prestamo extends ObjetoBookingGenerico implements Serializable {
 	public void setListaStacks(List<Stack> listaStacks) {
 		this.listaStacks = listaStacks;
 	}
+	
+	public String getNombreArrendador() {
+		return arrendador.getNombre();
+	}
 
 	/* ==============XXX==============|  Métodos  |==============XXX==============  */
 	

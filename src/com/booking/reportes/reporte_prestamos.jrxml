@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.5.1.final using JasperReports Library version 6.5.1  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reporte_booking" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="d8ea22bb-49b0-403e-a8d3-ceb3a8106952">
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="idPrestamo" class="java.lang.Integer"/>
+	<field name="fecha" class="java.util.Date"/>
+	<field name="duracionDias" class="java.lang.Integer"/>
+	<field name="nombreArrendador" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="111" splitType="Stretch">
+			<image>
+				<reportElement x="180" y="10" width="209" height="101" uuid="622b1102-0c89-42ea-93c6-d7150d9f10fe"/>
+				<imageExpression><![CDATA["src/titulo.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="74" splitType="Stretch">
+			<staticText>
+				<reportElement x="30" y="19" width="390" height="30" uuid="9c89f5c0-a610-45fa-82db-485fa0b13730"/>
+				<textElement>
+					<font size="16"/>
+				</textElement>
+				<text><![CDATA[Préstamos registrados en la base de datos a fecha de: ]]></text>
+			</staticText>
+			<textField pattern="dd-MM-yyyy">
+				<reportElement x="430" y="20" width="100" height="29" uuid="cd02c20e-64a7-4a17-904f-570072238f62"/>
+				<textElement>
+					<font size="16"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="52" splitType="Stretch">
+			<staticText>
+				<reportElement x="81" y="0" width="39" height="19" uuid="9ab7badc-1885-4205-b7d8-f1bc5e93b6da">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="ec07ed86-decf-416e-a46a-0ae2a6fd02bd"/>
+				</reportElement>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Número]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="121" y="0" width="129" height="19" uuid="49b290ea-03e5-4d92-9c43-50cad0e4837b">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f3171018-ed2e-4dee-bdcb-f69df6dab946"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha del préstamo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="250" y="0" width="60" height="19" uuid="33153ca3-acf9-4b58-a216-98c46d124cdc">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="6bde2d3d-8742-49fd-ba78-053edfe3c88b"/>
+				</reportElement>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Duración (días)]]></text>
+			</staticText>
+			<line direction="BottomUp">
+				<reportElement x="80" y="30" width="428" height="1" uuid="f11ddcaf-1f86-47d6-95b4-6cd42f9f332d"/>
+			</line>
+			<staticText>
+				<reportElement x="310" y="0" width="168" height="19" uuid="a296befb-65d7-4c55-94b4-5cdc4969b564">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="964cac5c-1ba9-4e19-8602-4ef49952119d"/>
+				</reportElement>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Arrendador]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="36" splitType="Stretch">
+			<textField>
+				<reportElement x="91" y="0" width="40" height="16" uuid="956a8bc5-a4d9-476b-8fa1-666ea278a392">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="ec07ed86-decf-416e-a46a-0ae2a6fd02bd"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{idPrestamo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="130" y="0" width="120" height="16" uuid="6e819ac3-3ad9-4c9a-be63-229f2cf70cfe">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f3171018-ed2e-4dee-bdcb-f69df6dab946"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{fecha}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="250" y="0" width="50" height="16" uuid="bd22315f-74c1-44f9-86e6-927e0d0318d1">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="6bde2d3d-8742-49fd-ba78-053edfe3c88b"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{duracionDias}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="300" y="0" width="219" height="16" uuid="bb28ef05-5724-44ab-9503-9b7dda5a07f6">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="964cac5c-1ba9-4e19-8602-4ef49952119d"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{nombreArrendador}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="228" splitType="Stretch">
+			<barChart>
+				<chart theme="default">
+					<reportElement x="100" y="30" width="369" height="170" uuid="e9ba20d9-6455-41b9-8e4b-7f60028e0be4"/>
+					<chartTitle/>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<categoryDataset>
+					<categorySeries>
+						<seriesExpression><![CDATA["Cantidad de préstamos"]]></seriesExpression>
+						<categoryExpression><![CDATA[$F{fecha}.getYear()]]></categoryExpression>
+						<valueExpression><![CDATA[$V{REPORT_COUNT}]]></valueExpression>
+					</categorySeries>
+				</categoryDataset>
+				<barPlot>
+					<plot/>
+					<itemLabel/>
+					<categoryAxisFormat>
+						<axisFormat labelColor="#000000" tickLabelColor="#000000" axisLineColor="#000000"/>
+					</categoryAxisFormat>
+					<valueAxisFormat>
+						<axisFormat labelColor="#000000" tickLabelColor="#000000" axisLineColor="#000000"/>
+					</valueAxisFormat>
+				</barPlot>
+			</barChart>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="53" splitType="Stretch">
+			<staticText>
+				<reportElement x="90" y="10" width="110" height="16" uuid="d3c0f245-bb1b-4077-8a5b-7b4d37629b76"/>
+				<text><![CDATA[Total de préstamos:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="200" y="10" width="148" height="15" uuid="1ab9e410-b986-49e4-a53b-52ee00a75451"/>
+				<textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

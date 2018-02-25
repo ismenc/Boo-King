@@ -7,7 +7,7 @@
 	<field name="id" class="java.lang.Integer"/>
 	<field name="titulo" class="java.lang.String"/>
 	<field name="autor" class="java.lang.String"/>
-	<field name="categoria" class="java.lang.String"/>
+	<field name="categoria" class="java.lang.Enum"/>
 	<field name="editorial" class="java.lang.String"/>
 	<field name="anoPublicacion" class="java.lang.String"/>
 	<background>
@@ -28,7 +28,7 @@
 				<textElement>
 					<font size="16"/>
 				</textElement>
-				<text><![CDATA[Libros registrados registrados en la base de datos a fecha de: ]]></text>
+				<text><![CDATA[Libros registrados en la base de datos a fecha de: ]]></text>
 			</staticText>
 			<textField pattern="dd-MM-yyyy">
 				<reportElement x="430" y="20" width="100" height="29" uuid="cd02c20e-64a7-4a17-904f-570072238f62"/>
@@ -149,11 +149,11 @@
 	<summary>
 		<band height="53" splitType="Stretch">
 			<staticText>
-				<reportElement x="10" y="10" width="110" height="16" uuid="d3c0f245-bb1b-4077-8a5b-7b4d37629b76"/>
-				<text><![CDATA[Total de arrendadores: ]]></text>
+				<reportElement x="20" y="10" width="110" height="16" uuid="d3c0f245-bb1b-4077-8a5b-7b4d37629b76"/>
+				<text><![CDATA[Total de libros:]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="120" y="10" width="148" height="15" uuid="1ab9e410-b986-49e4-a53b-52ee00a75451"/>
+				<reportElement x="130" y="10" width="148" height="15" uuid="1ab9e410-b986-49e4-a53b-52ee00a75451"/>
 				<textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
 			</textField>
 		</band>

@@ -8,6 +8,7 @@ import java.net.URISyntaxException;
 import com.booking.ejecutable.MainGui;
 import com.booking.reportes.ReporteArrendadores;
 import com.booking.reportes.ReporteLibros;
+import com.booking.reportes.ReportePrestamos;
 
 import javafx.fxml.FXML;
 import net.sf.jasperreports.engine.JRException;
@@ -94,6 +95,14 @@ public class ControladorPrincipal {
 	public void reportLibros() {
 		try {
 			ReporteLibros ventanaReporte = new ReporteLibros();
+		} catch (JRException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void reportPrestamos() {
+		try {
+			ReportePrestamos ventanaReporte = new ReportePrestamos();
 		} catch (JRException e) {
 			e.printStackTrace();
 		}

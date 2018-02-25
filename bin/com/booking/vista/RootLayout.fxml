@@ -28,7 +28,7 @@
                <items>
                   <MenuItem id="menuItem" mnemonicParsing="false" onAction="#reportArrendadores" text="Arrendadores" />
                   <MenuItem id="menuItem" mnemonicParsing="false" onAction="#reportLibros" text="Libros" />
-                  <MenuItem id="menuItem" mnemonicParsing="false" text="Préstamos" />
+                  <MenuItem id="menuItem" mnemonicParsing="false" onAction="#reportPrestamos" text="Préstamos" />
                </items>
             </Menu>
           <Menu id="menuItem" mnemonicParsing="false" text="Sobre nosotros">

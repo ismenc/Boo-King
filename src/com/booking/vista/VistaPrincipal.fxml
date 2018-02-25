@@ -27,7 +27,7 @@
             <Insets top="-30.0" />
          </padding>
       </Label>
-      <Label layoutX="83.0" layoutY="44.0" opacity="0.81" prefHeight="113.0" prefWidth="436.0" text="Tu app de prestamos de libros. La economia circular llega al mundo de la lectura" textAlignment="CENTER" textFill="#010405c8" textOverrun="CLIP" wrapText="true" AnchorPane.bottomAnchor="143.0" AnchorPane.leftAnchor="83.0" AnchorPane.rightAnchor="81.0" AnchorPane.topAnchor="44.0">
+      <Label layoutX="83.0" layoutY="44.0" opacity="0.81" prefHeight="113.0" prefWidth="436.0" text="Tu app de prestamos de libros. La economia circular llega al mundo de la lectura." textAlignment="CENTER" textFill="#010405c8" textOverrun="CLIP" wrapText="true" AnchorPane.bottomAnchor="143.0" AnchorPane.leftAnchor="83.0" AnchorPane.rightAnchor="81.0" AnchorPane.topAnchor="44.0">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>
