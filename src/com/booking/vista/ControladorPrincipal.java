@@ -6,8 +6,11 @@ import java.net.URI;
 import java.net.URISyntaxException;
 
 import com.booking.ejecutable.MainGui;
+import com.booking.reportes.ReporteArrendadores;
+import com.booking.reportes.ReporteLibros;
 
 import javafx.fxml.FXML;
+import net.sf.jasperreports.engine.JRException;
 
 public class ControladorPrincipal {
 	
@@ -24,8 +27,18 @@ public class ControladorPrincipal {
 		this.mainApp = main;
 	}
 	
+	/* =============================== Menu Items ================================= */
+	
 	public void abrirVistaArrendador() {
 		mainApp.mostarArrendadores();
+	}
+	
+	public void abrirVistaLibros() {
+		mainApp.mostrarLibros();
+	}
+	
+	public void abrirVistaPrestamos() {
+		mainApp.mostrarPrestamos();
 	}
 	
 	public void salir() {
@@ -70,4 +83,19 @@ public class ControladorPrincipal {
 
 	}
 	
+	public void reportArrendadores() {
+		try {
+			ReporteArrendadores ventanaReporte = new ReporteArrendadores();
+		} catch (JRException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void reportLibros() {
+		try {
+			ReporteLibros ventanaReporte = new ReporteLibros();
+		} catch (JRException e) {
+			e.printStackTrace();
+		}
+	}
 }

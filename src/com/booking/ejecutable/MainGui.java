@@ -5,8 +5,14 @@ import java.util.ArrayList;
 
 import com.booking.modelo.Utilidades;
 import com.booking.persistencia.Arrendador;
+import com.booking.persistencia.Libro;
+import com.booking.persistencia.Prestamo;
 import com.booking.vista.ControladorArrendadores;
 import com.booking.vista.ControladorEditarArrendador;
+import com.booking.vista.ControladorEditarLibro;
+import com.booking.vista.ControladorEditarPrestamos;
+import com.booking.vista.ControladorLibros;
+import com.booking.vista.ControladorPrestamos;
 import com.booking.vista.ControladorPrincipal;
 
 import javafx.application.Application;
@@ -23,8 +29,12 @@ public class MainGui extends Application {
 	
 	private Stage primaryStage;
 	private BorderPane capaRaiz;
-	private AnchorPane menuPrincipal, vistaArrendadores;
+	private AnchorPane menuPrincipal, vistaArrendadores, vistaLibros, vistaPrestamos;
+	
 	private ObservableList<Arrendador> tablaArrendadores;
+	private ObservableList<Libro> tablaLibros;
+	private ObservableList<Prestamo> tablaPrestamos;
+	
 	private ControladorPrincipal controladorMain, controladorMenu;
 
 	@Override
@@ -32,15 +42,34 @@ public class MainGui extends Application {
 		this.primaryStage = primaryStage;
         this.primaryStage.setTitle("BooKing");
         
-        
-        
 		iniciarRaiz();
 		mostrarMenuPrincipal();
 	}
 	
-	/**
-     * Inicializa la ventana
-     */
+	/* ==============XXX==============|  Getter & Setter  |==============XXX==============  */
+	
+	public Stage getPrimaryStage() {
+        return primaryStage;
+    }
+
+	public static void main(String[] args) {
+		launch(args);
+	}
+	
+	public ObservableList<Arrendador> getTablaArrendador(){
+		return tablaArrendadores;
+	}
+	
+	public ObservableList<Libro> getTablaLibros(){
+		return tablaLibros;
+	}
+	
+	public ObservableList<Prestamo> getTablaPrestamos(){
+		return tablaPrestamos;
+	}
+	
+	/* ==============XXX==============|  Métodos de pantalla  |==============XXX==============  */
+	
     public void iniciarRaiz() {
         try {
             FXMLLoader loader = new FXMLLoader();
@@ -77,29 +106,11 @@ public class MainGui extends Application {
 			e.printStackTrace();
 		}
     }
-
-    /**
-     * Devuelve el stage principal.
-     * @return
-     */
-    public Stage getPrimaryStage() {
-        return primaryStage;
-    }
-
-	public static void main(String[] args) {
-		launch(args);
-	}
 	
-	public ObservableList<Arrendador> getTablaArrendador(){
-		return tablaArrendadores;
-	}
-	
-	/**
-     * Shows the person overview inside the root layout.
-     */
     public void mostarArrendadores() {
         try {
-        	refrescarTablaArrendadores();
+        	ArrayList<Arrendador> tabla = (ArrayList<Arrendador>) Utilidades.obtenerTablaArrendador();
+        	tablaArrendadores = FXCollections.observableArrayList(tabla);
         	
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(MainGui.class.getResource("../vista/MostrarArrendador.fxml"));
@@ -116,13 +127,49 @@ public class MainGui extends Application {
         }
     }
     
-    public void refrescarTablaArrendadores() {
-    	ArrayList<Arrendador> tabla = new ArrayList<Arrendador>(Utilidades.obtenerTablaArrendadores());
-    	tablaArrendadores = FXCollections.observableArrayList(tabla);
+    public void mostrarLibros() {
+        try {
+        	ArrayList<Libro> tabla = (ArrayList<Libro>) Utilidades.obtenerTablaLibro();
+        	tablaLibros = FXCollections.observableArrayList(tabla);
+        	
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainGui.class.getResource("../vista/MostrarLibros.fxml"));
+            
+            vistaLibros = (AnchorPane) loader.load();
+            
+            capaRaiz.setCenter(vistaLibros);
+
+            ControladorLibros controller = loader.getController();
+            controller.setMainApp(this);
+            
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
     
+    public void mostrarPrestamos() {
+        try {
+        	  ArrayList<Prestamo> tabla = (ArrayList<Prestamo>) Utilidades.obtenerTablaPrestamo();
+    		  tablaPrestamos = FXCollections.observableArrayList(tabla);
+        	
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainGui.class.getResource("../vista/MostrarPrestamos.fxml"));
+            
+            vistaPrestamos = (AnchorPane) loader.load();
+            
+            capaRaiz.setCenter(vistaPrestamos);
+
+            ControladorPrestamos controller = loader.getController();
+            controller.setMainApp(this);
+            
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
     
-    public boolean editarArrendador(Arrendador arrendador, boolean nuevo) {
+	/* ==============XXX==============|  Tratamiento de datos  |==============XXX==============  */
+    
+    public boolean gestionarArrendador(Arrendador arrendador, boolean nuevo) {
 		try {
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(MainGui.class.getResource("../vista/EditarArrendador.fxml"));
@@ -130,7 +177,7 @@ public class MainGui extends Application {
 
 			// Creamos el dialogo de edicion
 			Stage dialogo = new Stage();
-			dialogo.setTitle("Editar arrendador");
+			dialogo.setTitle("Información del arrendador");
 			dialogo.initModality(Modality.WINDOW_MODAL);
 			dialogo.initOwner(primaryStage);
 			Scene scene = new Scene(contenido);
@@ -140,6 +187,64 @@ public class MainGui extends Application {
 			ControladorEditarArrendador controlador = loader.getController();
 			controlador.setDialogStage(dialogo);
 			controlador.setArrendador(arrendador, nuevo);
+
+			// lanzamos
+			dialogo.showAndWait();
+
+			return controlador.isOkClicked();
+		} catch (IOException e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+    
+    public boolean gestionarLibro(Libro libro, boolean nuevo) {
+		try {
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(MainGui.class.getResource("../vista/EditarArrendador.fxml"));
+			AnchorPane contenido = (AnchorPane) loader.load();
+
+			// Creamos el dialogo de edicion
+			Stage dialogo = new Stage();
+			dialogo.setTitle("Información del libro");
+			dialogo.initModality(Modality.WINDOW_MODAL);
+			dialogo.initOwner(primaryStage);
+			Scene scene = new Scene(contenido);
+			dialogo.setScene(scene);
+
+			// Le pasamos el arrendador a editar
+			ControladorEditarLibro controlador = loader.getController();
+			controlador.setDialogStage(dialogo);
+			controlador.setLibro(libro, nuevo);
+
+			// lanzamos
+			dialogo.showAndWait();
+
+			return controlador.isOkClicked();
+		} catch (IOException e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+    
+    public boolean gestionarPrestamo(Prestamo prestamo, boolean nuevo) {
+		try {
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(MainGui.class.getResource("../vista/EditarPrestamo.fxml"));
+			AnchorPane contenido = (AnchorPane) loader.load();
+
+			// Creamos el dialogo de edicion
+			Stage dialogo = new Stage();
+			dialogo.setTitle("Información del préstamo");
+			dialogo.initModality(Modality.WINDOW_MODAL);
+			dialogo.initOwner(primaryStage);
+			Scene scene = new Scene(contenido);
+			dialogo.setScene(scene);
+
+			// Le pasamos el arrendador a editar
+			ControladorEditarPrestamos controlador = loader.getController();
+			controlador.setDialogStage(dialogo);
+			controlador.setPrestamo(prestamo, nuevo);
 
 			// lanzamos
 			dialogo.showAndWait();

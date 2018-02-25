@@ -9,24 +9,24 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 
-<AnchorPane minHeight="360.0" minWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.booking.vista.ControladorArrendadores">
+<AnchorPane minHeight="360.0" minWidth="600.0" stylesheets="@main.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.booking.vista.ControladorArrendadores">
    <children>
       <TableView fx:id="tablaArrendador" prefHeight="299.0" prefWidth="600.0">
         <columns>
-          <TableColumn fx:id="id" prefWidth="75.0" text="ID" />
-          <TableColumn fx:id="nombre" prefWidth="115.0" text="Nombre" />
-            <TableColumn fx:id="entidad" prefWidth="82.0" text="Organizacion" />
-            <TableColumn fx:id="direccion" prefWidth="158.0" text="Direccion" />
-            <TableColumn fx:id="codigoPostal" prefWidth="77.0" text="Codigo Postal" />
+          <TableColumn fx:id="id" prefWidth="40.0" text="ID" />
+          <TableColumn fx:id="nombre" prefWidth="142.0" text="Nombre" />
+            <TableColumn fx:id="entidad" prefWidth="90.0" text="Organizacion" />
+            <TableColumn fx:id="direccion" prefWidth="164.0" text="Direccion" />
+            <TableColumn fx:id="codigoPostal" prefWidth="71.0" text="Codigo Postal" />
             <TableColumn fx:id="telefono" prefWidth="92.0" text="Telefono" />
         </columns>
       </TableView>
-      <HBox alignment="CENTER" layoutX="24.0" layoutY="275.0" prefHeight="85.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="275.0">
+      <HBox alignment="CENTER" layoutY="261.0" prefHeight="85.0" prefWidth="600.0" stylesheets="@main.css" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="261.0">
          <children>
-            <Button layoutX="103.0" layoutY="307.0" minHeight="38.0" minWidth="150.0" mnemonicParsing="false" onAction="#nuevoArrendador" text="Nuevo arrendador..." />
-            <Button layoutX="221.0" layoutY="307.0" minHeight="38.0" minWidth="150.0" mnemonicParsing="false" onAction="#editarArrendador" text="Editar arrendador..." />
-            <Button layoutX="374.0" layoutY="307.0" minHeight="38.0" minWidth="150.0" mnemonicParsing="false" onAction="#borrarArrendador" text="Borrar arrendador" />
-            <Button minHeight="38.0" minWidth="150.0" mnemonicParsing="false" onAction="#volverAlMenu" text="Volver al menú" />
+            <Button id="boton" layoutX="103.0" layoutY="307.0" minHeight="38.0" minWidth="150.0" mnemonicParsing="false" onAction="#nuevoArrendador" text="Nuevo arrendador..." />
+            <Button id="boton" layoutX="221.0" layoutY="307.0" minHeight="38.0" minWidth="150.0" mnemonicParsing="false" onAction="#editarArrendador" text="Editar arrendador..." />
+            <Button id="boton" layoutX="374.0" layoutY="307.0" minHeight="38.0" minWidth="150.0" mnemonicParsing="false" onAction="#borrarArrendador" text="Borrar arrendador" />
+            <Button id="boton" minHeight="38.0" minWidth="150.0" mnemonicParsing="false" onAction="#volverAlMenu" text="Volver al menú" />
          </children>
       </HBox>
    </children>

@@ -31,6 +31,15 @@ public class ArrendadorDAO extends GenericEntity<Arrendador> {
 		return query.list();
 	}
 	
+	public Arrendador obtenerArrendadorPorNombre(String nombre) {
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		Query query = session.createQuery("FROM Arrendador WHERE nombre LIKE '%" + nombre+"%'");
+		
+		Arrendador arrendador = (Arrendador) query.uniqueResult();
+		
+		return arrendador;
+	}
+	
 	/************************************************
 	 * Obtiene la cantidad total de arrendadores que hay en la base de datos.
 	 * @return Número total de arrendadores registrados.

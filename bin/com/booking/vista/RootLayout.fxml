@@ -8,37 +8,44 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane maxHeight="400.0" maxWidth="680.0" minHeight="300.0" minWidth="600.0" prefHeight="340.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.booking.vista.ControladorPrincipal">
+<BorderPane id="raiz" maxHeight="400.0" maxWidth="680.0" minHeight="300.0" minWidth="600.0" prefHeight="340.0" prefWidth="600.0" styleClass="raiz" stylesheets="@main.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.booking.vista.ControladorPrincipal">
    <top>
-      <MenuBar BorderPane.alignment="CENTER">
+      <MenuBar id="menu" prefHeight="31.0" prefWidth="600.0" BorderPane.alignment="CENTER">
         <menus>
-          <Menu mnemonicParsing="false" text="Archivo">
+          <Menu id="menuItem" mnemonicParsing="false" text="Archivo">
             <items>
-              <MenuItem mnemonicParsing="false" onAction="#salir" text="Salir" />
+              <MenuItem id="menuItem" mnemonicParsing="false" onAction="#salir" text="Salir" />
             </items>
           </Menu>
-          <Menu mnemonicParsing="false" text="Administrar">
+          <Menu id="menuItem" mnemonicParsing="false" text="Administrar">
             <items>
-              <MenuItem mnemonicParsing="false" onAction="#abrirVistaArrendador" text="Arrendadores" />
-                  <MenuItem mnemonicParsing="false" text="Libros" />
-                  <MenuItem mnemonicParsing="false" text="Préstamos" />
+              <MenuItem id="menuItem" mnemonicParsing="false" onAction="#abrirVistaArrendador" text="Arrendadores" />
+                  <MenuItem id="menuItem" mnemonicParsing="false" onAction="#abrirVistaLibros" text="Libros" />
+                  <MenuItem id="menuItem" mnemonicParsing="false" onAction="#abrirVistaPrestamos" text="Préstamos" />
             </items>
           </Menu>
-          <Menu mnemonicParsing="false" text="Sobre nosotros">
+            <Menu id="menuItem" mnemonicParsing="false" text="Informes">
+               <items>
+                  <MenuItem id="menuItem" mnemonicParsing="false" onAction="#reportArrendadores" text="Arrendadores" />
+                  <MenuItem id="menuItem" mnemonicParsing="false" onAction="#reportLibros" text="Libros" />
+                  <MenuItem id="menuItem" mnemonicParsing="false" text="Préstamos" />
+               </items>
+            </Menu>
+          <Menu id="menuItem" mnemonicParsing="false" text="Sobre nosotros">
             <items>
-              <MenuItem mnemonicParsing="false" onAction="#sobreBooking" text="Sobre Boo-King" />
-                  <Menu mnemonicParsing="false" text="Sobre el autor">
+              <MenuItem id="menuItem" mnemonicParsing="false" onAction="#sobreBooking" text="Sobre Boo-King" />
+                  <Menu id="menuItem" mnemonicParsing="false" text="Sobre el autor">
                     <items>
-                      <MenuItem mnemonicParsing="false" onAction="#linkedinAutor" text="LinkedIn" />
-                        <MenuItem mnemonicParsing="false" onAction="#gitHubAutor" text="GitHub" />
+                      <MenuItem id="menuItem" mnemonicParsing="false" onAction="#linkedinAutor" text="LinkedIn" />
+                        <MenuItem id="menuItem" mnemonicParsing="false" onAction="#gitHubAutor" text="GitHub" />
                     </items>
                   </Menu>
             </items>
           </Menu>
-            <Menu mnemonicParsing="false" text="Ayuda">
+            <Menu id="menuItem" mnemonicParsing="false" text="Ayuda">
                <items>
-                  <MenuItem mnemonicParsing="false" onAction="#sobreBooking" text="Documentacion Boo-King" />
-                  <MenuItem mnemonicParsing="false" text="¿Cómo se usa?" />
+                  <MenuItem id="menuItem" mnemonicParsing="false" onAction="#sobreBooking" text="Documentacion Boo-King" />
+                  <MenuItem id="menuItem" mnemonicParsing="false" text="¿Cómo se usa?" />
                </items>
             </Menu>
         </menus>

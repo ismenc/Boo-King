@@ -471,9 +471,21 @@ public class Utilidades {
 	
 	// XXX
 	
-	public static List<Arrendador> obtenerTablaArrendadores(){
+	public static List<Arrendador> obtenerTablaArrendador(){
 		GenericEntity<Arrendador> genericDao = new GenericEntity<Arrendador>(Arrendador.class);
 		List<Arrendador> lista = genericDao.obtenerTodos();
+		return lista;
+	}
+	
+	public static List<Libro> obtenerTablaLibro(){
+		GenericEntity<Libro> genericDao = new GenericEntity<Libro>(Libro.class);
+		List<Libro> lista = genericDao.obtenerTodos();
+		return lista;
+	}
+	
+	public static List<Prestamo> obtenerTablaPrestamo(){
+		GenericEntity<Prestamo> genericDao = new GenericEntity<Prestamo>(Prestamo.class);
+		List<Prestamo> lista = genericDao.obtenerTodos();
 		return lista;
 	}
 	
@@ -493,6 +505,15 @@ public class Utilidades {
 		resultado = true;
 		
 		return resultado;
+	}
+	
+	public static Arrendador obtenerArrendadorPorNombre(String nombre) {
+		return arrendadorDao.obtenerArrendadorPorNombre(nombre);
+	}
+	
+	public static String arrendadoresRegistrados() {
+		int numeroArrendadores = arrendadorDao.totalArrendadores();
+		return Integer.toString(numeroArrendadores);
 	}
 	
 	

@@ -36,13 +36,10 @@ public class ControladorArrendadores {
     	
 	}
 	
-	/**
-     * Initializes the controller class. This method is automatically called
-     * after the fxml file has been loaded.
-     */
+	/* ============================|  Métodos básicos  |============================  */
+    
     @FXML
     private void initialize() {
-        // Initialize the person table with the two columns.
         id.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(Integer.toString(cellData.getValue().getId())));
         nombre.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(cellData.getValue().getNombre()));
         entidad.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(cellData.getValue().getEntidad()));
@@ -51,27 +48,23 @@ public class ControladorArrendadores {
         telefono.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(cellData.getValue().getTelefono()));
     }
 
-    /**
-     * Is called by the main application to give a reference back to itself.
-     * 
-     * @param mainApp
-     */
     public void setMainApp(MainGui mainApp) {
         this.mainApp = mainApp;
-
-        // Add observable list data to the table
         tablaArrendador.setItems( mainApp.getTablaArrendador() );
     }
+    
+    
+    
+	/* ============================|  Gestión de opciones  |============================  */
     
     public void volverAlMenu() {
     	mainApp.mostrarMenuPrincipal();
     }
     
-    
     @FXML
 	private void nuevoArrendador() {
 		Arrendador arrendador = new Arrendador();
-		boolean okClicked = mainApp.editarArrendador(arrendador, true);
+		boolean okClicked = mainApp.gestionarArrendador(arrendador, true);
 		if (okClicked) {
 			// Habría que refrescar la tabla.
 			mainApp.mostarArrendadores();
@@ -86,7 +79,7 @@ public class ControladorArrendadores {
 	private void editarArrendador() {
 		Arrendador arrendador = tablaArrendador.getSelectionModel().getSelectedItem();
 		if (arrendador != null) {
-			boolean okClicked = mainApp.editarArrendador(arrendador, false);
+			boolean okClicked = mainApp.gestionarArrendador(arrendador, false);
 			if (okClicked) {
 				mainApp.mostarArrendadores();
 			}
