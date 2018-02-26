@@ -75,7 +75,7 @@ public class MainGui extends Application {
         try {
             FXMLLoader loader = new FXMLLoader();
             
-            loader.setLocation(MainGui.class.getResource("../vista/RootLayout.fxml"));
+            loader.setLocation(getClass().getResource("/com/booking/vista/RootLayout.fxml"));
             capaRaiz = (BorderPane) loader.load();
             
             controladorMenu = loader.getController();
@@ -96,7 +96,7 @@ public class MainGui extends Application {
         try {
 	        FXMLLoader loader = new FXMLLoader();
 	
-	    	loader.setLocation(MainGui.class.getResource("../vista/VistaPrincipal.fxml"));
+	    	loader.setLocation(getClass().getResource("/com/booking/vista/VistaPrincipal.fxml"));
 
 			menuPrincipal = (AnchorPane) loader.load();
 		
@@ -116,7 +116,7 @@ public class MainGui extends Application {
         	tablaArrendadores = FXCollections.observableArrayList(tabla);
         	
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(MainGui.class.getResource("../vista/MostrarArrendador.fxml"));
+            loader.setLocation(getClass().getResource("/com/booking/vista/MostrarArrendador.fxml"));
             
             vistaArrendadores = (AnchorPane) loader.load();
             
@@ -136,7 +136,7 @@ public class MainGui extends Application {
         	tablaLibros = FXCollections.observableArrayList(tabla);
         	
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(MainGui.class.getResource("../vista/MostrarLibros.fxml"));
+            loader.setLocation(getClass().getResource("/com/booking/vista/MostrarLibros.fxml"));
             
             vistaLibros = (AnchorPane) loader.load();
             
@@ -156,7 +156,7 @@ public class MainGui extends Application {
     		  tablaPrestamos = FXCollections.observableArrayList(tabla);
         	
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(MainGui.class.getResource("../vista/MostrarPrestamos.fxml"));
+            loader.setLocation(getClass().getResource("/com/booking/vista/MostrarPrestamos.fxml"));
             
             vistaPrestamos = (AnchorPane) loader.load();
             
@@ -175,7 +175,7 @@ public class MainGui extends Application {
     public boolean gestionarArrendador(Arrendador arrendador, boolean nuevo) {
 		try {
 			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(MainGui.class.getResource("../vista/EditarArrendador.fxml"));
+			loader.setLocation(getClass().getResource("/com/booking/vista/EditarArrendador.fxml"));
 			AnchorPane contenido = (AnchorPane) loader.load();
 
 			// Creamos el dialogo de edicion
@@ -204,7 +204,7 @@ public class MainGui extends Application {
     public boolean gestionarLibro(Libro libro, boolean nuevo) {
 		try {
 			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(MainGui.class.getResource("../vista/EditarArrendador.fxml"));
+			loader.setLocation(getClass().getResource("/com/booking/vista/EditarLibro.fxml"));
 			AnchorPane contenido = (AnchorPane) loader.load();
 
 			// Creamos el dialogo de edicion
@@ -233,7 +233,7 @@ public class MainGui extends Application {
     public boolean gestionarPrestamo(Prestamo prestamo, boolean nuevo) {
 		try {
 			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(MainGui.class.getResource("../vista/EditarPrestamo.fxml"));
+			loader.setLocation(getClass().getResource("/com/booking/vista/EditarPrestamo.fxml"));
 			AnchorPane contenido = (AnchorPane) loader.load();
 
 			// Creamos el dialogo de edicion
