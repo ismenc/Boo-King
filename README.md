@@ -236,12 +236,14 @@ Nuestra aplicación ofrece una función para generar **reportes**. Estos reporte
 
 ### Recursos adicionales
 
-El programa ha sido desarrollado sobre windows 10. Por lo tanto la experiencia visual puede verse alterada en otros sistemas operativos. Algunos problemas son:
+Algunos problemas son:
 
 * Los recursos usados por la aplicación se encuentran incluidos en ella, aún así no podemos instalar la fuente usada para los títulos sin tu permiso.
 
   > Para ello se incluye la fuente en la carpeta resources, dentro de la carpeta de instalación.
-* En sistemas Linux, la vista principal queda ligeramente desplazada.
+* El programa ha sido desarrollado sobre windows 10. Por lo tanto la experiencia visual puede verse alterada en otros sistemas operativos.
+  * En sistemas Linux, la vista principal queda ligeramente desplazada.
+* La zona de administración de préstamos no funciona plenamente, debido a la complejidad para introducir una fecha tipo `Date` (clase obsoleta en java).
 
 ## Ejecución a través de un IDEE
 
