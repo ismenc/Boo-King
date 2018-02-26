@@ -234,7 +234,16 @@ Nuestra aplicación ofrece una función para generar **reportes**. Estos reporte
 
 <p align="center"><img src="./doc/vista-reporte.jpg" alt=""></p>
 
-## Ejecución a través de un IDE
+### Recursos adicionales
+
+El programa ha sido desarrollado sobre windows 10. Por lo tanto la experiencia visual puede verse alterada en otros sistemas operativos. Algunos problemas son:
+
+* Los recursos usados por la aplicación se encuentran incluidos en ella, aún así no podemos instalar la fuente usada para los títulos sin tu permiso.
+
+  > Para ello se incluye la fuente en la carpeta resources, dentro de la carpeta de instalación.
+* En sistemas Linux, la vista principal queda ligeramente desplazada.
+
+## Ejecución a través de un IDEE
 
 Puedes usar esta opción si:
 

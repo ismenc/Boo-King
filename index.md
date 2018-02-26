@@ -233,6 +233,12 @@ Nuestra aplicación ofrece una función para generar **reportes**. Estos reporte
 
 <p align="center"><img src="./doc/vista-reporte.jpg" alt=""></p>
 
+### Recursos adicionales
+
+Los recursos usados por la aplicación se encuentran incluidos en ella, aún así no podemos instalar la fuente usada para los títulos sin tu permiso.
+
+> Para ello se incluye la fuente en la carpeta resources, dentro de la carpeta de instalación.
+
 ## Ejecución a través de un IDE
 
 Puedes usar esta opción si:

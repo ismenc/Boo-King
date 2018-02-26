@@ -215,7 +215,7 @@ public class MainGui extends Application {
 			Scene scene = new Scene(contenido);
 			dialogo.setScene(scene);
 
-			// Le pasamos el arrendador a editar
+			// Le pasamos el libro a editar
 			ControladorEditarLibro controlador = loader.getController();
 			controlador.setDialogStage(dialogo);
 			controlador.setLibro(libro, nuevo);
@@ -244,7 +244,7 @@ public class MainGui extends Application {
 			Scene scene = new Scene(contenido);
 			dialogo.setScene(scene);
 
-			// Le pasamos el arrendador a editar
+			// Le pasamos el prestamo a editar
 			ControladorEditarPrestamos controlador = loader.getController();
 			controlador.setDialogStage(dialogo);
 			controlador.setPrestamo(prestamo, nuevo);
