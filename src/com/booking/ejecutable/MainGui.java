@@ -84,7 +84,9 @@ public class MainGui extends Application {
             Scene scene = new Scene(capaRaiz);
             primaryStage.setScene(scene);
             
-            primaryStage.getIcons().add(new Image(MainGui.class.getResourceAsStream("../../../resources/icon.png")));
+            try {
+            	primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("resources/icon.png")));
+            }catch (NullPointerException e) { System.out.println("EL icono no fue encontrado.");}
             
             primaryStage.show();
         } catch (IOException e) {
