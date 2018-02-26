@@ -25,7 +25,7 @@ public class ReporteLibros extends JFrame {
 	public ReporteLibros() throws JRException{
 		
 		ArrayList<Libro> libros = (ArrayList<Libro>) Utilidades.obtenerTablaLibro();
-		JasperReport reporte = JasperCompileManager.compileReport("src/com/booking/reportes/reporte_libros.jrxml");
+		JasperReport reporte = JasperCompileManager.compileReport(getClass().getResource("/src/com/booking/reportes/reporte_libros.jrxml").getPath());
 		JasperPrint escritor = JasperFillManager.fillReport(reporte, null, new JRBeanCollectionDataSource(libros));
 		
 		JRViewer visor = new JRViewer(escritor);

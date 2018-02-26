@@ -25,7 +25,7 @@ public class ReportePrestamos extends JFrame {
 	public ReportePrestamos() throws JRException{
 		
 		ArrayList<Prestamo> prestamos = (ArrayList<Prestamo>) Utilidades.obtenerTablaPrestamo();
-		JasperReport reporte = JasperCompileManager.compileReport("src/com/booking/reportes/reporte_prestamos.jrxml");
+		JasperReport reporte = JasperCompileManager.compileReport(getClass().getResource("/src/com/booking/reportes/reporte_prestamos.jrxml").getPath());
 		JasperPrint escritor = JasperFillManager.fillReport(reporte, null, new JRBeanCollectionDataSource(prestamos));
 		
 		JRViewer visor = new JRViewer(escritor);

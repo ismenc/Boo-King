@@ -25,7 +25,7 @@ public class ReporteArrendadores extends JFrame {
 	public ReporteArrendadores() throws JRException{
 		
 		ArrayList<Arrendador> arrendadores = (ArrayList<Arrendador>) Utilidades.obtenerTablaArrendador();
-		JasperReport reporte = JasperCompileManager.compileReport("src/com/booking/reportes/reporte_arrendadores.jrxml");
+		JasperReport reporte = JasperCompileManager.compileReport(getClass().getResource("/src/com/booking/reportes/reporte_arrendadores.jrxml").getPath());
 		JasperPrint escritor = JasperFillManager.fillReport(reporte, null, new JRBeanCollectionDataSource(arrendadores));
 		
 		JRViewer visor = new JRViewer(escritor);
